@@ -1,0 +1,33 @@
+
+
+.navAdmin{
+    overflow: hidden;
+    ul{
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+
+        li{
+            &:first-child{
+                margin-top: 0px;
+            }
+            margin-top: 10px; 
+
+            a{
+                font-size: 1.8rem;
+                font-weight: 500;
+                color: var(--gray);
+                transition: color .15s ease-out;
+
+                &.selected{
+                    color: var(--black);
+                }
+                &:hover{
+                    color: var(--hover-black);
+                }
+            }
+        }
+    }
+}

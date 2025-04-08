@@ -1,0 +1,1 @@
+export { NotFountWidget } from "./ui/NotFountWidget";

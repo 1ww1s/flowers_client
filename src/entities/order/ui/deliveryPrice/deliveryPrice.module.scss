@@ -1,0 +1,24 @@
+
+
+.deliveryPrice{
+    margin: 30px 0;
+    .error{
+        font-weight: 400;
+    }
+
+    .priceBox {
+        display: flex;
+        font-weight: 400;
+        .price{
+            display: flex;
+            align-items: center;
+            font-weight: 500;
+            margin-left: 3px;
+
+            >img{
+                width: 16px;
+            }
+        }
+    }
+
+}

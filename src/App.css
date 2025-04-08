@@ -1,0 +1,91 @@
+html {
+    font-size: 10px;
+    height: 100vh;
+}
+
+body {
+    --link-blue: #007AFF;
+    --hover-link-blue: #0053AE;
+    --blue: #ADBFFF;
+    --hover-blue: #b0c1ff;
+    --dark-blue: #7590EF;
+    --light-blue: #D2DCFF;
+    --black: #2C2C2C;
+    --hover-black: #333333; 
+    --light-black: #4D4D4D;
+    --border-gray: #B5B5B9; /* or light-gray */
+    --bg-gray: #F3F3F7;
+    --gray: #8C8C90;
+    --dark-gray: #6F6F73;
+    --light-gray: #DEDEE2;
+    --green: #31C56F;
+
+    --violet: #323C61;
+    --red: #D62D30;
+    --hover-red: #BD0F2C;
+}
+
+body{
+    font-size: 1.4rem;
+    line-height: 2rem;
+    font-family: Roboto;
+    a{
+        text-decoration: none;
+        color: var(--black);
+    }
+}
+
+body, input, button{
+    color: var(--black);
+    font-size: 1.4rem;
+    font-family: Roboto;
+
+}
+
+body{
+    margin: 0;
+    --header-height: 70px;
+    --mainWidth: 1280px;
+    --mainMaxWidth: 96%;
+}
+
+h1{
+    font-size: 2.5rem;
+}
+h2{
+    font-size: 2rem;
+}
+h3{
+    font-size: 1.6rem;
+}
+
+.mainWrap{
+    min-height: 100vh;
+}
+
+.loaderMain{
+    position: absolute;
+    top: 40px;
+    left: 40px;
+}
+
+
+/* @font-face {
+    font-family: Roboto-Black;
+    src: url(https://assets-cdn.mvideo.ru/b12fa5e75e595ae22800051f279614466372cf6110171/assets/fonts/roboto/Roboto-Black.woff2) format("woff2"),url(https://assets-cdn.mvideo.ru/b12fa5e75e595ae22800051f279614466372cf6110171/assets/fonts/roboto/Roboto-Black.woff) format("woff");
+}
+
+@font-face {
+    font-family: Roboto-Bold;
+    src: url(https://assets-cdn.mvideo.ru/b12fa5e75e595ae22800051f279614466372cf6110171/assets/fonts/roboto/Roboto-Bold.woff2) format("woff2"),url(https://assets-cdn.mvideo.ru/b12fa5e75e595ae22800051f279614466372cf6110171/assets/fonts/roboto/Roboto-Bold.woff) format("woff");
+}
+
+@font-face {
+    font-family: Roboto-Medium;
+    src: url(https://assets-cdn.mvideo.ru/b12fa5e75e595ae22800051f279614466372cf6110171/assets/fonts/roboto/Roboto-Medium.woff2) format("woff2"),url(https://assets-cdn.mvideo.ru/b12fa5e75e595ae22800051f279614466372cf6110171/assets/fonts/roboto/Roboto-Medium.woff) format("woff");
+}
+
+@font-face {
+    font-family: Roboto-Regular;
+    src: url(https://assets-cdn.mvideo.ru/b12fa5e75e595ae22800051f279614466372cf6110171/assets/fonts/roboto/Roboto-Regular.woff2) format("woff2"),url(https://assets-cdn.mvideo.ru/b12fa5e75e595ae22800051f279614466372cf6110171/assets/fonts/roboto/Roboto-Regular.woff) format("woff");
+} */

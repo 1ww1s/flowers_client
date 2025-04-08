@@ -1,0 +1,25 @@
+
+
+
+.my{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--bg-gray);
+    padding-bottom: 100px;
+
+    --time: .35s;
+
+    
+
+    .wrapper{
+        width: var(--mainWidth);
+        max-width: var(--mainMaxWidth);
+        --border-radius-box: 20px;
+        --padding-box: 40px;
+        --margin-top-box: 40px;
+
+    }
+}

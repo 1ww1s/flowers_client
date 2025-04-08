@@ -1,0 +1,33 @@
+.inf{
+    width: 50%;
+    padding-top: 10px;
+    .group{
+        display: inline-block;
+        cursor: auto;
+        // padding: 4px 8px;
+
+        .title{
+            display: flex;
+            align-items: center;
+            color: var(--gray);
+            height: 20px;
+            .loader{
+                height: 80%;
+                width: 120px;
+            }
+        }
+        .value{
+            display: block;
+            align-items: center;
+            height: 20px;
+            width: 100%;
+            color: var(--black);
+            font-weight: 500;
+
+            .loader{
+                height: 80%;
+                width: 200px;
+            }
+        }
+    }
+}

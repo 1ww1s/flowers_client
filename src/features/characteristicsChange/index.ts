@@ -1,0 +1,1 @@
+export { ProductCharacteristicsChange } from "./ui/characteristicsChange/ProductCharacteristicsChange";

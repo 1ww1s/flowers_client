@@ -1,0 +1,37 @@
+
+
+
+.productToFavorites{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 24px;
+    height: 24px;
+    position: relative;
+
+    .heart{
+        box-sizing: border-box;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        cursor: pointer;
+        stroke: var(--dark-gray);
+        transition: all var(--time) ease-in-out;
+
+        &:hover{
+            stroke: var(--hover-black);
+        }
+
+        &.selected{
+            fill: var(--blue);
+            stroke: var(--black);
+
+            &:hover{
+                fill: var(--hover-blue);
+                stroke: var(--dark-gray);
+            }
+        }
+    }
+
+}

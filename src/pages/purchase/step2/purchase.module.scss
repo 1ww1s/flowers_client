@@ -1,0 +1,32 @@
+
+
+
+.comeBack{
+    position: absolute;
+    top: -10px;
+}
+
+.purchaseStep2{
+    .wrap{
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 30px;
+        width: 100%;
+
+        .content{
+            display: flex;
+            flex-direction: column;
+            box-sizing: border-box;
+            width: 70%;
+            gap: 30px;
+        }
+
+        .sidebar{
+            box-sizing: border-box;
+
+            width: 24%;
+        }
+    }
+    
+}

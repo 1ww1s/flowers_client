@@ -1,0 +1,37 @@
+
+
+
+.myData{
+    position: relative;
+    box-sizing: border-box;
+    overflow: hidden;
+    width: 800px;
+    max-width: 100%;
+    background-color: white;
+    border-radius: var(--border-radius-box);
+    padding: var(--padding-box);
+
+    >h2{
+        margin: 0;
+    }
+
+    .infs{
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        margin-top: 10px;
+
+        .inf{
+            display: flex;
+            flex-direction: column;
+            width: 50%;
+            margin-top: 10px;
+            .title{
+                color: var(--gray);
+            }
+            .value{
+                font-weight: 500;
+            }
+        }
+    }
+}

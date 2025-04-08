@@ -1,0 +1,20 @@
+
+
+.characteristicSelect{
+    display: flex;
+    width: 100%;
+
+    .autocomplete{
+        width: 100%;
+        z-index: 1;
+        position: relative;
+    }
+    
+    .feature{
+        width: 40px;
+        padding-top: 22px;
+        margin-left: 10px;
+    }
+
+
+}

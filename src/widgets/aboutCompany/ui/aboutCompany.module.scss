@@ -1,0 +1,39 @@
+
+
+
+.aboutCompany{
+    display: flex;
+    gap: 100px;
+    overflow: hidden;
+    width: 100%;
+    .text{
+        >p{
+            font-size: 1.6rem;
+            margin: 24px 0;
+
+            &:first-child{
+                margin-top: 0;
+            }
+        }
+    }
+
+    .images{
+        position: relative;
+        top: -40px;
+        min-width: 540px;
+
+        .flow1{
+            position: relative;
+            z-index: 1;
+            left: 120px;
+            width: 360px;
+        }
+        .flow2{
+            position: relative;
+            z-index: 2;
+            top: -160px;
+            width: 240px;
+        }
+    }
+
+}

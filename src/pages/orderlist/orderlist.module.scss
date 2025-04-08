@@ -1,0 +1,16 @@
+
+
+
+.orderlist{
+    
+    width: 100%;
+    background-color: white;
+    border-radius: var(--border-radius-box);
+    padding: var(--padding-box);
+    box-sizing: border-box;
+    overflow: hidden;
+    
+    h2{
+        margin: 0;
+    }
+}

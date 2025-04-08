@@ -1,0 +1,39 @@
+
+
+
+.addImageBox{
+    display: flex;
+    align-items: center;
+    height: 30px;
+    .loader{
+
+    }
+
+    .addImage{
+        >input{
+            display: none;
+        }
+        >svg{
+            height: 24px;
+            cursor: pointer;
+            path{
+                stroke: var(--gray);
+            }
+
+            &.disabled{
+                cursor:default;
+                &:hover{
+                    path{
+                        stroke: var(--gray);
+                    }
+                }
+            }
+
+            &:hover{
+                path{
+                    stroke: var(--hover-black);
+                }
+            }
+        }
+    }
+}

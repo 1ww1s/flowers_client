@@ -1,0 +1,1 @@
+export { SelectionProductImage } from "./ui/SelectionProductImage";

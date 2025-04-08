@@ -1,0 +1,1 @@
+export { ChangeProductPrices } from "./ui/ChangeProductPrices";

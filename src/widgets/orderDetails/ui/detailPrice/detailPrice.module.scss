@@ -1,0 +1,38 @@
+.priceBox{
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    width: 100%;
+    margin: 10px 0;
+
+    .name{
+        display: flex;
+        white-space: nowrap;
+    }
+
+    .dashed{
+        position: relative;
+        display: flex;
+        width: 100%;
+        margin: 0 4px;
+        &::after{
+            content: "";
+            position: absolute;            
+            width: 100%;
+            top: 14px;
+            border-bottom: 1px dashed var(--gray);
+        }
+    }
+    
+    .value{
+        display: flex;
+        position: relative;
+        align-items: center;
+        white-space: nowrap;
+        
+        >img{
+            width: 16px;
+            margin-left: 2px;
+        }
+    }
+}

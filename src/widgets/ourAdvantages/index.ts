@@ -1,0 +1,1 @@
+export { OurAdvantages } from "./ui/ourAdvantages/OurAdvantages";

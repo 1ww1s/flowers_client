@@ -1,0 +1,22 @@
+.wrapItem{
+    position: relative;
+    box-sizing: border-box;
+    background-color: white;
+    padding: 20px 30px;
+    border-radius: 12px;
+
+    &.bgGray{
+        background-color: var(--bg-gray);
+    }
+
+    .loader{
+        position: relative;
+        border-radius: 12px;
+        overflow: hidden;
+        top: -20px;
+        left: -30px;
+        margin-bottom: -40px;
+        width: calc(100% + 60px);
+        height: 200px;
+    }
+}

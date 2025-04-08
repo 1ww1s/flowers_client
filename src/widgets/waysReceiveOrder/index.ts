@@ -1,0 +1,1 @@
+export { WaysReceiveOrder } from "./ui/WaysReceiveOrder";

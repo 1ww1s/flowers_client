@@ -1,0 +1,31 @@
+
+
+.bg{
+    position: relative;
+    z-index: 9;
+    display: flex;
+    justify-content: center;
+    background-color: var(--light-blue);
+    width: 100%;
+    height: var(--header-height);
+    
+    
+    .wrapper{
+        width: var(--mainWidth);
+        max-width: var(--mainMaxWidth);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        overflow: hidden;
+        --sizeIcon: 20px;
+
+
+        .information{
+            display: flex;
+            justify-content: space-between;
+            width: 360px;
+            padding-right: 8px;
+        }
+    }
+}
+

@@ -1,0 +1,38 @@
+
+
+
+.wrap{
+    width: 100%;
+    height: 100%;
+    grid-column: 1/11;
+
+    .track{
+        display: grid;
+        grid-template-columns: 90px auto;
+        max-height: 100%;
+
+        .selectionImage{
+            width: 90px;
+            height: 100%;
+
+            .loader{
+                height: 100%;
+                width: 100%;
+            }
+        }
+    
+        .selectedImage{
+            box-sizing: border-box;
+            width: 100%;
+            padding-left: 10px;
+
+            .loader{
+                height: 100%;
+                width: 100%;
+                aspect-ratio: 1/1;
+            }
+        }
+    
+    }
+    
+}

@@ -1,0 +1,1 @@
+export { ProductPriceSlider } from "./ui/ProductPriceSlider";

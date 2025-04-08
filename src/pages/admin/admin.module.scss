@@ -1,0 +1,38 @@
+
+
+.adminBoard{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 100px;
+    
+    .sidebar{
+        box-sizing: border-box;
+        width: 20%;
+        height: 100%;
+        background-color: white;
+        border-radius: var(--border-radius-box);
+        padding: var(--padding-box) calc(var(--padding-box) / 1.5);
+
+        &.none{
+            display: none;
+        }
+    }
+
+    .content{
+        box-sizing: border-box;
+        width: 79%;
+        background-color: white;
+        border-radius: var(--border-radius-box);
+        padding: var(--padding-box);
+        box-sizing: border-box;
+        h2{
+            margin: 0;
+        }
+
+        &.full{
+            background-color: transparent;
+            padding: 0;
+            width: 100%;
+        }
+    }
+}

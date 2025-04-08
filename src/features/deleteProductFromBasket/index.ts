@@ -1,0 +1,1 @@
+export { DeleteProductFromBasket } from "./ui/DeleteProductFromBasket";

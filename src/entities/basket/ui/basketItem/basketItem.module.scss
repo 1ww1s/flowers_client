@@ -1,0 +1,76 @@
+
+
+
+.item{
+    display: flex;
+    position: relative;
+    box-sizing: border-box;
+    background-color: white;
+    min-height: 200px;
+    border-radius: 16px;
+    overflow: hidden;
+    padding: 40px 30px;
+
+    .loader{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top:0;
+        left: 0;
+    }
+
+    .image{
+        width: 120px;
+        height: 120px;
+
+        >a{
+            display: block;
+            height: 100%;
+            width: 100%;
+            cursor: pointer;
+            >img{
+                pointer-events: none;
+                width: 120px;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 4px;
+            }
+        }
+    }
+
+    .data{
+        display: flex;
+        width: 100%;
+        margin: 4px 20px;
+        gap: 10px;
+
+        .name{
+            width: 55%;
+            box-sizing: border-box;
+            font-size: 1.6rem;
+        }
+
+        .features{
+            width: 25%;
+        }
+
+        .price{
+            width: 20%;
+            grid-column: 7/8;
+            display: flex;
+            justify-content: end;
+            align-self: flex-start;
+
+            .box{
+                display: flex;
+                align-items: center;
+                font-size: 20px;
+                >img{
+                    width: 20px;
+                }
+            }
+        }
+    }
+
+
+}

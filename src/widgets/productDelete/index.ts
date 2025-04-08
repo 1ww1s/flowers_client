@@ -1,0 +1,1 @@
+export { ProductDeleteModal } from "./ui/ProductDeleteModal";

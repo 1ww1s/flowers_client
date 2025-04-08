@@ -1,0 +1,1 @@
+export { ProductShopsWidget } from "./ui/ProductShopsWidget";

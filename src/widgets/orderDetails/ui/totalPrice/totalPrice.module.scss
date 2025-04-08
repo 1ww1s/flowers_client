@@ -1,0 +1,22 @@
+.totalPrice{
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 30px;
+
+    .title{
+        font-size: 2rem;
+    }
+
+    .price{
+        display: flex;
+        align-items: center;
+        font-size: 2rem;
+        margin-left: 12px;
+
+        >img{
+            width: 20px;
+            margin-left: 2px;
+        }
+    }
+}

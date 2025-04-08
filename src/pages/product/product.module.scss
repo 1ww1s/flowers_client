@@ -1,0 +1,25 @@
+
+
+
+.product{
+    
+    --time: .15s;
+
+    .data{
+        display: grid;
+        grid-template-columns: repeat(24, 1fr);
+        width: 100%;
+        margin: 20px 0;
+        
+        .side{
+            grid-column: 20/25;
+            width: 100%;
+            margin-top: 20px;
+        }
+        margin-bottom: 80px;
+    }
+
+    .shops{
+        // margin-top: 80px;
+    }
+}

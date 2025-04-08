@@ -1,0 +1,13 @@
+
+
+
+.wrap{
+    display: flex;
+    box-sizing: border-box;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bg-gray);
+    padding: 30px 24px;
+    border-radius: 8px;
+}

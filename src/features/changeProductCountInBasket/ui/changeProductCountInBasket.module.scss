@@ -1,0 +1,32 @@
+
+
+
+
+.change{
+    display: flex;
+    align-items: center;
+
+    .count{
+        font-size: 20px;
+        margin: 0 4px;
+    }
+
+    svg{
+        display: flex;
+        cursor: pointer;
+        stroke: var(--gray);
+        transition: all .15s ease-in-out;
+
+        &.disabled{
+            stroke: var(--light-gray);
+            cursor: auto;
+            &:hover{
+                stroke: var(--light-gray);
+            }
+        }
+
+        &:hover{
+            stroke: var(--dark-gray);
+        }
+    }
+}

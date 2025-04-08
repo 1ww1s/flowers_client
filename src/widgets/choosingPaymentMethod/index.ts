@@ -1,0 +1,1 @@
+export { ChoosingPayment } from "./ui/choosingPayment";

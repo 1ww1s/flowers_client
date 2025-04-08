@@ -1,0 +1,87 @@
+
+
+.carousel{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    aspect-ratio: 16/5;
+    overflow: hidden;
+    position: relative;
+
+    ul.list{
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+
+        li.item{
+            position: absolute;
+            z-index: 9;
+            opacity: 0;
+            transition: opacity .5s ease-in-out;
+            height: 100%;
+            width: 100%;
+            &.active{
+                opacity: 1;
+                z-index: 19;
+            }
+
+            a{
+                    img{
+                        position: relative;
+                        width: 100vw;
+                        aspect-ratio: 16/5;
+                        object-fit: cover;                                
+                    }
+            }
+        }
+    }
+    
+    button{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        z-index: 99;
+        margin: 0 12px;
+        outline: none;
+        border: none;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        cursor: pointer;
+        
+        &.left{
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        &.right{
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        >svg{
+            stroke: var(--gray);
+            transition: all .15s ease-in-out;
+        }
+
+        &:hover{
+            >svg{
+                stroke: var(--black);
+            }
+        }
+    }
+
+}
+
+.pagination{
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

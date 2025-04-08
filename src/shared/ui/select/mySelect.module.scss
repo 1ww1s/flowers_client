@@ -1,0 +1,35 @@
+.selectBox{
+    --side: 14px;
+    --border: 1px;
+    
+    .select{
+        cursor: pointer;
+        box-sizing: border-box;
+        width: 100%;
+        border-radius: 8px; 
+        outline: none;
+        transition: box-shadow 0.15s ease-in-out;
+        border: var(--border) solid var(--light-gray);
+        padding: 12px var(--side);
+    
+        &:focus{
+            box-shadow: 0 0 8px 1.5px var(--blue);
+            border: var(--border) solid var(--blue);
+        }
+
+    }
+
+    .sign{
+        position: absolute;
+        margin-left: calc(var(--side) + var(--border));
+        line-height: 1.8rem;
+        font-size: 1rem;
+        color: var(--dark-gray);
+
+        &.error{
+            color: var(--red);
+        }
+    }
+}
+
+

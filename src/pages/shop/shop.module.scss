@@ -1,0 +1,22 @@
+
+
+.shop{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+
+    .wrap{
+        padding-top: 20px;
+        padding-bottom: 100px;
+        width: var(--mainWidth);
+        max-width: var(--mainMaxWidth);
+        min-height: 100vh;
+        overflow: hidden;
+
+        .loader{
+            height: 260px;
+            width: 70%;
+        }
+    }
+}

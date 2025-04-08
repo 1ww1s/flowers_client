@@ -1,0 +1,21 @@
+
+.images{
+    >h2{
+        margin: 40px 0 20px 0 !important; 
+    }
+
+    .listBox{
+
+        display: flex;
+        align-items: center;
+
+        .list{
+
+            max-width: 90%;
+        }
+    
+        .addImg{
+            margin-left: 6px;
+        }
+    }
+}

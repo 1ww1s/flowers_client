@@ -1,0 +1,20 @@
+
+
+.productChange {
+    width: 100%;
+
+    .select{
+        min-height: 100px;
+        margin-top: 20px;
+
+        .loader{
+            display: flex;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+        }
+    }
+    .input{
+        margin-top: 20px;
+    }
+}

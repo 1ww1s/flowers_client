@@ -1,0 +1,14 @@
+.content{
+    width: 800px;
+    max-width: 100%;
+    min-height: 440px;
+    box-sizing: border-box;
+    overflow: hidden;
+    padding: 10px;
+    position: relative;
+
+    .loader {
+        margin-top: 20px;
+    }
+
+}

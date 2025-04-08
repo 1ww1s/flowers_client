@@ -1,0 +1,42 @@
+.info{
+    margin: 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+    
+    position: relative;
+
+    .numb{
+        position: relative;
+        right: 10px;
+    }
+
+    .login{
+        max-width: 100px;
+        overflow: hidden;
+        text-wrap: nowrap;
+        text-overflow: ellipsis;
+
+        span{
+            margin-left: 6px;
+            color: var(--black);
+            transition: color .15s ease-out;
+        }
+    }
+    svg{
+        stroke: var(--black);
+        transition: stroke .15s ease-out;
+    }
+    &:hover{
+        svg{
+            stroke: var(--dark-gray);
+        }
+
+        .login{
+            span{
+                color: var(--dark-gray);
+                
+            }
+        }
+    }
+}

@@ -1,0 +1,145 @@
+.myInput{
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 8px 0;
+    --side: 14px;
+    --border: 1px;
+    
+    .inputBox{
+        width: 100%;
+        position: relative;
+
+        input{
+            box-sizing: border-box;
+            border: var(--border) solid var(--light-gray);
+            padding: 20px var(--side) 8px var(--side);
+            outline: none;
+            border-radius: 10px;
+            width: 100%;
+            font-size: 1.4rem;
+            box-shadow: none;
+            transition: all .25s ease-out;
+    
+            &.simple{
+                padding: 10px var(--side);
+                &.icon{
+                    padding: 10px 36px 10px var(--side);
+                }
+            }
+            
+            
+            &[type="password"], &[data-feature="true"]{
+                padding-right: calc(var(--side) + 50px);
+            }
+
+            &:focus{
+                box-shadow: 0 0 8px 1.5px var(--blue);
+                border: var(--border) solid var(--blue);
+            }
+        }
+        
+        .features{
+            position: absolute;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            height: 100%;
+            top: 0;
+            right: calc(10px + var(--border));
+            .feature{
+                display: flex;
+                margin: 0 1px;
+            }
+            .icon{
+                display: flex;
+                margin: 0 1px;
+            }
+            .clear{
+                display: none;
+                margin: 0 1px;
+                cursor: pointer;
+
+                &:hover{
+                    >svg{
+                        transition: all .15s ease-in-out;
+                        stroke: var(--dark-gray);
+                    }
+                }
+                
+                >svg{
+                    transition: all .15s ease-in-out;
+                    width: 16px;
+                    height: 16px;
+                    stroke: var(--gray);
+                }
+            }
+
+            .lock{
+                margin: 0 1px;
+                box-sizing: border-box;
+                cursor: pointer;
+                img{
+                    pointer-events: none;
+                    height: 12px;
+                    width: 12px;
+                }
+            }
+            
+            &.filled{
+                .icon{
+                    display: none;
+                    background-color: red;
+                }
+                .clear{
+                    display: flex;
+                }
+            }
+
+        }
+
+    }
+    
+    .title{
+        left: calc(var(--side) + var(--border));
+        position: absolute;
+        z-index: 99;
+        color: var(--gray);
+        font-size: 1.2rem;
+        line-height: 1.6rem;
+        height: 1.6rem;
+        top: 4px;
+        pointer-events: none;
+        transition: all .25s ease-out;
+        overflow: hidden;
+
+
+        &.simple{
+            position: relative;
+            font-size: 1.4rem;
+            left: 0;
+            top:0;
+        }
+
+        &.active{
+            top: 14px;
+            font-size: 1.4rem;
+            color: var(--dark-gray);
+        }
+    }
+
+    .sign{
+        position: absolute;
+        margin-left: calc(var(--side) + var(--border));
+        line-height: 1.8rem;
+        font-size: 1rem;
+        color: var(--dark-gray);
+
+        &.error{
+            color: var(--red);
+        }
+    }
+
+    
+    
+}

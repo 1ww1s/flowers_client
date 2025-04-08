@@ -1,0 +1,16 @@
+
+
+
+.close{
+    
+    cursor: pointer;
+    path{
+        stroke: var(--gray);
+
+    }
+    &:hover{
+        path{
+            stroke: var(--hover-black);
+        }
+    }
+}

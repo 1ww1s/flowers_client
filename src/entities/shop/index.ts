@@ -1,0 +1,8 @@
+export { ShopList } from './ui/list/ShopList'
+export { ShopData } from './ui/data/ShopData'
+export { GoToTheShop } from './ui/goToTheShop/GoToTheShop'
+export { ShopInitialState } from './model/reducers/ShopState'
+export { useShopActions } from './lib/hooks/useShopActions'
+export { shopService } from './api/ShopService'
+export {ShopReducer} from './model/reducers/ShopSlice'
+export {type IShop, type IShopInitialState, type IShopId, type IShopData} from './model/types'

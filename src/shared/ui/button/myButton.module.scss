@@ -1,0 +1,43 @@
+
+
+.myButton {
+    margin: 12px 0;
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    button{
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 48px;
+        width: 100%;
+        padding: 0 60px;
+        border-radius: 10px;
+        // outline: none;
+        border: none;
+        cursor: pointer;
+        letter-spacing: 0.2px;
+        font-weight: 500;
+        background-color: var(--light-blue);
+        
+        &.loading{
+            background-color: var(--blue);
+        }
+
+        &:hover{
+            background-color: var(--blue);
+        }
+    }
+
+    .error{
+        position: absolute;
+        bottom: 0px;
+        transform: translateY(100%);
+        color: var(--red);
+        font-size: 1rem;
+    }
+
+}

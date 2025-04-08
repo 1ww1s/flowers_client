@@ -1,0 +1,26 @@
+
+
+ul.dropDown {
+    position: absolute;
+    box-sizing: border-box;
+    width: 320px;
+    background-color: white;
+    z-index: 199;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.15);
+    list-style: none;
+    overflow: hidden;
+    border-radius: 8px;
+    margin: 0;
+    padding: 20px;
+
+    li.item{
+        margin: 6px 0;
+        cursor: pointer;
+        color: var(--black);
+        transition: color .15s ease-in-out;
+
+        &:hover{
+            color: var(--dark-blue);
+        }
+    }
+}

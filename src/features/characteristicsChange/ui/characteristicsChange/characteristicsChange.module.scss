@@ -1,0 +1,33 @@
+.productChChange{
+    
+
+    .values{
+        width: 100%;
+
+        .close{
+            width: 20px;
+        }
+    }
+    .addChVal{
+        box-sizing: border-box;
+        position: relative;
+        background-color: var(--bg-gray);
+        border: 0;
+        border-radius: 8px;
+        padding: 8px 20px;
+        font-size: 1.2rem;
+        font-weight: 500;
+        z-index: 0;
+    
+        &.disabled{
+            &:hover{
+                background-color: var(--bg-gray);
+            }
+        }
+
+
+        &:hover{
+            background-color: var(--light-gray);
+        }
+    }
+}

@@ -1,0 +1,1 @@
+export { BasketWidget } from "./ui/widget/BasketWidget";

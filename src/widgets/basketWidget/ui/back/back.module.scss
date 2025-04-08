@@ -1,0 +1,30 @@
+
+
+.back{
+    display: flex;
+    .wrap{
+        display: flex;
+        align-items: center;
+
+        >svg{
+            stroke: var(--black);
+            transition: all .15s ease-in-out;
+        }
+    
+        >a{
+            margin-left: 2px;
+            transition: all .15s ease-in-out;
+        }
+
+        &:hover{
+            >svg{
+                stroke: var(--dark-gray);
+            }
+        
+            >a{
+                color: var(--dark-gray);
+            }
+        }
+    }
+
+}

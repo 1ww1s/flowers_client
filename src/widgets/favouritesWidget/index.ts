@@ -1,0 +1,1 @@
+export { FavouritesWidget } from "./ui/FavouritesWidget";

@@ -1,0 +1,32 @@
+
+
+.home{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+
+    --marginTop: 40px;
+
+    .title{
+        margin: 40px 0;
+        font-size: 2.4rem;
+    }
+
+    .advantages{
+        width: var(--mainWidth);
+        max-width: var(--mainMaxWidth);
+    }
+
+    .categories{
+        margin-top: var(--marginTop);
+        width: var(--mainWidth);
+        max-width: var(--mainMaxWidth);
+    }
+
+    .about{
+        margin-top: var(--marginTop);
+        width: var(--mainWidth);
+        max-width: var(--mainMaxWidth);
+    }
+}

@@ -1,0 +1,32 @@
+
+
+.waysReceiveOrder{
+    margin-top: 20px;
+    width: 100%;
+
+    .loader{
+        height: 140px;
+        width: 100%;
+    }
+
+    .content{
+        width: 100%;
+        .title{
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .text{
+            .link{
+                cursor: pointer;
+                color: var(--link-blue);
+                transition: all var(--time) ease-in-out;
+    
+                &:hover{
+                    color: var(--hover-link-blue);
+                }
+            }
+        }
+    }
+
+}

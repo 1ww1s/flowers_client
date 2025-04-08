@@ -1,0 +1,64 @@
+
+
+.order{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 100%;
+    padding-bottom: 100px;
+
+    .comeBack.admin{
+        margin-top: -20px;
+    }
+
+    .wrap{
+        display: flex;
+        gap: 30px;
+        width: 100%;
+
+        .content{
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            width: 70%;
+            
+            .data{
+                box-sizing: border-box;
+                padding: 20px 10px;
+                >h1{
+                    margin: 0;
+                }
+            }
+        
+            .delivery, .shop{
+                box-sizing: border-box;
+                padding: 20px 10px;
+
+                >h2{
+                    margin-top: 0;
+                    margin-bottom: 20px;
+                }
+            }
+        
+            .products{
+                box-sizing: border-box;
+                padding: 20px 10px;
+         
+                >h2{
+                    margin-top: 0;
+                    margin-bottom: 30px;
+                }
+            }
+        }
+
+        .sidebar{
+            width: 30%;
+
+            h2.statusPayment{
+                font-size: 2.4rem;
+                color: var(--dark-blue);
+            }
+        }
+            
+    }
+}

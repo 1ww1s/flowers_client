@@ -1,0 +1,26 @@
+
+
+.shops{
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+
+    .wrap{
+        width: var(--mainWidth);
+        max-width: var(--mainMaxWidth);
+        margin-bottom: 100px;
+
+        .map{
+            height: 600px;
+        }
+
+        >h1{
+            margin:  40px 0;
+        }
+
+        .loader{
+            width: 70%;
+            height: 260px;
+        }
+    }
+}

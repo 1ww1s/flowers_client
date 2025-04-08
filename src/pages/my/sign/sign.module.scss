@@ -1,0 +1,44 @@
+.sign{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 0;
+    width: 100%;
+    background-color: var(--light-gray);
+    transition: height var(--time) ease-in-out;
+    font-weight: 500;
+    overflow: hidden;
+    
+    span{
+        opacity: 0;
+        transition: opacity var(--time) ease-in-out;
+    }
+
+    &.active{
+        height: 60px;
+        span{
+            opacity: 1;
+        }
+
+        &.error{
+            color: var(--red);
+        }
+        &.message{
+            color: var(--back);
+        }
+    }
+
+    .wrapper{
+        width: var(--mainWidth);
+        max-width: var(--mainMaxWidth);
+        --border-radius-box: 20px;
+        --padding-box: 40px;
+        --margin-top-box: 40px;
+    
+        &.close{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+}

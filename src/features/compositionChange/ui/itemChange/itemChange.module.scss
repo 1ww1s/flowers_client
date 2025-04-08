@@ -1,0 +1,20 @@
+.itemBox{
+
+ 
+    display: flex;
+    justify-content: space-between;
+
+    
+
+    .item{
+        width: 75%;
+    }   
+
+    .count{
+        width: 20%;
+    }
+
+    .close{
+        margin-top: 20px;
+    }
+}

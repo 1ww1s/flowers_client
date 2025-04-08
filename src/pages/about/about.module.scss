@@ -1,0 +1,15 @@
+
+
+.about{
+    display: flex;
+    justify-content: center;
+
+    .wrap{
+        width: var(--mainWidth);
+        max-width: var(--mainMaxWidth);
+        
+        >h1{
+            margin:  40px 0;
+        }
+    }
+}

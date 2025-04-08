@@ -1,0 +1,28 @@
+
+
+
+ul.list{
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li.item{
+        width: 24px;
+        height: 4px;
+        border-radius: 4px;
+        margin: 0 6px;
+        background-color: var(--light-gray);
+        transition: all .5s ease-in-out;
+        cursor: pointer;
+
+        &.active {
+            background-color: var(--dark-gray);
+        }
+
+        &:hover{
+            background-color: var(--gray);
+        }
+
+    }
+}

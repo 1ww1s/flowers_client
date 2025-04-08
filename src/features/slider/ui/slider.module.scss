@@ -1,0 +1,50 @@
+
+
+
+.slider{
+    display: flex;
+    margin-top: 20px;
+    width: 100%;
+    align-items: center;
+    height: 4px;
+    background-color: var(--blue);
+    position: relative;
+    z-index: 99999;
+    
+
+    .inactiveLeft{
+        position: absolute;
+        height: 100%;
+        background-color: var(--light-gray);
+        left: 0;
+    }
+
+    .inactiveRight{
+        position: absolute;
+        z-index: 9;
+        height: 100%;
+        background-color: var(--light-gray);
+        right: 0;
+    }
+
+
+    .thumb{
+        box-sizing: border-box;
+        border: 3px solid var(--blue);
+        background-color: white;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        position: absolute;
+
+        &.min{
+            left: 0;
+        }   
+
+        &.max{
+            left: 100%;
+            z-index: 9;
+        }
+
+    }
+}

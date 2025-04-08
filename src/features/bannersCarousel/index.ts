@@ -1,0 +1,1 @@
+export { BannersCarousel } from "./ui/carousel/BannersCarousel";

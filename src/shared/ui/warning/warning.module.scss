@@ -1,0 +1,15 @@
+
+
+
+.warning{
+    display: flex;
+    align-items: center;
+
+    .image{
+        stroke: var(--red);
+    }
+
+    .title{
+        margin-left: 4px;
+    }
+}

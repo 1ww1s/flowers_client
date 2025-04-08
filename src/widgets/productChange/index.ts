@@ -1,0 +1,1 @@
+export { ProductChangeFull } from "./ui/ProductChangeFull";
