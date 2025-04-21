@@ -1,4 +1,4 @@
-import { FC, useState } from "react"
+import { FC, useEffect, useRef, useState } from "react"
 import { IBanner } from "../../../../entities/banner"
 import classes from './carousel.module.scss'
 import { BannersPagination } from "../pagination/Pagination";
@@ -30,6 +30,14 @@ export const BannersCarousel: FC<IProps> = ({banners}) => {
             setCurrentBanner(currentBanner + 1)
         }
     }
+
+    const id = useRef<null | ReturnType<typeof setTimeout>>(null)
+    useEffect(() => {
+        if(id.current){
+            clearTimeout(id.current)
+        }
+        id.current = setTimeout(onForward, 4000)
+    }, [currentBanner])
 
     return (
         <>
