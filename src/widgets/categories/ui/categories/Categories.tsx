@@ -32,7 +32,6 @@ export const Categories: FC = () => {
     return (
         <section className={classes.categories}>
             <Helmet>
-                <title>Каталог</title>
                 <meta name="description" content={`Наша продукция представлена в следующий категориях: ${categories.map(d => d.name).join(', ')}`} />
                 <meta property="og:title" content='Каталог' />
                 <meta property="og:description" content={`Наша продукция представлена в следующий категориях: ${categories.map(d => d.name).join(', ')}`}/>

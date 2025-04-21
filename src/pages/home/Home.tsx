@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { AboutCompany } from "../../widgets/aboutCompany";
 import { Banners } from "../../widgets/banners";
 import { Categories } from "../../widgets/categories";
@@ -7,6 +8,9 @@ import classes from './home.module.scss'
 function Home() {
     return (
         <section className={classes.home}>
+            <Helmet>
+                <title>Главная</title>
+            </Helmet>
             <Banners />
             <section className={classes.advantages}>
                 <h2 className={classes.title}>Наши преимущества</h2>   {/* НАШИ ПРЕИМУЩЕСТВА */}
