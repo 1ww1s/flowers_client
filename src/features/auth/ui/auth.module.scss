@@ -8,11 +8,13 @@
         display: flex;
         flex-direction: column;
         width: 480px;
+        max-width: 90%;
         margin-bottom: var(--header-height);
         .title {
             font-size: 2.4rem;
             word-spacing: 3px;
             letter-spacing: 1px;
+            line-height: 2.8rem;
             text-align: center;
             margin: 12px 0;
         }
@@ -32,6 +34,23 @@
                 color: var(--link-blue);
                 font-weight: 500;
             }
+        }
+    }
+}
+
+@media (max-width: 650px) {
+    .auth {
+        .wrapper{
+
+            .title {
+                font-size: 2.2rem;
+                word-spacing: 2px;
+                line-height: 2.6rem;
+                text-align: center;
+                margin: 10px 0;
+            }
+    
+    
         }
     }
 }
