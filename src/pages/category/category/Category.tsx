@@ -7,6 +7,9 @@ import { Filters } from '../../../widgets/filters'
 import { useEffect, useRef, useState } from 'react'
 import { useLocation, useSearchParams } from 'react-router-dom'
 import { ProductPriceSlider } from '../../../widgets/slider'
+import { FilterByFlowers } from '../../../widgets/filterByFlowers'
+import { FilterByShops } from '../../../widgets/filterByShops'
+import { Helmet } from 'react-helmet-async'
 
 
 export default function Category() {
@@ -15,6 +18,8 @@ export default function Category() {
     const [searchParams, setSearchParams] = useSearchParams();
     const [urlSearchParams, setUrlSearchParams] = useState<URLSearchParams>(new URLSearchParams(searchParams))
     const {pathname} = useLocation()
+
+    const ref = useRef<HTMLDivElement>(null)
 
     const isOne = useRef<boolean>(true)
     useEffect(() => {
@@ -29,8 +34,21 @@ export default function Category() {
     
     useEffect(() => {
         window.scrollTo({top: 0})
+        filterClose()
     }, [pathname, searchParams])
         
+    const filterOpen = () => {
+        if(ref.current){
+            ref.current.classList.toggle(classes.open)
+        }
+    }
+
+    const filterClose = () => {
+        if(ref.current){
+            ref.current.classList.remove(classes.open)
+        }
+    }
+
     return (
         <section className={classes.wrap}>
         {
@@ -43,7 +61,13 @@ export default function Category() {
             {
                 category.name
                     ?
-                <h1>{category.name}</h1>
+                <>
+                    <Helmet>
+                        <title>{category.name}</title>
+                        <meta property="og:title" content={category.name} />
+                    </Helmet>
+                    <h1>{category.name}</h1>
+                </>
                     :
                 <section className={classes.loader}>
                     <LoaderDiv />
@@ -52,9 +76,19 @@ export default function Category() {
             </section>
             <section className={classes.content}>
                 <aside className={classes.sidebar}>
-                    <section className={classes.filters}>
-                        <ProductPriceSlider />
-                        <Filters />
+                    <h3
+                        onClick={filterOpen} 
+                        className={classes.titleFilter}
+                    >
+                        Фильтры
+                    </h3>
+                    <section ref={ref} className={classes.filters}>
+                        <section className={classes.filterWrap}>
+                            <ProductPriceSlider />
+                            <FilterByShops />
+                            <FilterByFlowers />
+                            <Filters />
+                        </section>
                     </section>
                 </aside>
                 <main className={classes.main}>

@@ -1,5 +1,10 @@
 .inf{
-    width: 50%;
+    position: relative;
+    display: flex;
+    min-width: 50%;
+    min-width: 160px;
+    max-width: 100%;
+    overflow: auto;
     padding-top: 10px;
     .group{
         display: inline-block;
@@ -10,23 +15,41 @@
             display: flex;
             align-items: center;
             color: var(--gray);
-            height: 20px;
             .loader{
-                height: 80%;
+                height: 20px;
                 width: 120px;
             }
         }
         .value{
             display: block;
             align-items: center;
-            height: 20px;
             width: 100%;
             color: var(--black);
             font-weight: 500;
+            margin-top: 6px;
 
             .loader{
-                height: 80%;
+                height: 20px;
                 width: 200px;
+            }
+        }
+    }
+}
+
+@media (max-width: 850px) {
+    .inf{
+        .group{
+            .title{
+                .loader{
+                    height: 20px;
+                    width: 70px;
+                }
+            }
+            .value{
+                .loader{
+                    height: 20px;
+                    width: 140px;
+                }
             }
         }
     }

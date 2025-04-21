@@ -5,3 +5,9 @@
     grid-column: 11/20;
     margin: 0 20px;
 }
+
+@media (max-width: 650px) {
+    .card{
+        margin: 20px 0;
+    }
+}

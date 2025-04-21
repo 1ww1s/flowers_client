@@ -25,7 +25,6 @@ export const OrderPreviewLoader: FC<IProps> = ({isLoading, numbItems}) => {
                     </span>
                 </section>
             </section>
-            
         </section>
     )
 }

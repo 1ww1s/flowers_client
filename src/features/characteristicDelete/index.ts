@@ -1,0 +1,1 @@
+export { CharacteristicDelete } from "./ui/CharacteristicDelete";

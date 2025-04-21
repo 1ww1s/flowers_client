@@ -1,0 +1,1 @@
+export { CharacteristicSearchAndSelect } from "./ui/CharacteristicSearchAndSelect";

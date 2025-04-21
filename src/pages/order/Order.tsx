@@ -1,12 +1,15 @@
 import { useLocation, useParams } from 'react-router-dom'
 import classes from './order.module.scss'
 import { useEffect, useState } from 'react'
-import { IOrderRes, OrderDeliveryData, OrderProductItem, orderService } from '../../entities/order'
-import { WrapItem } from '../../shared'
+import { IOrderRes, OrderDeliveryData, OrderProductItem, orderService, TStatus } from '../../entities/order'
+import { LoaderDiv, WrapItem } from '../../shared'
 import { OrderDetails } from '../../widgets/orderDetails'
 import { OrderData } from '../../widgets/orderData'
 import { ShopData } from '../../entities/shop'
 import { ComeBack } from '../../features/comeBack'
+import { OrderStatusChange } from '../../features/orderStatusChange'
+import { NotFountWidget } from '../../widgets/notFountWidget'
+import { Helmet } from 'react-helmet-async'
 
 
 export default function Order() {
@@ -56,25 +59,44 @@ export default function Order() {
         getProductCount()
     }, [order])
 
+    const setStatusOrder = (status: TStatus) => {
+        setOrder({...order, statusOrder: status} as IOrderRes)
+    }
+
     return (
         <section className={classes.order}>
-            <section className={classes.comeBack + (isAdmin ? (' ' + classes.admin) : '')}>
+            <Helmet >
+                <title>{order ? ('Заказ от ' + order.date) : `Заказ`}</title>
+                <meta name="description" content='' />
+                <meta property="og:title" content={order ? ('Заказ от ' + order.date) : `Заказ`} />
+            </Helmet>
+            <section className={classes.comeBack}>
                 <ComeBack 
-                    to={isAdmin ? '/my/admin/orderlist/active' : '/my/orderlist/active'}
+                    to={isAdmin ? '/my/admin/orderlist/shop/active' : '/my/orderlist/active'}
                     text='Вернуться к списку заказов'
                 />
             </section>
             <section className={classes.wrap}>
                 <section className={classes.content}>
-                    {isLoading
+                {
+                    isLoading
                         &&
                     <>
                         <WrapItem isLoading={isLoading} />
                         <WrapItem isLoading={isLoading} />
                     </>
-                    }
+                }
+                { 
+                    !order && !isLoading 
+                        && 
+                    <WrapItem>
+                        <section className={classes.notFound}>
+                            <NotFountWidget /> 
+                        </section>
+                    </WrapItem>
+                }
                 {
-                    order
+                    order 
                         &&
                     <>
                     <WrapItem>
@@ -84,26 +106,42 @@ export default function Order() {
                         </section>
                     </WrapItem>
                     {
-                    order.methodOfReceipt === 'Самовывоз'
-                        ?
-                    <WrapItem>
-                        <section className={classes.shop}>
-                            <h2>Самовывоз</h2>
-                            <ShopData 
-                                shop={order.shop}
-                            />
-                        </section>
-                    </WrapItem>
-                        :
-                    <WrapItem>
-                        <section className={classes.delivery}>
-                            <h2>Доставка</h2>
-                            <OrderDeliveryData 
-                                price={order.deliveryPrice}
-                                address={order.address}
-                            />
-                        </section>
-                    </WrapItem>
+                        order.methodOfReceipt === 'Самовывоз'
+                            ?
+                        <WrapItem>
+                            <section className={classes.shop}>
+                                <h2>Самовывоз</h2>
+                                <ShopData 
+                                    shop={order.shop}
+                                />
+                            </section>
+                        </WrapItem>
+                            :
+                        <WrapItem>
+                            <section className={classes.delivery}>
+                                <h2>Доставка</h2>
+                                <OrderDeliveryData 
+                                    price={order.deliveryPrice}
+                                    address={order.address}
+                                />
+                            </section>
+                        </WrapItem>
+                    }
+                    {
+                        order.message.length > 0
+                            &&
+                        <WrapItem>
+                            <h2>Сообщение</h2>
+                            <p>{order.message}</p>
+                        </WrapItem>
+                    }
+                    {
+                        order.deliveryMessage.length > 0
+                            &&
+                        <WrapItem>
+                            <h2>Сообщение курьеру</h2>
+                            <p>{order.deliveryMessage}</p>
+                        </WrapItem>
                     }
                     <WrapItem>
                         <section className={classes.products}>
@@ -118,16 +156,56 @@ export default function Order() {
                 }
                 </section>
                 <section className={classes.sidebar}>
-                    <OrderDetails 
-                        isLoading={isLoading}
-                        deliveryPrice={order?.deliveryPrice}
-                        productsPrice={fullPrice}
-                        productCount={productCount}
-                    >
-                        <h2 className={classes.statusPayment}>{order?.statusPayment}</h2>
-                    </OrderDetails>
+                {
+                    isLoading
+                        ?
+                    <section className={classes.wrap}>
+                        <section className={classes.loader}><LoaderDiv /></section>
+                    </section>
+                        :
+                    order
+                        &&
+                    <section className={classes.wrap}>
+                            <OrderDetails 
+                                deliveryPrice={order.deliveryPrice}
+                                productsPrice={fullPrice}
+                                productCount={productCount}
+                            >
+                            <>
+                                <h2 className={classes.statusPayment}>{order?.statusPayment}</h2>
+                                {   
+                                    isAdmin && order.statusOrder !== 'Выдан' && order.statusOrder !== 'Отменен'
+                                        &&
+                                    <section className={classes.statusChange}>
+                                        <OrderStatusChange 
+                                            orderId={order.id}
+                                            methodOfReceipt={order.methodOfReceipt }
+                                            currentStatus={order.statusOrder}
+                                            setStatusOrder={setStatusOrder}
+                                        />
+                                    </section>
+                                }
+                            </>
+                            </OrderDetails>
+                    </section>
+                }
                 </section>
             </section>
+            {   
+                isAdmin && order && !isLoading && (order.statusOrder !== 'Отменен')
+                    &&
+                <section className={classes.cancel}>
+                    <section className={classes.cancelWrap}>
+                        <OrderStatusChange 
+                            cancel={true}
+                            orderId={order.id}
+                            methodOfReceipt={order.methodOfReceipt }
+                            currentStatus={order.statusOrder}
+                            setStatusOrder={setStatusOrder}
+                        />
+                    </section>
+                </section>
+            }
         </section>
     )
 }

@@ -13,12 +13,14 @@ ul.list{
         position: relative;
         overflow: hidden;
         display: flex;
+        gap: 20px;
         align-items: center;
         box-sizing: border-box;
         background-color: var(--bg-gray);
         padding: 10px 20px;
-        margin: 12px 0;
+        margin: 20px 0;
         border-radius: 12px;
+
 
         &:first-child{
             margin-top: 0;
@@ -52,4 +54,12 @@ ul.list{
 
         }
     }   
+}
+
+@media (max-width: 650px) {
+    ul.list{
+        li.item{
+            flex-direction: column;
+        }
+    }
 }

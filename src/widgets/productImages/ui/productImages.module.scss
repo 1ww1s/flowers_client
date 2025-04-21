@@ -10,6 +10,8 @@
         display: grid;
         grid-template-columns: 90px auto;
         max-height: 100%;
+        width: 100%;
+        gap: 10px;
 
         .selectionImage{
             width: 90px;
@@ -24,7 +26,6 @@
         .selectedImage{
             box-sizing: border-box;
             width: 100%;
-            padding-left: 10px;
 
             .loader{
                 height: 100%;
@@ -35,4 +36,37 @@
     
     }
     
+}
+
+@media (max-width: 650px) {
+    .wrap{
+        .track{
+            display: flex;
+            flex-direction: column-reverse;
+    
+            .selectionImage{
+                width: 100%;
+                height: 100px;
+    
+                .loader{
+                    height: 100%;
+                    width: 100%;
+                }
+            }
+        
+            .selectedImage{
+                box-sizing: border-box;
+                width: 100%;
+                padding-left: 0;
+    
+                .loader{
+                    height: 100%;
+                    width: 100%;
+                    aspect-ratio: 1/1;
+                }
+            }
+        
+        }
+        
+    }
 }

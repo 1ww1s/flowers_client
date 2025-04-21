@@ -5,6 +5,7 @@ import { IOrderInitialState } from "../types";
 export const OrderInitialState: IOrderInitialState = {
     orderCreate: {
         products: [],
+        unavailableProducts: [],
         address: {
             street: {
                 value: '',
@@ -24,7 +25,7 @@ export const OrderInitialState: IOrderInitialState = {
         message: '',
         methodPayment: 'Банковской картой',
         shop: {
-            id: 0,
+            id: -1,
             title: '',
             openingHours: '',
             address: '',

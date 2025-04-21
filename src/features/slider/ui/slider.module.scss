@@ -9,7 +9,7 @@
     height: 4px;
     background-color: var(--blue);
     position: relative;
-    z-index: 99999;
+    z-index: 99;
     
 
     .inactiveLeft{
@@ -39,11 +39,14 @@
 
         &.min{
             left: 0;
+            cursor: pointer;
         }   
 
         &.max{
             left: 100%;
             z-index: 9;
+            cursor: pointer;
+
         }
 
     }

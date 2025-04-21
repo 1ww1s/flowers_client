@@ -2,4 +2,37 @@
 
 
 .shops{
+
+    .desctop{
+        display: block;
+    }
+
+    .mobile{
+        display: none;
+    }
+
+}
+
+@media (max-width: 650px) {
+    .shops{
+
+        .desctop{
+            display: none;
+        }
+    
+        .mobile{
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            .shop{
+                display: flex;
+                justify-content: space-between;
+
+                .count{
+                    width: 50px;
+                }
+            }
+        }
+    
+    }
 }

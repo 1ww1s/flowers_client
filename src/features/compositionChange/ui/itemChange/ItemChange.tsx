@@ -28,12 +28,15 @@ export const ItemChange: FC<IProps & PropsWithChildren> = ({ind, children}) => {
 
     const getItems = async () => {
         try{
-            const data = await itemService.getStartsWith(name)
-            setItems(data.map(item => item.name))
+            const names = await itemService.getStartsWith(name)
+            setItems(names)
             setIsLoading(true)
         }
         catch(e){
             if(e instanceof Error){  // THIS
+                if(e.name === 'AbortError'){
+                    return
+                }
                 if(e instanceof AuthError && e.status === 401){
                     setIsAuth(false)
                 }
@@ -82,27 +85,30 @@ export const ItemChange: FC<IProps & PropsWithChildren> = ({ind, children}) => {
     return (
         
         <section className={classes.itemBox}>
-            <section onBlur={check} className={classes.item}>
-                <Autocomplete
-                    value={name}
-                    setValue={setName}
-                    values={items}
-                    isLoading={isLoading}
-                    title="Выберите единицу товара"
-                    sign=""
-                    globalError={errorTarget}
-                    setGlobalError={(e) => {setErrorTarget(e); setError(e)}}
-                />
-            </section>
-            <section className={classes.count}>          
-                <MyInput
-                    setGlobalError={setError}
-                    value={count}
-                    setValue={setCount}
-                    title="Кол-во"
-                    typeInput='number'
-                    isSimple={false}
-                />
+            <section className={classes.wrap}>
+                <section onBlur={check} className={classes.item}>
+                    <Autocomplete
+                        value={name}
+                        setValue={setName}
+                        values={items}
+                        isLoading={isLoading}
+                        title="Выберите единицу товара"
+                        sign=""
+                        globalError={errorTarget}
+                        setGlobalError={(e) => {setErrorTarget(e); setError(e)}}
+                    />
+                </section>
+                <section className={classes.count}>          
+                    <MyInput
+                        setGlobalError={setError}
+                        value={count}
+                        setValue={setCount}
+                        title="Кол-во"
+                        typeInput='number'
+                        isSimple={false}
+                        clear={false}
+                    />
+                </section>
             </section>
             <section className={classes.close}>
                 {children}

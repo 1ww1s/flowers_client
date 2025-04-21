@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { IOrderItem } from "../../entities/order"
 import { Orders } from "../../widgets/orders"
 import { userService } from "../../entities/user";
+import { useSearchParams } from "react-router-dom";
 
 
 export default function OrderlistActive(){
@@ -10,10 +11,13 @@ export default function OrderlistActive(){
 
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
+    const [searchParams, setSearchParams] = useSearchParams()
+
     const getMyOrders = async () => {
         try{
             setIsLoading(true)
-            const data = await userService.getOrders(true)
+            // await new Promise(resolve => setTimeout(resolve, 24000))
+            const data = await userService.getOrders(true, Number(searchParams.get('page')) || 1)
             setOrders(data)
         }
         catch(e){
@@ -25,8 +29,9 @@ export default function OrderlistActive(){
     }
 
     useEffect(() => {
+        window.scrollTo({top: 0})
         getMyOrders()
-    }, [])
+    }, [searchParams])
 
     return (
         <Orders 

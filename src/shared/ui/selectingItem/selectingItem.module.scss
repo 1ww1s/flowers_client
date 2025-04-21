@@ -12,7 +12,7 @@ ul.selectingItems{
         width: 100%;
         justify-content: space-between;
         box-sizing: border-box;
-
+        gap: 30px;
         border: 2px solid var(--bg-gray);
         border-radius: 12px;
         padding: 20px 28px;
@@ -47,4 +47,21 @@ ul.selectingItems{
             color: var(--dark-gray);
         }
     }
+}
+
+@media (max-width: 650px) {
+    ul.selectingItems{
+        li.item{
+            flex-direction: column;
+            gap: 10px;
+            .nameBox{
+                width: 100%;
+            }
+    
+            .value{
+                width: 100%;
+            }
+        }
+    }
+    
 }

@@ -8,18 +8,43 @@
     width: 100%;
     min-height: 100vh;
     background-color: var(--bg-gray);
-    padding-bottom: 100px;
+    padding-bottom: var(--bottom-button);
 
     --time: .35s;
-
-    
 
     .wrapper{
         width: var(--mainWidth);
         max-width: var(--mainMaxWidth);
         --border-radius-box: 20px;
         --padding-box: 40px;
-        --margin-top-box: 40px;
+        min-height: 100%;
 
+        .main{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            .data{
+                width: 600px;
+                max-width: 100%;
+            }
+
+            .logout{
+                width: 220px;
+                max-width: 100%;
+                margin-top: 140px;
+                overflow: hidden;
+            }
+        }
     }
+}
+
+@media (max-width: 650px) {
+    .my{
+        padding-top: 40px;
+
+        .wrapper{
+            --padding-box: 16px;
+        }
+    }   
 }

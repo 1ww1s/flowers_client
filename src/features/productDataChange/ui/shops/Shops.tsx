@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { MyButtonMin, MyInput } from "../../../../shared";
+import { MyButtonMin } from "../../../../shared";
 import { useAppSelector } from "../../../../app/store/store";
 import { useProductActions } from "../../../../entities/product";
 import classes from './shops.module.scss'
@@ -19,18 +19,22 @@ export const Shops: FC = () => {
     return (
         <section className={classes.shops}>
             <h2>Наличия в магазинах</h2>
+            <section className={classes.content}>
             {
                 product.shops.map((_, ind) => 
                     <Shop key={ind} ind={ind} />
                 )
             }
-            <MyButtonMin 
-                onClick={addShop} 
-                isLoading={false}
-            >
-                Добавить магазин
-            
-            </MyButtonMin>
+            </section>
+            <section className={classes.button}>
+                <MyButtonMin 
+                    onClick={addShop} 
+                    isLoading={false}
+                >
+                    Добавить магазин
+                
+                </MyButtonMin>
+            </section>
         </section>
     )
 }

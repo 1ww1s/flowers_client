@@ -4,6 +4,8 @@
 .box{
     display: flex;
     margin-top: 20px;
+    width: 300px;
+    max-width: 100%;
 
     .image{
         height: 36px;

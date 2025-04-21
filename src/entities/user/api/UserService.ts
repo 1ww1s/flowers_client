@@ -29,6 +29,16 @@ class UserService {
         return data.user
     }   
 
+    async logout() {
+        const res = await fetchAuth(`${process.env.REACT_APP_SERVER_URL_API}/user/logout`)
+        const {message}: {message: string} = await res.json()
+        if(!res.ok) {
+            throw new Error(message)
+        }
+        localStorage.removeItem('token')
+        return message
+    }
+
     async registration(name: string, phone: string, password: string): Promise<IUser> {
         const res = await fetch(`${process.env.REACT_APP_SERVER_URL_API}/user/registration`, {
             method: 'POST',
@@ -65,15 +75,15 @@ class UserService {
             const {message}: {message: string} = await res.json()
             throw new Error(message)
         }
-        const data: {count: number} = await res.json()
-        return data.count
+        const data: {count: number, totalPage: number} = await res.json()
+        return data
     }
 
     
-    async getOrders(active: boolean) {
+    async getOrders(active: boolean, page: number) {
         const res = await fetchAuth(`${process.env.REACT_APP_SERVER_URL_API}/user/orders`, {
             method: "POST",
-            body: JSON.stringify({active}),
+            body: JSON.stringify({active, page}),
         })
         if(!res.ok) {
             const {message}: {message: string} = await res.json()

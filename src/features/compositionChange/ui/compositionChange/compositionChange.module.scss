@@ -1,3 +1,9 @@
+ .content{
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+ }
+ 
  .addItem{
         box-sizing: border-box;
         position: relative;
@@ -9,7 +15,8 @@
         font-size: 1.2rem;
         font-weight: 500;
         z-index: 0;
-    
+        margin-top: 20px;
+
         &.disabled{
             &:hover{
                 background-color: var(--bg-gray);
@@ -22,5 +29,12 @@
     }
 
     .close{
+        min-width: 20px;
         width: 20px;
+    }
+
+    @media (max-width: 650px) {
+        .content{
+            gap: 16px;
+        }
     }

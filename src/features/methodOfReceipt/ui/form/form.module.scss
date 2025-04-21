@@ -16,7 +16,7 @@
         margin-top: 30px;
 
         .input{
-            width: 220px;
+            width: 100%;
         }
     }
 
@@ -28,6 +28,34 @@
         >p{
             margin-top: 20px;
             margin-bottom: 10px;
+        }
+    }
+}
+
+@media (max-width: 650px) {
+    
+
+    .form{
+        
+        .details{
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+
+            .input{
+                width: 80%;
+            }
+        }
+
+        .message{
+            margin: 20px 0;
+            width: 800px;
+            max-width: 100%;
+
+            >p{
+                margin-top: 20px;
+                margin-bottom: 10px;
+            }
         }
     }
 }

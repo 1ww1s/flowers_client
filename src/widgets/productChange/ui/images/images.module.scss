@@ -1,5 +1,7 @@
 
 .images{
+    overflow: auto;
+    width: 100%;
     >h2{
         margin: 40px 0 20px 0 !important; 
     }
@@ -10,12 +12,27 @@
         align-items: center;
 
         .list{
-
-            max-width: 90%;
+            width: 90%;
         }
     
         .addImg{
             margin-left: 6px;
+        }
+    }
+}
+
+@media (max-width: 650px) {
+    .images{
+        .listBox{
+            flex-direction: column;
+            .list{
+                width: 100%;
+            }
+        
+            .addImg{
+                margin-top: 30px;
+                margin-left: 0;
+            }
         }
     }
 }

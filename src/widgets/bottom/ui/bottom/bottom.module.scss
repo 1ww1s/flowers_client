@@ -19,6 +19,9 @@
 
     .wrap{
         display: flex;
+        gap: 20px;
+        height: 100%;
+        flex-wrap: wrap;
         width: var(--mainWidth);
         max-width: var(--mainMaxWidth);
         justify-content: space-between;

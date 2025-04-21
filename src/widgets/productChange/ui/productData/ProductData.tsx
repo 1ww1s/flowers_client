@@ -43,11 +43,9 @@ export const ProductData: FC = () => {
     }, [])
 
     return (
-        <section>
-            <ProductChange 
-                names={names} 
-                isLoadingByCategory={isLoading} 
-            />
-        </section>
+        <ProductChange 
+            names={names} 
+            isLoadingByCategory={isLoading} 
+        />
     )
 }

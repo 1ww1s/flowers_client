@@ -3,6 +3,7 @@ import classes from './productImages.module.scss'
 import { ProductImage, productService, useProductActions } from "../../../entities/product";
 import { SelectionProductImage } from "../../../features/selectionProductImage";
 import { LoaderDiv } from "../../../shared";
+import { useAppSelector } from "../../../app/store/store";
 
 interface IProps {
     slug: string;
@@ -11,16 +12,17 @@ interface IProps {
 export const ProductImages: FC<IProps> = ({slug}) => {
 
     const [isLoading, setIsLoading] = useState<boolean>(true)
-    const [images, setImages] = useState<string[]>([])
     const [selectedImage, setSelectedImage] = useState<number>(0)
-    const {setError} = useProductActions()
+    const {setError, setImages: setImagesProduct} = useProductActions()
+
+    const {product} = useAppSelector(s => s.ProductReducer)
 
     const getImages = async () => {
         try{
             setIsLoading(true)
             const data = await productService.getImages(slug)
-            // await new Promise(resolve => setTimeout(resolve, 1000))
-            setImages(data)
+            // await new Promise(resolve => setTimeout(resolve, 4000))
+            setImagesProduct(data)
         }
         catch(e){
             setError('err')
@@ -45,7 +47,7 @@ export const ProductImages: FC<IProps> = ({slug}) => {
                         <section className={classes.loader}><LoaderDiv /></section>                            
                             :
                         <SelectionProductImage 
-                            images={images}
+                            images={product.data.images}
                             selectedImage={selectedImage}
                             setSelectedImage={setSelectedImage}
                         />
@@ -57,7 +59,7 @@ export const ProductImages: FC<IProps> = ({slug}) => {
                             ?
                         <section className={classes.loader}><LoaderDiv /></section>                            
                             :
-                        <ProductImage image={images[selectedImage]} />
+                        <ProductImage image={product.data.images[selectedImage]} />
                     }
                 </section>
             </section>

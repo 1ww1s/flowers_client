@@ -4,8 +4,9 @@
 .aboutCompany{
     display: flex;
     gap: 100px;
-    overflow: hidden;
+    overflow: auto;
     width: 100%;
+
     .text{
         >p{
             font-size: 1.6rem;
@@ -36,4 +37,54 @@
         }
     }
 
+}
+
+@media (max-width:950px) {
+    .aboutCompany{
+        gap: 80px;
+    
+        .images{
+            min-width: 440px;
+
+            .flow1{
+                left: 80px;
+                width: 300px;
+            }
+            .flow2{
+                top: -120px;
+                width: 200px;
+            }
+        }
+    }    
+}
+
+@media (max-width: 800px) {
+    .aboutCompany{
+        flex-direction: column;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+
+        .images{
+            width: 90%;
+            min-width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            .flow1 {
+                align-self: flex-end;
+                width: 80%;
+                left: 0;
+                top: 0;
+            }
+            .flow2 {
+                align-self: flex-start;
+                width: 50%;
+                left: 0;
+                top: -20%;
+            }
+        }
+    }    
 }

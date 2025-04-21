@@ -1,15 +1,19 @@
 import { FC, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import classes from './nav.module.scss'
-import { ADMIN_ORDERLIST_ACTIVE_ROUTE, ADMIN_ORDERLIST_ARCHIVE_ROUTE, ADMIN_ORDERLIST_ROUTE } from "../../../../app/router/routes";
+import { ADMIN_ORDERLIST_ACTIVE_ROUTE, ADMIN_ORDERLIST_ARCHIVE_ROUTE } from "../../../../app/router/routes";
 import { NumbItems } from "../../../../shared";
 import { useAppSelector } from "../../../../app/store/store";
 import { orderService } from "../../api/OrderService";
+import { NavLinks } from "./NavLinks";
 
+interface IProps {
+    setTotalPageActive: (count: number) => void;
+    setTotalPageArchive: (count: number) => void;
+}
 
-export const NavAdmin: FC = () => {
+export const NavAdmin: FC<IProps> = ({setTotalPageActive, setTotalPageArchive}) => {
 
-    const {pathname} = useLocation()
     const [numbActive, setNumbActive] = useState<number>(0)
     const [numbArchive, setNumbArchive] = useState<number>(0)
     const [isLoading, setIsLoading] = useState<boolean>(true)
@@ -19,10 +23,12 @@ export const NavAdmin: FC = () => {
     const getCount = async () => {
         try{
             setIsLoading(true)
-            const active = await orderService.getCountShop(shop.id, true)
-            const archive = await orderService.getCountShop(shop.id, false)
+            const {count: active, totalPage: totalPageActive} = await orderService.getCountShop(shop.id, true)
+            const {count: archive, totalPage: totalPageArchive} = await orderService.getCountShop(shop.id, false)
             setNumbActive(active)
             setNumbArchive(archive)
+            setTotalPageActive(totalPageActive)
+            setTotalPageArchive(totalPageArchive)
         }
         catch(e){
             console.log(e)
@@ -39,27 +45,12 @@ export const NavAdmin: FC = () => {
     }, [shop])
 
     return (
-        <section className={classes.nav}>
-            <ul>
-                <li>
-                    <Link 
-                        className={pathname === ADMIN_ORDERLIST_ACTIVE_ROUTE.path ? classes.selected : ''} 
-                        to={ADMIN_ORDERLIST_ACTIVE_ROUTE.path}>{ADMIN_ORDERLIST_ACTIVE_ROUTE.name}
-                    </Link>
-                    <section className={classes.numbItems}>
-                        <NumbItems numb={numbActive} borderColor={false} isLoading={isLoading} />
-                    </section>
-                </li>
-                <li>
-                    <Link 
-                        className={pathname === ADMIN_ORDERLIST_ARCHIVE_ROUTE.path ? classes.selected : ''} 
-                        to={ADMIN_ORDERLIST_ARCHIVE_ROUTE.path}>{ADMIN_ORDERLIST_ARCHIVE_ROUTE.name}
-                    </Link>
-                    <section className={classes.numbItems}>
-                        <NumbItems numb={numbArchive} borderColor={false} isLoading={isLoading} />
-                    </section>
-                </li>
-            </ul>
-        </section>
+        <NavLinks
+            numbActive={numbActive}
+            numbArchive={numbArchive}
+            isLoading={isLoading}
+            linkActive={ADMIN_ORDERLIST_ACTIVE_ROUTE}
+            linkArchive={ADMIN_ORDERLIST_ARCHIVE_ROUTE}
+        />
     )
 }

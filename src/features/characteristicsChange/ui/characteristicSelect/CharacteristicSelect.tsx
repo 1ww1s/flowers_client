@@ -37,7 +37,6 @@ export const CharacteristicSelect: FC<IProps & PropsWithChildren> = ({characteri
         }
         catch(e){
             if(e instanceof Error){  // THIS
-                console.log(e)
                 if(e.name === 'AbortError'){
                     return
                 }

@@ -3,6 +3,7 @@
 .about{
     display: flex;
     justify-content: center;
+    min-height: 100vh;
 
     .wrap{
         width: var(--mainWidth);

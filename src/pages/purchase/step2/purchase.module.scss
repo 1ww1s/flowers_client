@@ -3,7 +3,7 @@
 
 .comeBack{
     position: absolute;
-    top: -10px;
+    top: -16px;
 }
 
 .purchaseStep2{
@@ -18,15 +18,34 @@
             display: flex;
             flex-direction: column;
             box-sizing: border-box;
-            width: 70%;
+            width: 66%;
             gap: 30px;
         }
 
         .sidebar{
             box-sizing: border-box;
 
-            width: 24%;
+            width: 26%;
         }
     }
     
+}
+
+
+@media (max-width: 950px) {
+    .purchaseStep2{
+        .wrap{
+            .content{
+                width: 100%;
+                gap: 30px;
+            }
+
+            .sidebar{
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+            }
+        }
+    }
 }

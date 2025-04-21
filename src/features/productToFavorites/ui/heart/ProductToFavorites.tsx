@@ -24,9 +24,11 @@ export const ProductToFavorites: FC<IProps> = ({productId}) => {
                 localStorage.setItem('favourites', JSON.stringify(newFavourites))
             }
             else{
-                const newFavourites = [...user.favourites, productId]
-                setFavourites(newFavourites)
-                localStorage.setItem('favourites', JSON.stringify(newFavourites))
+                if(user.favourites.length < 99){
+                    const newFavourites = [...user.favourites, productId]
+                    setFavourites(newFavourites)
+                    localStorage.setItem('favourites', JSON.stringify(newFavourites))
+                }
             }
         }
 

@@ -22,13 +22,19 @@ export const Item: FC<IProps> = ({ind, product, setCount, deleteCount}) => {
         <section className={classes.item}>
             <BasketItem isLoading={isLoading} key={ind} item={product} getForamtPrice={getFormatPrice}>
                 <section className={classes.features}>
-                    <ChangeProductCountInBasket
-                        setIsLoading={setIsLoading}
-                        maxCount={product.countMax}
-                        ind={ind}
-                        count={product.count} 
-                        setCount={c => setCount(ind, c)} 
-                    />
+                    {
+                        product.countMax === 0
+                            ?
+                        <section className={classes.outStock}>Нет в наличии</section>
+                            :
+                        <ChangeProductCountInBasket
+                            setIsLoading={setIsLoading}
+                            maxCount={product.countMax}
+                            ind={ind}
+                            count={product.count} 
+                            setCount={c => setCount(ind, c)} 
+                        />
+                    }
                     <section className={classes.bottom}>
                         <ProductToFavorites productId={`${product.id}`} />
                         <DeleteProductFromBasket

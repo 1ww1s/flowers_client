@@ -3,6 +3,28 @@
 
 .goToCheckout{
     width: 100%;
+    max-width: 100%;
     margin-top: 30px;
     margin-bottom: -12px;
+
+    .adesktop{
+        display: none;
+    }
+    .desktop{
+        display: block;
+    }
+}
+
+@media (max-width: 950px) {
+    .goToCheckout{
+        margin-top: 0px;
+        .adesktop{
+            display: flex;
+            height: 100%;
+            align-items: center;
+        }
+        .desktop{
+            display: none;
+        }
+    }
 }

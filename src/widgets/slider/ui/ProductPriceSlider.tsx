@@ -152,6 +152,7 @@ export const ProductPriceSlider: FC<IProps> = () => {
                             setValueMin={setValueMin}
                             onBlur={onBlur}
                         />
+                        {error && <p>{error}</p>}
                     </>
                 }
 

@@ -30,3 +30,16 @@
         margin: 20px 0;
     }
 }
+
+@media (max-width: 650px) {
+    .card {
+    
+        .name{
+            display: none;
+        }
+    
+        >h2{
+            margin: 20px 0;
+        }
+    }  
+}

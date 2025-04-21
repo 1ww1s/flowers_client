@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import classes from './goToPurchase.module.scss'
 import { MyButton } from "../../../../shared";
 import { Link } from "react-router-dom";
@@ -10,10 +10,18 @@ export const GoToPurchase: FC = () => {
     return (
         <section className={classes.goToCheckout}>
             <Link to={PURCHASE_STEP1_ROUTE.path}>
-                <MyButton 
-                    sign="Перейти к оформлению"
-                    onClick={() => {}}
-                />
+                <section className={classes.desktop}>
+                    <MyButton 
+                        sign="Перейти к оформлению"
+                        onClick={() => {}}
+                    />
+                </section>
+                <section className={classes.adesktop}>
+                    <MyButton 
+                        sign="Далее"
+                        onClick={() => {}}
+                    />
+                </section>
             </Link>
         </section>
     )

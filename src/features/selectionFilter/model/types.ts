@@ -9,6 +9,8 @@ export interface IFilters {
     }[]
     page: number;
     sort: string;
+    flower: string[];
+    shop: string[];
     price_min: number;
     price_max: number;
 }

@@ -29,10 +29,11 @@ body{
     font-size: 1.4rem;
     line-height: 2rem;
     font-family: Roboto;
-    a{
-        text-decoration: none;
-        color: var(--black);
-    }
+}
+
+a{
+    text-decoration: none;
+    color: var(--black);
 }
 
 body, input, button{
@@ -42,11 +43,14 @@ body, input, button{
 
 }
 
+
 body{
     margin: 0;
     --header-height: 70px;
     --mainWidth: 1280px;
     --mainMaxWidth: 96%;
+
+    --bottom-button: 100px;
 }
 
 h1{
@@ -59,15 +63,43 @@ h3{
     font-size: 1.6rem;
 }
 
-.mainWrap{
-    min-height: 100vh;
+@media (max-width: 650px) {
+    h1{
+        font-size: 2.2rem;
+    }
+    h2{
+        font-size: 1.8rem;
+    }
+    h3{
+        font-size: 1.5rem;
+    }
 }
+
+/* .mainWrap{
+    padding-bottom: 100px;
+} */
 
 .loaderMain{
     position: absolute;
     top: 40px;
     left: 40px;
 }
+
+@media (max-width: 650px) {
+    header{
+        height: var(--header-height);
+    }
+    
+}
+
+
+/*
+
+    950
+    650
+    450
+
+*/
 
 
 /* @font-face {

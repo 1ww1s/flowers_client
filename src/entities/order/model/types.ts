@@ -16,8 +16,11 @@ export interface IOrderItem {
 export type TStatusPayment =  "Оплачен" | "Не оплачен"
 export type TMethodOfReceipt = "Самовывоз" | "Доставка"
 export type TMethodPayment = "Банковской картой" | "Системой быстрых платежей" | "При получении"
+export type TStatus = "pending" | "Собирается" | "Готов к выдаче" | "Передается курьеру" | "Передан курьеру" | "Выдан" | "Отменен"
  
+
 export interface IOrderRes {
+    id: number;
     date: string;
     products: {
         id: number;
@@ -44,9 +47,8 @@ export interface IOrderRes {
     deliveryMessage: string;
     deliveryPrice: number;
     statusPayment: TStatusPayment,
-    statusOrder: string;
+    statusOrder: TStatus;
     messageDelivery: string;
-    
 }
 
 export interface IOrderReq {
@@ -78,6 +80,10 @@ export interface IOrderCreate {
         productCountMax: number;
         count: number;
         price: number;
+    }[];
+    unavailableProducts: {
+        id: number;
+        count: number;
     }[];
     senderName: string;
     senderPhone: string;
@@ -116,9 +122,6 @@ export interface IOrderInitialState {
 export interface IZone {
     title: string;
     price: number;
-    color: {
-        title: string;
-        value: string;
-    }
+    color: string;
     coords: number[][]
 }

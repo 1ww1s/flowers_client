@@ -34,7 +34,9 @@ export const ProductToBasket: FC<IProps & ComponentProps<'button'>> = ({productI
                 await basketDelete()
             }
             else{
-                await basketAdd()
+                if(user.basket.length < 99){
+                    await basketAdd()
+                }
             }
             basketLocalUpdate()
         }
@@ -54,10 +56,12 @@ export const ProductToBasket: FC<IProps & ComponentProps<'button'>> = ({productI
             localStorage.setItem('basket', JSON.stringify(newBasket))
         }
         else{
-            const newBasket = [...user.basket, {id: +productId, count: 1}]
-            setBasket(newBasket)
-            localStorage.removeItem('basket')
-            localStorage.setItem('basket', JSON.stringify(newBasket))
+            if(user.basket.length < 99){
+                const newBasket = [...user.basket, {id: +productId, count: 1}]
+                setBasket(newBasket)
+                localStorage.removeItem('basket')
+                localStorage.setItem('basket', JSON.stringify(newBasket))
+            }
         }
     }
 

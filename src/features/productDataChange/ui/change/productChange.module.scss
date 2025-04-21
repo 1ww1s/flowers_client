@@ -18,3 +18,23 @@
         margin-top: 20px;
     }
 }
+
+
+@media (max-width: 800px) {
+   
+    .productChange {
+
+        .select{
+            margin-bottom: 40px;
+        }
+    }
+}
+
+@media (max-width: 450px) {
+   
+    .productChange {
+        .select{
+            margin-bottom: 60px;
+        }
+    }
+}

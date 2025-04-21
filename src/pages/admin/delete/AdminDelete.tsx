@@ -2,6 +2,10 @@
 import classes from './adminDelete.module.scss'
 import deleteImg from '../../../shared/lib/assets/icon/XSquare.png'
 import { ProductDeleteModal } from '../../../widgets/productDelete'
+import { ShopChangeFull } from '../../../widgets/shopChange'
+import { BannerChangeModal } from '../../../widgets/bannerChange'
+import { ItemChangeModal } from '../../../widgets/itemChange'
+import { CharacteristicChangeModal } from '../../../widgets/characteristicChange'
 
 export default function AdminDelete() {
 
@@ -13,6 +17,10 @@ export default function AdminDelete() {
             </section>
             <section >
                 <ProductDeleteModal />
+                <BannerChangeModal />
+                <ItemChangeModal />
+                <CharacteristicChangeModal />
+                <ShopChangeFull />
             </section>
         </section>
     )

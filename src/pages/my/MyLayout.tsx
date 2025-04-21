@@ -5,6 +5,7 @@ import classes from './my.module.scss'
 import { Nav } from "../../entities/user";
 import { LOGIN_ROUTE, MY_MAIN_ROUTE, MY_ROUTE } from "../../app/router/routes";
 import { Sign } from "./sign/Sign";
+import { Helmet } from "react-helmet-async";
 
 
 export default function My(){
@@ -26,6 +27,7 @@ export default function My(){
     }, [user])
 
     useEffect(() => {
+        window.scrollTo({top: 0})
         if(user.isAuth && pathname === MY_ROUTE.path){
             router(MY_MAIN_ROUTE.path, {
                 replace: true
@@ -36,6 +38,10 @@ export default function My(){
 
     return (
         <section className={classes.my}>
+            <Helmet>
+                <title>Личный кабинет</title>
+                <meta name="description" content="Личный кабинет" />
+            </Helmet>
         {
             isOk
                 &&

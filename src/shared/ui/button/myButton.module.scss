@@ -30,6 +30,10 @@
         &:hover{
             background-color: var(--blue);
         }
+
+        &:disabled{
+            background-color: var(--blue);
+        }
     }
 
     .error{

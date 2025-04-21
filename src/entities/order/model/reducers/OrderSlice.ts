@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { OrderInitialState } from "./OrderInitialState";
-import { IOrderCreate, TMethodOfReceipt } from "../types";
+import { IOrderCreate, TMethodOfReceipt, TStatus } from "../types";
 
 export const OrderSlice = createSlice({
     name: 'orderCreate',
@@ -9,8 +9,13 @@ export const OrderSlice = createSlice({
         setInitital(state, action: PayloadAction<null>){
             state.orderCreate = OrderInitialState.orderCreate;
         },
+        setStatusOrder(state, action: PayloadAction<TStatus>){
+        },
         setProducts(state, action: PayloadAction<IOrderCreate['products']>){
             state.orderCreate.products = action.payload;
+        },
+        setUnavailableProducts(state, action: PayloadAction<IOrderCreate['unavailableProducts']>){
+            state.orderCreate.unavailableProducts = action.payload;
         },
         setStreet(state, action: PayloadAction<IOrderCreate['address']['street']>){
             state.orderCreate.address.street = action.payload;

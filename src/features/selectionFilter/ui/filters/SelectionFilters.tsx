@@ -8,12 +8,13 @@ import { useLocation, useSearchParams } from "react-router-dom";
 
 
 interface IProps {
+    needSearch?: boolean;
     isLoading: boolean;
     characteristics: IFilterCharacteristic[]
 }
 
 
-export const SelectionFilters: FC<IProps> = ({isLoading, characteristics}) => {
+export const SelectionFilters: FC<IProps> = ({needSearch, isLoading, characteristics}) => {
 
     const [searchParams, setSearchParams] = useSearchParams()
     const {pathname} = useLocation()
@@ -78,11 +79,14 @@ export const SelectionFilters: FC<IProps> = ({isLoading, characteristics}) => {
                 <section className={classes.loader}><LoaderDiv /></section>
                     :
                 characteristics.map((ch, ind) =>
-                    <section key={ind}>
+                    ch.values.length > 0
+                        &&
+                    <section key={ind} className={classes.filter}>
                         <h3>
                             {ch.characteristicName}
                         </h3>
                         <SelectionFilter
+                            needSearch={needSearch}
                             characteristicName={ch.characteristicSlug}
                             characteristicValues={selectedCharacteristics.find(c => c.characteristicName === ch.characteristicSlug)?.values || []} 
                             setCharacteristicValues={setCharacterisrticValue} 

@@ -29,8 +29,8 @@ export const Slider: FC<IProps> = ({min, max, valueMax, valueMin, setValueMax, s
         
             let targetMin = valueMin;
 
-            document.addEventListener('mousemove', onMouseMove)
-            document.addEventListener('mouseup', onMouseUp);
+            document.addEventListener('pointermove', onMouseMove)
+            document.addEventListener('pointerup', onMouseUp);
             
             function onMouseMove(event: MouseEvent){
                 if(slider.current && refThumbMin.current && refInactiveLeft.current && refThumbMax.current){
@@ -60,8 +60,8 @@ export const Slider: FC<IProps> = ({min, max, valueMax, valueMin, setValueMax, s
             }
 
             function onMouseUp() {
-                document.removeEventListener('mouseup', onMouseUp);
-                document.removeEventListener('mousemove', onMouseMove);
+                document.removeEventListener('pointerup', onMouseUp);
+                document.removeEventListener('pointermove', onMouseMove);
                 onBlur(targetMin, valueMax)
             }
         }
@@ -73,8 +73,8 @@ export const Slider: FC<IProps> = ({min, max, valueMax, valueMin, setValueMax, s
         if(refThumbMax.current){
             const shiftX = e.clientX - refThumbMax.current.getBoundingClientRect().left;
             
-            document.addEventListener('mousemove', onMouseMove)
-            document.addEventListener('mouseup', onMouseUp);
+            document.addEventListener('pointermove', onMouseMove)
+            document.addEventListener('pointerup', onMouseUp);
             
             let targetMax = valueMax;
 
@@ -108,8 +108,8 @@ export const Slider: FC<IProps> = ({min, max, valueMax, valueMin, setValueMax, s
             }
 
             function onMouseUp() {
-                document.removeEventListener('mouseup', onMouseUp);
-                document.removeEventListener('mousemove', onMouseMove);
+                document.removeEventListener('pointerup', onMouseUp);
+                document.removeEventListener('pointermove', onMouseMove);
                 onBlur(valueMin, targetMax)
             }
         }
@@ -142,8 +142,8 @@ export const Slider: FC<IProps> = ({min, max, valueMax, valueMin, setValueMax, s
     useEffect(() => {
         if(refThumbMin.current &&  refThumbMax.current && slider.current){
 
-            refThumbMin.current.onmousedown = onmousedownMin;
-            refThumbMax.current.onmousedown = onmousedownMax;
+            refThumbMin.current.onpointerdown = onmousedownMin;
+            refThumbMax.current.onpointerdown = onmousedownMax;
 
             refThumbMin.current.ondragstart = function() {
                 return false;

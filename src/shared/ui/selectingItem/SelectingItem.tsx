@@ -1,4 +1,3 @@
-import { FC, PropsWithChildren } from "react";
 import classes from './selectingItem.module.scss'
 
 interface IItem {

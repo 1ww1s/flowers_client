@@ -12,12 +12,15 @@ export const ProductCard: FC<IProps> = ({slug}) => {
     const [isLoading, setIsLoading] = useState<boolean>(true)
     const initialProduct: IProductCard = {id: 0, name: '', characteristics: [], composition: []}
     const [product, setProduct] = useState<IProductCard>(initialProduct)
-    const {setError} = useProductActions()
+    const {setError, setCharacteristics, setName, setId} = useProductActions()
 
     const getData = async () => {
         try{
             setIsLoading(true)
             const data = await productService.getCard(slug)
+            setId(String(data.id))
+            setName(data.name)
+            setCharacteristics(data.characteristics)
             setProduct(data)
         }
         catch(e){

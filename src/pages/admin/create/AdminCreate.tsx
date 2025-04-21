@@ -5,6 +5,8 @@ import { ProductChangeFull } from '../../../widgets/productChange'
 import { CategoryChangeModal } from '../../../widgets/categoryChange'
 import { ShopChangeFull } from '../../../widgets/shopChange'
 import { BannerChangeModal } from '../../../widgets/bannerChange'
+import { ItemChangeModal } from '../../../widgets/itemChange'
+import { CharacteristicChangeModal } from '../../../widgets/characteristicChange'
 
 export default function AdminCreate() {
 
@@ -19,6 +21,8 @@ export default function AdminCreate() {
                 <CategoryChangeModal />
                 <ShopChangeFull />
                 <BannerChangeModal />
+                <ItemChangeModal />
+                <CharacteristicChangeModal />
             </section>
         </section>
     )

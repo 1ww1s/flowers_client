@@ -3,8 +3,12 @@
 
 .selectionFilters{
 
-    .characteristicName{
-        font-size: 1.6rem;
-        font-weight: 500;
+    .filter{
+        margin: 24px 0;    
+        .characteristicName{
+            font-size: 1.6rem;
+            font-weight: 500;
+        }
+
     }
 }

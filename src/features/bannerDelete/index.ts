@@ -1,0 +1,1 @@
+export { BannerDelete } from "./ui/BannerDelete";

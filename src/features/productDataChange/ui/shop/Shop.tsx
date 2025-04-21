@@ -26,7 +26,12 @@ export const Shop: FC<IProps> = ({ind}) => {
             setItems(namesFiter)
         }
         catch(e){
-
+            if(e instanceof Error){
+                if(e.name === 'AbortError'){
+                    return
+                }
+            }
+            console.log(e)
         }
         finally{
             setIsLoading(false)
@@ -65,28 +70,31 @@ export const Shop: FC<IProps> = ({ind}) => {
     return (
 
         <section className={classes.shop}>
-            <section className={classes.search}>
-                <Autocomplete
-                    value={product.shops[ind].title}
-                    setValue={onChangeTitle}
-                    values={items}
-                    isLoading={isLoading}
-                    title="Выберите магазин"
-                    sign="Начните вводить название магазина и выберите из списка нужный"
-                    globalError={errorTarget}
-                    setGlobalError={(e) => {setErrorTarget(e); setError(e)}}
-                />
+            <section className={classes.wrap}>
+
+                <section className={classes.search}>
+                    <Autocomplete
+                        value={product.shops[ind].title}
+                        setValue={onChangeTitle}
+                        values={items}
+                        isLoading={isLoading}
+                        title="Выберите магазин"
+                        sign="Начните вводить название магазина и выберите из списка нужный"
+                        globalError={errorTarget}
+                        setGlobalError={(e) => {setErrorTarget(e); setError(e)}}
+                    />
+                </section>
+                <section className={classes.numb}>
+                    <MyInput 
+                        setValue={onChangeCount}
+                        value={product.shops[ind].count}
+                        isSimple={false}
+                        typeInput="number"
+                        title="Количество товара"
+                        clear={false}
+                    />
+                </section>     
             </section>
-            <section className={classes.numb}>
-                <MyInput 
-                    setValue={onChangeCount}
-                    value={product.shops[ind].count}
-                    isSimple={false}
-                    typeInput="number"
-                    title="Количество товара"
-                    clear={false}
-                />
-            </section>     
             <section className={classes.delete}>
                <img src={close} onClick={() => deleteItem()} className={classes.close} />   
             </section>   

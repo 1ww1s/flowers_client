@@ -3,11 +3,11 @@ import { FC, useEffect, useState } from "react";
 import classes from './shopChangeModal.module.scss'
 import { useLocation } from "react-router-dom";
 import { useAppSelector } from "../../../../app/store/store";
-import { ADMIN_CREATE_ROUTE } from "../../../../app/router/routes";
+import { ADMIN_CREATE_ROUTE, ADMIN_UPDATE_ROUTE } from "../../../../app/router/routes";
 import { ShopInitialState, useShopActions } from "../../../../entities/shop";
 import { MyModal } from "../../../../shared";
 import { Create } from "../create/Create";
-import { Update } from "../update/Update";
+import { SelectedAction } from "../selectedAction/SelectedAction";
 
 
 
@@ -40,7 +40,7 @@ export const ShopChangeFull: FC = () => {
                         </>
                             :
                         <>
-                            <Update setOpen={setOpen} />
+                            <SelectedAction isUpdate={pathname === ADMIN_UPDATE_ROUTE.path} setOpen={setOpen} />
                         </>
                     }
 

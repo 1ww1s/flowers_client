@@ -9,7 +9,7 @@
     margin-top: 20px;
 
     .name{
-        display: flex;
+        display: inline-block;
         white-space: nowrap;
         max-width: 50%;
         color: var(--dark-gray);
@@ -32,5 +32,11 @@
     .values{
         position: relative;
         min-width: 50%;
+    }
+}
+
+@media (max-width: 650px) {
+    .desc{
+       
     }
 }

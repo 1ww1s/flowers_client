@@ -1,14 +1,17 @@
 import { FC, useEffect, useRef, useState } from "react";
 import classes from './form.module.scss'
 import { useAppSelector } from "../../../../app/store/store";
-import { DeliveryPrice, isPointInPolygon, useOrderActions, zones } from "../../../../entities/order";
+import { DeliveryPrice, isPointInPolygon, IZone, useOrderActions } from "../../../../entities/order";
 import { DropDownList, MyInput, MyTextarea } from "../../../../shared";
 import { useYMaps } from "@pbe/react-yandex-maps";
 import { ISuggestion } from "../../model/types";
 
 
+interface IProps {
+    zones: IZone[];
+}
 
-export const FormReceivingMethod: FC = () => {
+export const FormReceivingMethod: FC<IProps> = ({zones}) => {
 
     const {orderCreate} = useAppSelector(s => s.OrderReducer)
     const {setApartment, setEntrance, setFloor, setStreet, setDeliveryMessage, setError, setDeliveryPrice} = useOrderActions()

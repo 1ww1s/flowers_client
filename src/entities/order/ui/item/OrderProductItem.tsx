@@ -21,13 +21,15 @@ export const OrderProductItem: FC<IProps & PropsWithChildren> = ({products, admi
                     <Link to={`/catalog/${product.categorySlug}/${product.slug}`} className={classes.image}>
                         <img src={product.image} />
                     </Link>
-                    <section className={classes.data}>
-                        <section className={classes.idBox + (admin ? (' ' + classes.active) : '')}>id <span className={classes.id}>{product.id}</span></section>
-                        <section className={classes.price}>{product.price} <img src={rub} /></section>
-                        <section className={classes.name}>{product.name}</section>
-                    </section>
-                    <section className={classes.count}>
-                        {product.count} шт.
+                    <section className={classes.inf}>
+                        <section className={classes.data}>
+                            <section className={classes.idBox + (admin ? (' ' + classes.active) : '')}>id <span className={classes.id}>{product.id}</span></section>
+                            <section className={classes.price}>{product.price} <img src={rub} /></section>
+                            <section className={classes.name}>{product.name}</section>
+                        </section>
+                        <section className={classes.count}>
+                            {product.count} шт.
+                        </section>
                     </section>
                 </li>
             )}

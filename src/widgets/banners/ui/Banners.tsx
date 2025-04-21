@@ -13,8 +13,8 @@ export const Banners: FC = () => {
     const getBanners = async () => {
         try{    
             setIsLoading(true)
+            // await new Promise(resolve => setTimeout(resolve, 5000))
             const data = await bannerService.getAll()
-            // await new Promise(resolve => setTimeout(resolve, 3000))
             setBanners(data)
         }
         catch(e){

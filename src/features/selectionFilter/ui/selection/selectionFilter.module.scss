@@ -1,8 +1,9 @@
 
 
 .selectionFilter{
-
+    position: relative;
     width: 100%;
+    z-index: 9;
 
     ::-webkit-scrollbar-track {
         box-sizing: border-box;
@@ -37,6 +38,9 @@
     }
 
     .search{
+        position: relative;
+        padding-left: 6px;
+        z-index: 99;
 
         .glass{
             stroke: var(--gray);
@@ -61,7 +65,7 @@
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    margin: 3px;
+                    margin: 4px 3px;
                     width: 12px;
                     height: 12px;
                     border: 2px solid var(--gray);

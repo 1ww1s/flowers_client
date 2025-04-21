@@ -26,47 +26,76 @@ ul.list{
                 object-fit: cover;
             }
         }
-        .data{
-            width: 300px;
-            min-width: 300px;
 
-            .idBox{
-                display: none;
-                border-bottom: 2px solid var(--light-gray);
-                padding: 4px 0;
-                margin-bottom: 10px;
-
-                .id{
-                    font-size: 2rem;
-                    color: var(--dark-blue);
-                }
-
-                &.active{
-                    display: block;
-                }
-            }
-
-            .price{
-                display: flex;
-                align-items: center;
-                font-size: 1.6rem;
-                
-                >img{
-                    width: 16px;
-                    margin-left: 2px;
-                }
-            }
-
-            .name{
-                font-size: 1.5rem;
-                font-weight: 500;
-            }
-        }
-        
-        .count{
+        .inf{
             display: flex;
             width: 100%;
-            justify-content: end;
+            
+            .data{
+                width: 100%;
+    
+                .idBox{
+                    display: none;
+                    border-bottom: 1px solid var(--gray);
+                    padding: 4px 0;
+                    margin-bottom: 10px;
+                    
+                    .id{
+                        font-size: 2rem;
+                        color: var(--dark-blue);
+                    }
+    
+                    &.active{
+                        display: inline-block;
+                    }
+                }
+    
+                .price{
+                    display: flex;
+                    align-items: center;
+                    font-size: 1.6rem;
+                    
+                    >img{
+                        width: 16px;
+                        margin-left: 2px;
+                    }
+                }
+    
+                .name{
+                    font-size: 1.5rem;
+                    font-weight: 500;
+                }
+            }
+            
+            .count{
+                display: flex;
+                min-width: 50px;
+                justify-content: end;
+            }
+        }
+    }
+}
+
+@media (max-width: 650px) {
+    
+    ul.list{
+        overflow: auto;
+        gap: 30px;
+
+        li.item{
+            border-bottom: 2px solid var(--light-gray);
+            padding-bottom: 10px;
+            .inf{
+                flex-direction: column;
+                .data{
+                    width: 100%;
+                }
+                
+                .count{
+
+                    justify-content: start;
+                }
+            }
         }
     }
 }

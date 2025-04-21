@@ -1,0 +1,1 @@
+export { ShopDelete } from "./ui/ShopDelete";

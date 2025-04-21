@@ -5,22 +5,26 @@ import { ChoiceShop } from '../../../widgets/choiceShop'
 import { AvailableAndUnavailableProducts, IProductCountShop } from '../../../entities/product'
 import { basketService, IBasket } from '../../../entities/basket'
 import { useAppSelector } from '../../../app/store/store'
-import { LoaderDiv, MyButton, Warning, WrapItem } from '../../../shared'
+import { LoaderDiv, LoaderScreen, MyButton, Warning, WrapItem } from '../../../shared'
 import { ChoosingReceivingMethod } from '../../../features/methodOfReceipt'
-import { useOrderActions } from '../../../entities/order'
+import { IZone, orderService, useOrderActions } from '../../../entities/order'
 import { OrderDetails } from '../../../widgets/orderDetails/ui/details/OrderDetails'
 import { useNavigate } from 'react-router-dom'
-import { PURCHASE_STEP2_ROUTE } from '../../../app/router/routes'
+import { BASKET_ROUTE, MY_BASKET_ROUTE, PURCHASE_STEP2_ROUTE } from '../../../app/router/routes'
+import { ComeBack } from '../../../features/comeBack'
+import { Helmet } from 'react-helmet-async'
 
 
 export default function PurchaseStep1() {
 
     const [shops, setShops] = useState<IShop[]>([])
+    const [zones, setZones] = useState<IZone[]>([])
+    const [isLoadingZones, setIsLoadingZones] = useState<boolean>(true)
     const [isLoadingShops, setIsLoadingShops] = useState<boolean>(true)
     const [isLoadingProducts, setIsLoadingProducts] = useState<boolean>(true)
     const [products, setProducts] = useState<IBasket[]>([])
     const {orderCreate, error} = useAppSelector(s => s.OrderReducer)
-    const {setProducts: setOrderProducts, setError, setShop} = useOrderActions()
+    const {setProducts: setOrderProducts, setError, setShop, setUnavailableProducts} = useOrderActions()
     const {user} = useAppSelector(s => s.UserReducer)
     const [availableProductsCountsShop, setAvailableProductsCountsShop] = useState<IProductCountShop[]>(orderCreate.products)
     const [unavailableProductsCountsShop, setUnavailableProductsCountsShop] = useState<IProductCountShop[]>([])
@@ -40,6 +44,20 @@ export default function PurchaseStep1() {
         }   
     }
     
+    const getZones = async () => {
+        try{
+            setIsLoadingZones(true)
+            const zones = await orderService.getZones()
+            setZones(zones)
+        }   
+        catch(e){
+            console.log(e)
+        }
+        finally{
+            setIsLoadingZones(false)
+        }
+    }
+
     const getProducts = async () => {
         try{
             setIsLoadingProducts(true)
@@ -56,12 +74,17 @@ export default function PurchaseStep1() {
 
     useEffect(() => {
         getProducts()
+        getZones()
         getShops()
     }, [])
     
     useEffect(() => {
         setOrderProducts(availableProductsCountsShop)
     }, [availableProductsCountsShop])
+
+    useEffect(() => {
+        setUnavailableProducts(unavailableProductsCountsShop.map(p => ({id: p.productId, count: p.count})))
+    }, [unavailableProductsCountsShop])
 
     let productCount = 0;
     for (let product of orderCreate.products){
@@ -90,19 +113,24 @@ export default function PurchaseStep1() {
         router(PURCHASE_STEP2_ROUTE.path)
     }
 
+
     return (
+        <>
+        <section className={classes.comeBack}>
+            <ComeBack text='Венуться в корзину' to={user.isAuth ? MY_BASKET_ROUTE.path : BASKET_ROUTE.path} />
+        </section>
         <section className={classes.purchase}>
                 <h1>Оформление заказа. Шаг 1</h1>
                 <section className={classes.wrap}>
                     <section className={classes.content}>
                     {
-                        isLoadingProducts
+                        isLoadingProducts || isLoadingZones
                             ?
                         <section className={classes.loader}><LoaderDiv /></section>
                             :
                         <>
                         <WrapItem>
-                            <ChoosingReceivingMethod />
+                            <ChoosingReceivingMethod zones={zones}/>
                         </WrapItem>
                         <WrapItem>
                         <h2>Адрес магазина</h2>
@@ -120,7 +148,6 @@ export default function PurchaseStep1() {
                                 <Warning title={'Для перехода на следующий шаг нужно выбрать магазин'} />
                             }
                             <ChoiceShop 
-                                selectedShop={orderCreate.shop}
                                 setSelectedShop={setShop}
                                 setAvailableProductsCountsShop={setAvailableProductsCountsShop}
                                 setUnavailableProductsCountsShop={setUnavailableProductsCountsShop}
@@ -162,5 +189,6 @@ export default function PurchaseStep1() {
                     </section>
               </section>
         </section>
+        </>
     )
 }

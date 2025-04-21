@@ -4,11 +4,11 @@
     display: flex;
     justify-content: center;
     min-height: 100vh;
+    padding-bottom: var(--bottom-button);
 
     .wrap{
         width: var(--mainWidth);
         max-width: var(--mainMaxWidth);
-        margin-bottom: 100px;
 
         .map{
             height: 600px;

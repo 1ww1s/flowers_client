@@ -5,10 +5,12 @@ import { IShop } from "../../../../entities/shop";
 
 interface IProps {
     shop: IShop;
+    onLoad: () => void;
+    onError: (e: Error) => void;
 }
 
 
-export const ShopMap: FC<IProps> = ({shop}) => {
+export const ShopMap: FC<IProps> = ({shop, onLoad, onError}) => {
 
     const center = [shop.coordinateX, shop.coordinateY]
     const zoom = 15;
@@ -21,6 +23,8 @@ export const ShopMap: FC<IProps> = ({shop}) => {
                 center, 
                 zoom
             }}
+            onLoad={onLoad}
+            onError={onError}
         >
             <Placemark
                 geometry={center}

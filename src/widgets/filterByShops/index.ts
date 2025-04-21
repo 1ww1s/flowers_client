@@ -1,0 +1,1 @@
+export { FilterByShops } from "./ui/FilterByShops";

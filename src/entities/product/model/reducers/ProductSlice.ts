@@ -11,6 +11,9 @@ export const ProductSlice = createSlice({
         setProduct(state, action: PayloadAction<IProduct>){
             state.product = action.payload;
         },
+        setId(state, action: PayloadAction<string>){
+            state.product.data.id = action.payload;
+        },
         setIsLoading(state, action: PayloadAction<boolean>){
             state.isLoading = action.payload;
         },

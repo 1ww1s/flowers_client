@@ -24,7 +24,7 @@ export const BannerSend: FC<IProps> = ({setOpen}) => {
     const {setIsAuth} = useUserAcions()
     const {setSign} = useSignActions()
 
-    function checkProduct(): boolean {
+    function checkBanner(): boolean {
         let isOk: boolean = true;
         if(!banner.title) {
             setError('Укажите наименование баннера')
@@ -43,7 +43,7 @@ export const BannerSend: FC<IProps> = ({setOpen}) => {
 
 
     const sendBanner = async () => {
-        if(!checkProduct()){
+        if(!checkBanner()){
             return
         }
         try{

@@ -36,7 +36,7 @@ class ShopService {
     }    
     
     async delete(id: number){
-        const res = await fetchAuth(`${process.env.REACT_APP_SERVER_URL_API}/admin/category/delete`, {
+        const res = await fetchAuth(`${process.env.REACT_APP_SERVER_URL_API}/admin/shop/delete`, {
             method: 'POST',
             body: JSON.stringify({id})
         })
@@ -88,6 +88,16 @@ class ShopService {
             throw new Error(message)
         }
         const shops: IShop[] = await res.json()
+        return shops
+    }
+
+    async getAllByCategory<T>(slug: string){
+        const res = await fetch(`${process.env.REACT_APP_SERVER_URL_API}/site/shops/category/${slug}`)
+        if(!res.ok) {
+            const {message}: {message: string} = await res.json()
+            throw new Error(message)
+        }
+        const shops: T = await res.json()
         return shops
     }
     

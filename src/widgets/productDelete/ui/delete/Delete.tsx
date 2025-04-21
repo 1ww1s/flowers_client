@@ -13,7 +13,7 @@ interface IProps{
 export const Delete: FC<IProps> = ({selectedProduct, setOpen}) => {
 
     const items: {sign: string, data: string}[] = [
-        {sign: 'Имя', data: selectedProduct.name},
+        {sign: 'Название', data: selectedProduct.name},
         {sign: 'Цена', data: selectedProduct.price}
     ]
 
@@ -21,7 +21,7 @@ export const Delete: FC<IProps> = ({selectedProduct, setOpen}) => {
         <section className={classes.delete}>
             <h3>Данные</h3>
             <ItemData items={items} />
-            <h3>Фотографии</h3>
+            <h3>Фотография</h3>
             <section className={classes.imageList}>
                 <ImageList images={[selectedProduct.image]} />
             </section>

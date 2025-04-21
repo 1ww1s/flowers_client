@@ -5,6 +5,8 @@ import { ProductToBasket } from "../../../features/productToBasket";
 import { ProductToFavorites } from "../../../features/productToFavorites";
 import { useAppSelector } from "../../../app/store/store";
 import { useUserAcions } from "../../../entities/user";
+import { Helmet } from "react-helmet-async";
+
 
 export const FavouritesWidget: FC = () => {
 
@@ -56,6 +58,9 @@ export const FavouritesWidget: FC = () => {
 
     return (
         <section className={classes.favouritesWidget}>
+            <Helmet>
+                <meta name="description" content={`Избранные товары: ${products.map(product => product.name).join(', ')}`} />
+            </Helmet>
             {
                 isLoading
                     ?

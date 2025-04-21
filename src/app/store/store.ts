@@ -8,6 +8,8 @@ import { CategoriesReducer, CategoryReducer } from "../../entities/category";
 import { ShopReducer } from "../../entities/shop";
 import { BannerReducer } from "../../entities/banner";
 import { OrderReducer } from "../../entities/order";
+import { ItemReducer } from "../../entities/Item";
+import { CharacteristicReducer } from "../../entities/characteristic";
 
 
 
@@ -20,7 +22,9 @@ const store = configureStore({
         CategoryReducer,
         CategoriesReducer,
         ShopReducer,
-        OrderReducer
+        OrderReducer,
+        ItemReducer,
+        CharacteristicReducer,
     }
 })
 

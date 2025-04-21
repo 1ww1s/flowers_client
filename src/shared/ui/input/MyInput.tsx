@@ -12,7 +12,6 @@ interface IProps {
     placeholder?: string;
     title?: string;
     sign?: string;
-    tel?: boolean;
     globalError?: string;
     setGlobalError?: (error: string) => void;
     isSimple?: boolean;
@@ -22,7 +21,7 @@ interface IProps {
 
 
 export const MyInput: FC<IProps & PropsWithChildren & ComponentProps<"input">> = ({
-    value, setValue, placeholder="", sign="", isEmpty = true, title, tel, children, icon, clear = true,
+    value, setValue, placeholder="", sign="", isEmpty = true, title, children, icon, clear = true,
     globalError="", setGlobalError=() => {}, typeInput, isSimple=true, ...props
 }) => {
 
@@ -119,7 +118,7 @@ export const MyInput: FC<IProps & PropsWithChildren & ComponentProps<"input">> =
                     </section>
                         :
                     <input 
-                        className={(isSimple ? classes.simple : '') + ' ' + ((clear || Boolean(icon)) ? classes.icon : '')}
+                        className={(isSimple ? (classes.simple + ' ') : '') + ((clear || Boolean(icon)) ? classes.icon : '')}
                         ref={inputRef} 
                         type={typeInput === 'password' ? showPassword ? 'text' : 'password' : typeInput || 'text'}
                         {...props}

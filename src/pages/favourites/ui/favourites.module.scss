@@ -9,8 +9,8 @@
     width: 100%;
     min-height: 100vh;
     background-color: var(--bg-gray);
-    padding-bottom: 60px;
-    
+    padding-bottom: var(--bottom-button);
+
     .wrap{
         width: var(--mainWidth);
         max-width: var(--mainMaxWidth);

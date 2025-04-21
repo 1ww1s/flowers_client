@@ -9,7 +9,6 @@
     width: 100%;
     height: var(--header-height);
     
-    
     .wrapper{
         width: var(--mainWidth);
         max-width: var(--mainMaxWidth);
@@ -26,6 +25,43 @@
             width: 360px;
             padding-right: 8px;
         }
+
+        .sidebar{
+            display: none;
+            --time: .4s;
+        }
     }
 }
 
+@media (max-width: 650px) {
+    .bg{
+        position: fixed;
+        z-index: 109;
+        .wrapper{
+    
+            .information{
+                display: none;
+            }
+
+            .sidebar{
+                display: block;
+                position: relative;
+                width: 32px;
+                height: 32px;
+
+                .user{
+                    display: flex;
+                    width: 100%;
+                    justify-content: space-between;
+
+                    .features{
+                        display: flex;
+                        width: 70px;
+                        justify-content: space-between;
+                    }
+                }
+            }
+        }
+
+    }
+}

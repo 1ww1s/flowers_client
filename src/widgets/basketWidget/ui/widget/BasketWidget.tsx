@@ -19,33 +19,31 @@ export const BasketWidget: FC<IProps> = ({setTotalPrice}) => {
         try{
             setIsLoading(true)
             const data = await basketService.getItems(user.basket.map(b => b.id)) 
-            const provenBasket = data.filter(d => d !== null)
+            let provenBasket = data.filter(d => d !== null)
             const targer: IInfoAboutProduct[] = JSON.parse(JSON.stringify(user.basket))
-            const infoAboutProduct = provenBasket.map(b => {
+            provenBasket = provenBasket.map(b => {
                 const c = targer.find(t => t.id === b.id)
                 return {
-                    id: b.id,
-                    count: c ? c.count : 1
+                    ...b,
+                    count: c && c.count > 0 ? c.count : 1
                 }
             })
-            localStorage.setItem('basket', JSON.stringify(infoAboutProduct))
-            setBasket(infoAboutProduct)
-            await Promise.all(provenBasket.map(async (d, ind) => {
-                d.count = user.basket[ind].count;
-                if(user.basket[ind].count > d.countMax){
-                    await basketService.countUpdate(d.id, d.countMax)
-                    d.count = d.countMax;
-                    targer[ind].count = d.countMax;
-                    localStorage.setItem('basket', JSON.stringify(targer))
-                    setBasket(targer)
-                }
-                if(user.basket[ind].count === 0 && d.countMax > 0){
-                    d.count = 1;
-                    targer[ind].count = 1;
-                    localStorage.setItem('basket', JSON.stringify(targer))
-                    setBasket(targer)
-                }
-            }))
+            // await Promise.all(provenBasket.map(async (d, ind) => {
+            //     d.count = user.basket[ind].count;
+            //     if(user.basket[ind].count > d.countMax){
+            //         await basketService.countUpdate(d.id, d.countMax)
+            //         d.count = d.countMax;
+            //         targer[ind].count = d.countMax;
+            //         localStorage.setItem('basket', JSON.stringify(targer))
+            //         setBasket(targer)
+            //     }
+            //     if(user.basket[ind].count === 0 && d.countMax > 0){
+            //         d.count = 1;
+            //         targer[ind].count = 1;
+            //         localStorage.setItem('basket', JSON.stringify(targer))
+            //         setBasket(targer)
+            //     }
+            // }))
             setProducts(provenBasket)
         }
         catch(e){

@@ -132,7 +132,7 @@ export const ADMIN_ROUTE: IRoute = {
 
 export const ADMIN_ORDERLIST_ROUTE: IRoute = {
     name: 'Заказы в магазине',
-    path: '/my/admin/orderlist'
+    path: '/my/admin/orderlist/shop'
 }
 
 export const ADMIN_ORDER_ROUTE: IRoute = {
@@ -142,12 +142,27 @@ export const ADMIN_ORDER_ROUTE: IRoute = {
 
 export const ADMIN_ORDERLIST_ACTIVE_ROUTE: IRoute = {
     name: 'Активные',
-    path: '/my/admin/orderlist/active'
+    path: '/my/admin/orderlist/shop/active'
 }
 
 export const ADMIN_ORDERLIST_ARCHIVE_ROUTE: IRoute = {
     name: 'Завершенные',
-    path: '/my/admin/orderlist/archive'
+    path: '/my/admin/orderlist/shop/archive'
+}
+
+export const ADMIN_ORDERLIST_USER_LAYOUT_ROUTE: IRoute = {
+    name: 'Заказы пользователя',
+    path: '/my/admin/orderlist/user'
+}
+
+export const ADMIN_ORDERLIST_USER_ACTIVE_ROUTE: IRoute = {
+    name: 'Активные',
+    path: '/my/admin/orderlist/user/active'
+}
+
+export const ADMIN_ORDERLIST_USER_ARCHIVE_ROUTE: IRoute = {
+    name: 'Завершенные',
+    path: '/my/admin/orderlist/user/archive'
 }
 
 export const ADMIN_CREATE_ROUTE: IRoute = {
@@ -170,14 +185,14 @@ export const ADMIN_OTHER_ROUTE: IRoute = {
     path: '/my/admin/other'
 }
 
-export const ORDER_SUCCESS_ROUTE: IRoute = {
+export const PAYMENT_SUCCESS_ROUTE: IRoute = {
     name: 'Заказ успешно оплачен',
-    path: '/order/success'
+    path: '/payment/success/:id'
 }
 
 export const PAYMENT_FAILED_ROUTE: IRoute = {
     name: 'Ошибка оплаты заказа',
-    path: '/payment/failed'
+    path: '/payment/failed/:id'
 }
 
 export const PAYMENT_ROUTE: IRoute = {

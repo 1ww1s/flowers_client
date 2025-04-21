@@ -10,8 +10,7 @@ interface IProps {
 
 export const Description: FC<IProps> = ({name, values}) => {
 
-
-    return (
+    return (    
        <section className={classes.desc}>
             <span className={classes.name}>{name}</span>
             <span className={classes.dashed}></span>

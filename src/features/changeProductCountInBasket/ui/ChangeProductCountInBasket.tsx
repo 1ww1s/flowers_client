@@ -62,7 +62,7 @@ export const ChangeProductCountInBasket: FC<IProps> = ({count, setCount, ind, ma
     return (
         <section onMouseDown={e => e.preventDefault()} className={classes.change}>
             <section onClick={onMinus} className={classes.minus}>
-                <svg className={count === minCount ? classes.disabled : ''} width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg className={count <= minCount ? classes.disabled : ''} width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M3.75 12H20.25" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
             </section>
@@ -70,7 +70,7 @@ export const ChangeProductCountInBasket: FC<IProps> = ({count, setCount, ind, ma
                 {count}
             </section>
             <section onClick={onPlus} className={classes.plus}>
-                <svg className={count === maxCount ? classes.disabled : ''} width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg className={count >= maxCount ? classes.disabled : ''} width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M3.75 12H20.25" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                     <path d="M12 3.75V20.25" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>

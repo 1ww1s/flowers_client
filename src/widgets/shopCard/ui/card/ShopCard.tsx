@@ -1,8 +1,8 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { IShop } from "../../../../entities/shop";
 import classes from './card.module.scss'
-import { ItemData } from "../../../../shared";
-import { YMaps } from "@pbe/react-yandex-maps";
+import { ItemData, LoaderScreen } from "../../../../shared";
+import { useYMaps, YMaps } from "@pbe/react-yandex-maps";
 import { ShopMap } from "../map/ShopMap";
 import { Data } from "../data/Data";
 
@@ -13,6 +13,24 @@ interface IProps {
 
 export const ShopCard: FC<IProps> = ({shop}) => {
 
+    const [isLoadingMap, setIsLoadingMap] = useState<boolean>(true)
+    const [isLoadingPanorama, setIsLoadingPanorama] = useState<boolean>(true)
+
+    const handleMapReady = () => {
+        setIsLoadingMap(false)
+    }
+
+    const handleMapError = (e: Error) => {
+        setIsLoadingMap(false)
+    }
+
+    const handlePanoramaReady = () => {
+        setIsLoadingPanorama(false)
+    }
+
+    const handlePanoramaError = (e: Error) => {
+        setIsLoadingPanorama(false)
+    }
 
     return (
         <section className={classes.card}>
@@ -34,12 +52,31 @@ export const ShopCard: FC<IProps> = ({shop}) => {
                     <section className={classes.mapWrap}>
                         <h2>На карте</h2>
                         <section className={classes.content}>
-                            <section className={classes.map}>
-                                <ShopMap shop={shop} />
-                            </section>
-                            <section className={classes.data}>
-                                <Data coords={[shop.coordinateX, shop.coordinateY]} />
-                            </section>
+                                <section className={classes.map}>
+                                    {
+                                        isLoadingMap
+                                            &&
+                                        <LoaderScreen full={false} />
+                                    }
+                                    <ShopMap 
+                                        shop={shop} 
+                                        onLoad={handleMapReady}
+                                        onError={handleMapError}
+                                    />
+                                </section>
+                                <h2 className={classes.h2Panorama}>На панораме</h2>
+                                <section className={classes.data}>
+                                    {
+                                        isLoadingPanorama
+                                            &&
+                                        <LoaderScreen full={false} />
+                                    }
+                                    <Data 
+                                        coords={[shop.coordinateX, shop.coordinateY]} 
+                                        onLoad={handlePanoramaReady}
+                                        onError={handlePanoramaError}
+                                    />
+                                </section>
                         </section>
                     </section>
                 </YMaps>

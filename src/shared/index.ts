@@ -1,3 +1,5 @@
+export { ConfirmCustom } from "./ui/confirmCustom/ConfirmCustom";
+export { LoaderScreen } from "./ui/loaderScreen/LoaderScreen";
 export { WrapItem } from "./ui/wrapItem/WrapItem";
 export { getPhoneFormat } from "./lib/helpers/getPhoneFormat";
 export { SelectingItem } from "./ui/selectingItem/SelectingItem";
@@ -15,9 +17,7 @@ export { Logo } from "./ui/logo/Logo";
 export { MyModal } from "./ui/myModal/MyModal";
 export { NumbItems } from "./ui/numbItems/NumbItems";
 export { MySelect } from "./ui/select/MySelect";
-
 export { MyButton } from "./ui/button/MyButton";
-
 export { Autocomplete } from "./ui/autocomplete/Autocomplete";
 
 export { AuthError } from "./lib/helpers/AuthError";

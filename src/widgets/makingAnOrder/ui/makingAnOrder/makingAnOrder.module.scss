@@ -18,33 +18,77 @@
     font-weight: 500;
 
 
-    .title{
-        margin: 0;
-    }
-
-    .count{
-        margin: 16px 0;
-    }
-
-    .totalPrice{
-        display: flex;
-        align-items: center;
+    .data{
 
         .title{
-            font-size: 2rem;
+            margin: 0;
         }
-
-        .price{
+    
+        .count{
+            margin: 16px 0;
+        }
+    
+        .totalPrice{
             display: flex;
             align-items: center;
-            font-size: 2rem;
-            margin-left: 12px;
-
-            >img{
-                width: 20px;
-                margin-left: 2px;
+    
+            .title{
+                font-size: 2rem;
+            }
+    
+            .price{
+                display: flex;
+                align-items: center;
+                font-size: 2rem;
+                margin-left: 12px;
+    
+                >img{
+                    width: 20px;
+                    margin-left: 2px;
+                }
             }
         }
     }
     
+}
+
+@media (max-width: 950px) {
+    .makingAnOrder{
+        display: flex;
+        align-items: center;
+        padding: 26px 30px;
+        justify-content: space-between;
+        
+        .data{
+            h2{
+                display: none;
+            }
+            .count{
+                margin: 6px 0;
+            }
+        }
+
+        .button{
+            display: flex;
+            align-items: center;
+        }
+    }
+}
+
+@media (max-width: 450px) {
+
+    .makingAnOrder{
+        .data{
+
+            .totalPrice{
+                .title{
+                    display: none;
+                }
+        
+                .price{
+                    margin-left: 0;
+                }
+            }
+        }
+    }
 }

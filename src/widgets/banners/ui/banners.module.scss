@@ -7,7 +7,18 @@
     .loader{
         width: 100%;
         aspect-ratio: 16/5;
-        margin-bottom: 40px;
+        margin-bottom: 40px;  // т.к есть пагинация высотой 40px
     }
 
+}
+
+@media (max-width: 650px) {
+    .banners{
+        .loader{
+            height: 40vh;
+            aspect-ratio: unset; 
+        }
+    
+    }
+   
 }

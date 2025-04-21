@@ -2,7 +2,34 @@
 
 .shops{
 
+    .content{
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+    }
+
     >h2{
         margin: 20px 0 !important;
+    }
+
+    .button{
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 650px) {
+    .shops{
+
+        .content{
+            gap: 16px;
+        }
+    
+        >h2{
+            margin: 20px 0 !important;
+        }
+    
+        .button{
+            margin-top: 20px;
+        }
     }
 }

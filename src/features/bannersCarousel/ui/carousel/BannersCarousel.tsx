@@ -3,6 +3,7 @@ import { IBanner } from "../../../../entities/banner"
 import classes from './carousel.module.scss'
 import { BannersPagination } from "../pagination/Pagination";
 import { Link } from "react-router-dom";
+import initBanner from '../../lib/assets/init.png'
 
 interface IProps {
     banners: IBanner[];
@@ -33,6 +34,11 @@ export const BannersCarousel: FC<IProps> = ({banners}) => {
     return (
         <>
             <section className={classes.carousel}>
+                {
+                    banners.length === 0
+                        &&
+                    <img src={initBanner} />
+                }
                 {
                     banners.length > 1
                         &&

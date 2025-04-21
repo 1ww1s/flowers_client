@@ -1,14 +1,13 @@
 import { FC, useEffect, useState } from "react";
 
 import classes from './bannerChangeModal.module.scss'
-import { ADMIN_CREATE_ROUTE } from "../../../app/router/routes";
+import { ADMIN_CREATE_ROUTE, ADMIN_UPDATE_ROUTE } from "../../../app/router/routes";
 import { useLocation } from "react-router-dom";
 import { useAppSelector } from "../../../app/store/store";
 import { MyModal } from "../../../shared";
 import { Create } from "./create/Create";
 import { Update } from "./update/Update";
 import { BannerInitialState, useBannerActions } from "../../../entities/banner";
-
 
 
 export const BannerChangeModal: FC = () => {
@@ -40,7 +39,7 @@ export const BannerChangeModal: FC = () => {
                         </>
                             :
                         <>
-                            <Update setOpen={setOpen} />
+                            <Update isUpdate={pathname === ADMIN_UPDATE_ROUTE.path} setOpen={setOpen} />
                         </>
                     }
 

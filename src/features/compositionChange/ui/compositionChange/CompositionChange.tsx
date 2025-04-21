@@ -33,6 +33,7 @@ export const CompositionChange: FC = () => {
 
     return (
         <section>
+            <section className={classes.content}>
             {
                 product.composition.map((i, ind) =>
                     
@@ -44,6 +45,7 @@ export const CompositionChange: FC = () => {
                     </ItemChange>
                 )
             }
+            </section>
             <button disabled={isLoading} className={classes.addItem + (isLoading ? (' ' + classes.disabled) : '')} onClick={addItem}>Добавить характеристику</button>
         </section>
     )

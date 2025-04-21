@@ -1,7 +1,15 @@
 .infs{
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
     width: 100%;
+    overflow: auto;
     margin: 4px 0;
+}
 
+@media (max-width: 450px) {
+    .infs{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+    }
 }

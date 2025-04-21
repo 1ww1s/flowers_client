@@ -5,6 +5,7 @@ import { YMaps } from '@pbe/react-yandex-maps';
 import { SelectedShowShops } from '../../features/selectedShowShops';
 import { LoaderDiv } from '../../shared';
 import { ShopsMap } from '../../features/shopsMap';
+import { Helmet } from 'react-helmet-async';
 
 export default function Shops(){
 
@@ -32,6 +33,11 @@ export default function Shops(){
 
     return (
         <section className={classes.shops}>
+            <Helmet>
+                <title>Магазины в Твери</title>
+                <meta name="description" content='' />
+                <meta property="og:title" content='Магазины в Твери' />                
+            </Helmet>
             <section className={classes.wrap}>
                 <h1>Магазины в твери</h1>
                 {
@@ -40,6 +46,10 @@ export default function Shops(){
                     <section className={classes.loader}><LoaderDiv /></section>
                         :
                     <>
+                    <Helmet>
+                        <meta name="description" content={`${shops.map(shop => `Магазин: ${shop.title}, адрес: ${shop.address}, часы работы: ${shop.openingHours}`).join('. ')}`} />
+                        <meta property="og:description" content={`${shops.map(shop => `Магазин: ${shop.title}, адрес: ${shop.address}, часы работы: ${shop.openingHours}`).join('. ')}`} />
+                    </Helmet>
                     <SelectedShowShops selectedList={selectedList} setSelectedList={setSelectedList} />
                     {
                         selectedList

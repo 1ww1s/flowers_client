@@ -23,7 +23,7 @@ export const BannerChange: FC = () => {
                     title="Наименование баннера"
                     disabled={isLoading}
                     setGlobalError={setError}
-                />
+                    />
             </section>
             <section className={classes.input}>
                 <MyInput 

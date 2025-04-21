@@ -8,7 +8,6 @@ import { HOME_ROUTE } from "../../../app/router/routes";
 
 export const NotFountWidget: FC = () => {
 
-
     return (
         <section className={classes.notFountWidget}>
             <section className={classes.status}>

@@ -7,7 +7,9 @@ import { ProductToFavorites } from "../../../../features/productToFavorites";
 import { Pagination } from "../../../../features/pagination";
 import { Sort } from "../sort/Sort";
 import { sort } from "../../lib/const/const";
-import { IFilters } from "../../../../features/selectionFilter";
+import { FiltersInitialState, IFilters } from "../../../../features/selectionFilter";
+import { Helmet } from "react-helmet-async";
+import { useAppSelector } from "../../../../app/store/store";
 
 interface IProps {
 
@@ -22,13 +24,9 @@ export const ProductsByCategory: FC<IProps> = ({}) => {
     const {pathname} = useLocation()
     const [searchParams, setSearchParams] = useSearchParams()
 
-    const emptyFilters: IFilters = {
-        page: 1,
-        sort: "",
-        characteristics: [],
-        price_max: 0,
-        price_min: 0,
-    }
+    const {category} = useAppSelector(s => s.CategoryReducer)
+
+    const emptyFilters: IFilters = FiltersInitialState;
 
     const getProducts = async (filters: IFilters) => {
         try{
@@ -66,6 +64,14 @@ export const ProductsByCategory: FC<IProps> = ({}) => {
                 f = {...f, price_min: +prices[0], price_max: +prices[1]}
                 continue
             }
+            if(param[0] === 'flower'){
+                f={...f, flower: param[1].split(',')}
+                continue
+            }
+            if(param[0] === 'shop'){
+                f={...f, shop: param[1].split(',')}
+                continue
+            }
             const ch: {characteristicName: string, values: string[]} = {characteristicName: param[0], values: param[1].split(',')}
             f.characteristics.push(ch)
         }
@@ -88,14 +94,22 @@ export const ProductsByCategory: FC<IProps> = ({}) => {
                         ?
                     <span className={classes.notFound}>Товары не найдены</span>
                         :
-                    products.map((productPrev, ind) => 
-                        <ProductPrev 
-                            key={ind} 
-                            buttonBasket={ <ProductToBasket productId={productPrev.id} /> }
-                            buttonFavourites={ <ProductToFavorites productId={productPrev.id} /> }
-                            product={productPrev}>
-                        </ProductPrev>
-                    )
+                    <>
+                    <Helmet>
+                        <meta name="description" content={`Товары в категории ${category.name}: ${products.map(product => product.name).join(', ')}`} />
+                        <meta property="og:description" content={`Товары в категории ${category.name}: ${products.map(product => product.name).join(', ')}`} />
+                    </Helmet>
+                    {
+                        products.map((productPrev, ind) => 
+                            <ProductPrev 
+                                key={ind} 
+                                buttonBasket={ <ProductToBasket productId={productPrev.id} /> }
+                                buttonFavourites={ <ProductToFavorites productId={productPrev.id} /> }
+                                product={productPrev}>
+                            </ProductPrev>
+                        )
+                    }
+                    </>
                 }
             </section>      
             <section className={classes.pagination}>

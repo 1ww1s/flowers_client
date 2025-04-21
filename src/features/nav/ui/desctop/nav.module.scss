@@ -1,0 +1,11 @@
+
+
+.desctop{
+    display: block;
+}
+
+@media (max-width: 650px) {
+    .desctop{
+        display: none;
+    }
+}

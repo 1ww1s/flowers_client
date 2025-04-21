@@ -3,22 +3,19 @@ import App from "../../App";
 import { ABOUT_ROUTE, ADMIN_CREATE_ROUTE, ADMIN_DELETE_ROUTE, ADMIN_ORDERLIST_ACTIVE_ROUTE, ADMIN_ORDERLIST_ARCHIVE_ROUTE, ADMIN_ORDERLIST_ROUTE, ADMIN_OTHER_ROUTE, 
     ADMIN_ROUTE, ADMIN_UPDATE_ROUTE, BASKET_ROUTE, CATALOG_ROUTE, CATEGORY_ROUTE, SHOPS_ROUTE, FAVOURITES_ROUTE, HOME_ROUTE, LOGIN_ROUTE, MY_MAIN_ROUTE, MY_ROUTE, 
     ORDERLIST_ACTIVE_ROUTE, ORDERLIST_ARCHIVE_ROUTE, ORDERLIST_ROUTE, PRODUCT_ROUTE, REGISTRATION_ROUTE, SHOP_ROUTE, PURCHASE_STEP1_ROUTE, PURCHASE_STEP2_ROUTE,
-    DELIVERY_AND_PAYMENT_ROUTE, PURCHASE_ROUTE,
-    ADMIN_ORDER_ROUTE,
-    ORDER_ROUTE,
-    MY_BASKET_ROUTE,
-    MY_FAVOURITES_ROUTE,
-    PAYMENT_ROUTE} from "./routes";
-import {Admin, AuthPage, Home, My, MyMain, OrderlistLayout, OrderlistActive, OrderlistArchive, AdminOrderlistLayout, AdminOrderlistActive, AdminOrderlistArchive, 
-    AdminCreate, AdminDelete, AdminOther, Catalog, About, Category, Product, CategoryLayout, Basket, Shops, Shop, Purchase, DeliveryAndPayment,
-    PurchaseStep1,
-    PurchaseStep2,
-    Order,
-    Payment} from "../../pages";
-import NotFound from "../../pages/notFound/NotFound";
-import AdminUpdate from "../../pages/admin/update/AdminUpdate";
-import { Favourites } from "../../pages/favourites";
-
+    DELIVERY_AND_PAYMENT_ROUTE, PURCHASE_ROUTE, ADMIN_ORDER_ROUTE, ORDER_ROUTE, MY_BASKET_ROUTE, MY_FAVOURITES_ROUTE, PAYMENT_SUCCESS_ROUTE, PAYMENT_FAILED_ROUTE,
+    ADMIN_ORDERLIST_USER_ARCHIVE_ROUTE,
+    ADMIN_ORDERLIST_USER_LAYOUT_ROUTE,
+    ADMIN_ORDERLIST_USER_ACTIVE_ROUTE, } from "./routes";
+import {Admin, AuthPage, Home, My, MyMain, OrderlistLayout, OrderlistActive, OrderlistArchive, 
+    AdminCreate, AdminDelete, AdminOther, Catalog, About, Category, Product, CategoryLayout, Basket, Shops, Shop, Purchase, DeliveryAndPayment, PurchaseStep1,
+    PurchaseStep2, Order, NotFound, Favourites, AdminUpdate, 
+    AdminOrderlistShopLayout,
+    AdminOrderlistShopActive,
+    AdminOrderlistShopArchive,
+    AdminOrderlistUserLayout,
+    AdminOrderlistUserActive,
+    AdminOrderlistUserArchive} from "../../pages";
 
 
 export const router: RouteObject[] = [
@@ -27,10 +24,6 @@ export const router: RouteObject[] = [
         Component: App,
         ErrorBoundary:  NotFound,
         children: [
-            {
-                path: PAYMENT_ROUTE.path,
-                Component: Payment,
-            },
             {
                 path: HOME_ROUTE.path,
                 Component: Home,
@@ -113,15 +106,29 @@ export const router: RouteObject[] = [
                         children: [
                             {
                                 path: ADMIN_ORDERLIST_ROUTE.path,
-                                Component: AdminOrderlistLayout,
+                                Component: AdminOrderlistShopLayout,
                                 children: [
                                     {
                                         path: ADMIN_ORDERLIST_ACTIVE_ROUTE.path,
-                                        Component: AdminOrderlistActive
+                                        Component: AdminOrderlistShopActive
                                     },
                                     {
                                         path: ADMIN_ORDERLIST_ARCHIVE_ROUTE.path,
-                                        Component: AdminOrderlistArchive
+                                        Component: AdminOrderlistShopArchive
+                                    }
+                                ]
+                            },
+                            {
+                                path: ADMIN_ORDERLIST_USER_LAYOUT_ROUTE.path,
+                                Component: AdminOrderlistUserLayout,
+                                children: [
+                                    {
+                                        path: ADMIN_ORDERLIST_USER_ACTIVE_ROUTE.path,
+                                        Component: AdminOrderlistUserActive
+                                    },
+                                    {
+                                        path: ADMIN_ORDERLIST_USER_ARCHIVE_ROUTE.path,
+                                        Component: AdminOrderlistUserArchive
                                     }
                                 ]
                             },

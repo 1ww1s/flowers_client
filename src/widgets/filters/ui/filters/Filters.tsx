@@ -41,6 +41,7 @@ export const Filters: FC<IProps> = () => {
     return (
         <section className={classes.filters}>
             <SelectionFilters 
+                needSearch={true}
                 characteristics={characteristics}
                 isLoading={isLoading}
             />

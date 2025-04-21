@@ -1,22 +1,26 @@
-import { FC, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useAppSelector } from '../../../app/store/store'
 import classes from './purchase.module.scss'
 import { OrderDeliveryData, orderService, useOrderActions } from '../../../entities/order';
 import { useNavigate } from 'react-router-dom';
 import { ComeBack } from '../../../features/comeBack';
-import { ORDER_SUCCESS_ROUTE, PAYMENT_FAILED_ROUTE, PAYMENT_ROUTE, PURCHASE_STEP1_ROUTE } from '../../../app/router/routes';
+import { PURCHASE_STEP1_ROUTE } from '../../../app/router/routes';
 import { AvailableAndUnavailableProducts } from '../../../entities/product';
 import { ShopData } from '../../../entities/shop';
 import { OrderDetails } from '../../../widgets/orderDetails';
-import { MyButton, WrapItem } from '../../../shared';
-import { ChoosingPayment } from '../../../widgets/choosingPaymentMethod';
+import { LoaderScreen, MyButton, WrapItem } from '../../../shared';
 import { OrderIData } from '../../../widgets/orderIDataCreate';
+import { basketService } from '../../../entities/basket';
+import { IUser, useUserAcions } from '../../../entities/user';
+import { PaymentMethods } from '../../../widgets/paymentMethods';
 
 
 export default function PurchaseStep2() {
 
     const {orderCreate, error} = useAppSelector(s => s.OrderReducer)
     const {setError} = useOrderActions()
+    const {user} = useAppSelector(s => s.UserReducer)
+    const {setBasket} = useUserAcions()
     const [isLoading, setIsLoading] = useState<boolean>(false)
     const router = useNavigate()
 
@@ -46,10 +50,42 @@ export default function PurchaseStep2() {
         router(PURCHASE_STEP1_ROUTE.path)
     }
 
+    const updateBasket = async () => {
+        const newBaket: IUser['basket'] = []
+        await Promise.all(user.basket.map(async bProduct => {
+            const orderP = orderCreate.products.find(p => p.productId === bProduct.id)
+            if(orderP){
+                if(orderP.count === bProduct.count){
+                    if(user.isAuth){
+                        await basketService.basketDelete(orderP.productId)
+                    }
+                }
+                else{
+                    const newCount = bProduct.count - orderP.count;
+                    newBaket.push({
+                        id: orderP.productId,
+                        count: newCount
+                    })
+                    if(user.isAuth){
+                        await basketService.countUpdate(orderP.productId, newCount)
+                    }
+                }
+            }
+            else{
+                newBaket.push(bProduct)
+            }
+        }))
+        localStorage.setItem('basket', JSON.stringify(newBaket))
+        setBasket(newBaket)
+    }
+
+
+
     const create = async () => {
         try{
             setIsLoading(true)
-            const orderId = await orderService.create({
+            await updateBasket()
+            const paymentUrl = await orderService.create({
                 products: orderCreate.products.map(product => ({id: product.productId, count: product.count})),
                 methodOfReceipt: orderCreate.methodOfReceipt,
                 message: orderCreate.message,
@@ -67,12 +103,12 @@ export default function PurchaseStep2() {
                     message: orderCreate.address.message,
                 }
             })
-            router(`/payment/${orderId}`, {
-                replace: true
-            })
+            window.location.href = paymentUrl; // Перенаправление на страницу оплаты
         }
         catch(e) {
-            router(PAYMENT_FAILED_ROUTE.path, {
+            console.log(e)
+            alert('Не удалось инициировать платёж');
+            router(PURCHASE_STEP1_ROUTE.path, {
                 replace: true
             })
         }
@@ -82,6 +118,18 @@ export default function PurchaseStep2() {
     }
 
     const check = () => {
+        if(orderCreate.senderName === ''){
+            setError('Не заполнено имя отпраителя')
+            return
+        }
+        if(orderCreate.senderPhone === ''){
+            setError('Не заполнен телефон отпраителя')
+            return
+        }
+        else if(orderCreate.senderPhone.length !== 11){
+            setError('Неправильно заполнен телефон отпраителя')
+            return
+        }
         if(orderCreate.recipientName === ''){
             setError('Не заполнено имя получателя')
             return
@@ -99,6 +147,7 @@ export default function PurchaseStep2() {
 
     return (
         <>
+            {isLoading && <LoaderScreen />}
             <section className={classes.comeBack} onClick={back}>
                 <ComeBack text='Венуться к шагу 1' to={PURCHASE_STEP1_ROUTE.path} />
             </section>
@@ -127,7 +176,7 @@ export default function PurchaseStep2() {
                         </WrapItem>
                         <WrapItem>
                             <h2>Выбор оплаты</h2>
-                            <ChoosingPayment />
+                            <PaymentMethods />
                         </WrapItem>
                         <WrapItem>
                             <OrderIData />

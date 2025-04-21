@@ -6,6 +6,7 @@ import { IUser, userService, useUserAcions } from "../../../entities/user";
 import { Link } from "react-router-dom";
 import { useAppSelector } from "../../../app/store/store";
 import { MyButton, MyInput, SyncBasket } from "../../../shared";
+import { Helmet } from "react-helmet-async";
 
 interface IProps {
 
@@ -89,6 +90,12 @@ export const Auth: FC<IProps> = () => {
 
     return (
         <section className={classes.auth}>
+            <Helmet>
+                <title>{title[0] + title.toLocaleLowerCase().slice(1)}</title>
+                <meta name="description" content="Вход или регистрация" />
+                <meta property="og:title" content={title[0] + title.toLocaleLowerCase().slice(1)} />
+                <meta property="og:description" content='Зарегестрируйся на нашем сайте или скорее заходи на него. Ты сможешь просматривать текущий статус заказа и много чего еще' /> {/* Дописать преимущества */}
+            </Helmet>
             {!user.isAuth
                 &&
             <form autoComplete="off" onSubmit={(e) => {e.preventDefault(); onAuth()}} className={classes.wrapper}>

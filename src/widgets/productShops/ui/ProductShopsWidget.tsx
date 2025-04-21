@@ -2,6 +2,7 @@ import { FC, useEffect, useState } from "react";
 import { IProduct, productService, ProductShopsCard, useProductActions } from "../../../entities/product";
 import classes from './shops.module.scss'
 import { LoaderDiv } from "../../../shared";
+import { useAppSelector } from "../../../app/store/store";
 
 interface IProps{
     slug: string;
@@ -12,8 +13,9 @@ interface IProps{
 
 export const ProductShopsWidget: FC<IProps> = ({slug, isLoading, setIsLoading, setCount}) => {
 
-    const [shops, setShops] = useState<IProduct['shops']>([])
-    const {setError} = useProductActions()
+    const {setError, setShops} = useProductActions()
+
+    const {product} = useAppSelector(s => s.ProductReducer)
 
     const getShops = async () => {
         try{
@@ -43,7 +45,7 @@ export const ProductShopsWidget: FC<IProps> = ({slug, isLoading, setIsLoading, s
                     ?
                 <section className={classes.loader}><LoaderDiv /></section>
                     :
-                <ProductShopsCard shops={shops} />
+                <ProductShopsCard shops={product.shops} />
             }
         </section>
     )

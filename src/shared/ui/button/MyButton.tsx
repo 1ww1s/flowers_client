@@ -27,7 +27,7 @@ export const MyButton: FC<IProps & ComponentProps<'button'>> = ({sign, isLoading
                 {...props}
                 style={{width, ...props.style}} 
                 ref={Ref} 
-                disabled={isLoading || error?.length !== 0} 
+                disabled={isLoading || error?.length !== 0 || props.disabled} 
                 className={isLoading ? classes.loading : ''} 
                 onClick={onClick}
             >

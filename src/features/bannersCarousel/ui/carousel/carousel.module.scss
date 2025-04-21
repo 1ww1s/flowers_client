@@ -8,6 +8,13 @@
     overflow: hidden;
     position: relative;
 
+    img{
+        position: relative;
+        width: 100vw;
+        aspect-ratio: 16/5;
+        object-fit: cover;                                
+    }
+
     ul.list{
         display: flex;
         list-style: none;
@@ -29,12 +36,7 @@
             }
 
             a{
-                    img{
-                        position: relative;
-                        width: 100vw;
-                        aspect-ratio: 16/5;
-                        object-fit: cover;                                
-                    }
+                
             }
         }
     }
@@ -84,4 +86,26 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+@media (max-width: 650px) {
+  
+    .carousel {
+        height: 40vh;
+        aspect-ratio: unset; /* Убрано фиксированное соотношение */
+        justify-content: flex-start;
+        overflow: hidden; /* Изменено с auto на hidden */
+        width: 100%;
+
+        img {
+            position: relative;
+            height: 40vh;
+            width: auto;
+            min-width: calc(100vw + 6vh);
+            left: -6vh;
+            aspect-ratio: 3/1; /* Примерное соотношение для мобильных */
+            object-fit: cover;
+            object-position: left center;
+        }
+    }
 }

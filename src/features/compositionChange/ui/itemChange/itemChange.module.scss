@@ -1,20 +1,52 @@
 .itemBox{
-
- 
     display: flex;
     justify-content: space-between;
-
     
-
-    .item{
-        width: 75%;
-    }   
-
-    .count{
-        width: 20%;
+    .wrap{
+        display: flex;
+        justify-content: space-between;
+        width: 96%;
+        
+        .item{
+            width: 75%;
+        }   
+    
+        .count{
+            width: 20%;
+        }
     }
 
     .close{
+        text-align: center;
         margin-top: 20px;
+        min-width: 40px;
+    }
+}
+
+@media (max-width: 650px) {
+    .itemBox{
+        border-bottom: 2px solid var(--light-gray);
+        .wrap{
+            flex-direction: column;
+
+            .item{
+                width: 96%;
+            }   
+        
+            .count{
+                width: 60%;
+                margin-top: -20px;
+            }
+        }
+    }
+}
+
+@media (max-width: 450px) {
+    .itemBox{
+        .wrap{
+            .count{
+                width: 96%;
+            }
+        }
     }
 }

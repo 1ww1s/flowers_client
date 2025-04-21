@@ -6,7 +6,7 @@ export const GroupDataLoader: FC = () => {
 
 
     return (
-            <section className={classes.inf}>
+            <section className={classes.inf + ' ' + classes.loader}>
                 <section data-cancel_click className={classes.group}>
                     <label className={classes.title}>
                         <section className={classes.loader}><LoaderDiv /></section>

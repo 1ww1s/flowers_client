@@ -48,12 +48,12 @@
         min-height: 100vh;
         top: 0;
         left: 0;
-        z-index: 99;
+        z-index: 999;
 
         .content{
             position: relative;
             box-sizing: border-box;
-            max-width: 90%;
+            max-width: 96%;
             max-height: 90vh;
             overflow-x: hidden;
             overflow-y: auto;

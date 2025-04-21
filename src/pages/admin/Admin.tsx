@@ -4,8 +4,7 @@ import { ADMIN_ORDER_ROUTE, ADMIN_ORDERLIST_ACTIVE_ROUTE, ADMIN_ROUTE, MY_MAIN_R
 import classes from './admin.module.scss'
 import { NavAdmin } from "../../entities/user";
 import { useAppSelector } from "../../app/store/store";
-
-const accessRoles = ['user', 'admin', 'moderator']
+import { Helmet } from "react-helmet-async";
 
 export default function Admin() {
 
@@ -18,7 +17,7 @@ export default function Admin() {
   
     useEffect(() => {
         let right: boolean = false
-        for (let role of accessRoles){
+        for (let role of JSON.parse(process.env.REACT_APP_ADMIN_ACCESS || "[]")){
             if(user.roles.includes(role)){
                 right = true;
                 setIsOk(true)
@@ -41,6 +40,10 @@ export default function Admin() {
 
     return (
         <section className={classes.adminBoard}>
+        <Helmet>
+            <title>Админ панель</title>
+            <meta name="description" content="Админ панель" />
+        </Helmet>
         {
             isOk
                 &&
