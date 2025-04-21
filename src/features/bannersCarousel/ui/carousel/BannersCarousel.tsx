@@ -58,7 +58,7 @@ export const BannersCarousel: FC<IProps> = ({banners}) => {
                 }
                 <ul className={classes.list}>
                     {banners.map((banner, ind) => 
-                        <li className={classes.item + (currentBanner === ind ? ' ' + classes.active : '')}>
+                        <li key={ind} className={classes.item + (currentBanner === ind ? ' ' + classes.active : '')}>
                             <Link to={banner.buttonLink}>
                                 <img src={banner.image} />
                             </Link>

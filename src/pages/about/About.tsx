@@ -7,8 +7,6 @@ import classes from './about.module.scss'
 
 export default function About(){
 
-    // +
-
     return (
         <section className={classes.about}>
             <Helmet>

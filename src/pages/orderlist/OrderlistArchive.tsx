@@ -26,7 +26,6 @@ export default function OrderlistArchive(){
     }
 
     useEffect(() => {
-        window.scrollTo({top: 0})
         getMyOrders()
     }, [searchParams])
 

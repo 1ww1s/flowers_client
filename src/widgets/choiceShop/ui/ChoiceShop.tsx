@@ -10,6 +10,7 @@ import { ShopsMap } from "../../../features/shopsMap";
 import { ShopChoose } from "../../../features/shopChoose";
 import { OrderInitialState, useOrderActions } from "../../../entities/order";
 import imgClose from '../../../shared/lib/assets/icon/X.png'
+import { useIsOpenShop } from "../lib/hooks/useIsOpenShop";
 
 
 interface IProps {
@@ -36,6 +37,7 @@ export const ChoiceShop: FC<IProps> = ({
     
     const refShopProducts = useRef<HTMLDivElement>(null)
     const refDarken = useRef<HTMLDivElement>(null)
+
 
     const openProducts = () => {
         if(refShopProducts.current && refDarken.current){
@@ -116,7 +118,9 @@ export const ChoiceShop: FC<IProps> = ({
             setShop(OrderInitialState.orderCreate.shop)
         }
     }, [open])
-    
+
+    const isOpenShop = useIsOpenShop(choiceShop)
+
     return (
         <MyModal
             title={orderCreate.shop.title ? 'Изменить магазин' : 'Выбрать магазин'}
@@ -156,10 +160,16 @@ export const ChoiceShop: FC<IProps> = ({
                                 <ShopData shop={choiceShop} /> 
                                 <AvailableAndUnavailableProducts products={products} />
                                 <AvailableAndUnavailableProducts available={false} products={unproducts} />
-                                <ShopChoose 
-                                    onClick={onSelected} 
-                                    shop={choiceShop} 
-                                />
+                                {
+                                    isOpenShop
+                                        ?
+                                    <ShopChoose 
+                                        onClick={onSelected} 
+                                        shop={choiceShop} 
+                                    />
+                                        :
+                                    <h3 className={classes.closing}>Магазин закрыт</h3>
+                                }
                             </section>
                                 :
                             <h3 className={classes.notSelected}>Выберите магазин</h3>

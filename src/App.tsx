@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import './App.css';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import { Header } from './widgets/header';
 import { userService, useUserAcions } from './entities/user';
 import { LoaderSpinner, SyncBasket, SyncFavourites } from './shared';
@@ -16,6 +16,12 @@ function App() {
   const [isLoading, setIsLoading] = useState<boolean>(true)
   const {setIsAuth, setName, setPhone, setRoles, setBasket, setFavourites} = useUserAcions()
   const {setNames, setIsLoading: setIsLoadingCategories, setError} = useCategoriesActions()
+
+  const {pathname} = useLocation()
+
+  useEffect(() => {
+    window.scrollTo({top: 0})
+  }, [pathname])
 
   const getBasket = async () => {
     const userBasket = await basketService.basketGet()

@@ -1,7 +1,7 @@
 .content{
     box-sizing: border-box;
     width: 80vw;
-    max-height: 84vh;
+    max-height: 90vh; // как myModal
     overflow: hidden;
     box-sizing: border-box;
 
@@ -16,7 +16,7 @@
         display: flex;
         box-sizing: border-box;
         width: 100%;
-        height: 76vh;
+        height: 82vh;
         overflow: hidden;
         border-top: 1px solid var(--gray);
         position: relative;
@@ -74,6 +74,10 @@
                 box-sizing: border-box;
                 width: 100%;
                 padding: 0 20px 20px 20px;
+
+                .closing{
+                    color: var(--red);
+                }
             }
 
             .notSelected{
@@ -93,7 +97,6 @@
 @media (max-width: 950px) {
     .content{
         width: 96vw;
-        max-height: 90vh; // как myModal
 
         .selectedList{
             display: flex;

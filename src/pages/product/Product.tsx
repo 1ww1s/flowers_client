@@ -29,7 +29,6 @@ export default function Product() {
     useEffect(() => {
         setError('')
         setProduct(ProductInitialState.product)
-        window.scrollTo({top: 0})
     }, [])
 
     const getDescription = () => {

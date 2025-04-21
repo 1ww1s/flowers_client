@@ -27,7 +27,6 @@ export default function My(){
     }, [user])
 
     useEffect(() => {
-        window.scrollTo({top: 0})
         if(user.isAuth && pathname === MY_ROUTE.path){
             router(MY_MAIN_ROUTE.path, {
                 replace: true

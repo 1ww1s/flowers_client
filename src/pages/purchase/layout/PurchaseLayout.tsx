@@ -7,12 +7,7 @@ import { Sign } from '../../../widgets/sign';
 
 export default function PurchaseLayout() {
     
-    const {pathname} = useLocation()
     const {setInitital} = useOrderActions()
-
-    useEffect(() => {
-        window.scrollTo({top: 0})
-    }, [pathname])
 
     useEffect(() => {
         setInitital(null)

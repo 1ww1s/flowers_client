@@ -29,7 +29,6 @@ export default function OrderlistActive(){
     }
 
     useEffect(() => {
-        window.scrollTo({top: 0})
         getMyOrders()
     }, [searchParams])
 

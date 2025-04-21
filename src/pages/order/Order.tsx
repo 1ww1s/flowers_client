@@ -39,7 +39,6 @@ export default function Order() {
     } 
 
     useEffect(() => {
-        window.scrollTo({top: 0})
         getOrder()
     }, [])
 

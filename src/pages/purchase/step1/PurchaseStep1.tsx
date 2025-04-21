@@ -12,7 +12,6 @@ import { OrderDetails } from '../../../widgets/orderDetails/ui/details/OrderDeta
 import { useNavigate } from 'react-router-dom'
 import { BASKET_ROUTE, MY_BASKET_ROUTE, PURCHASE_STEP2_ROUTE } from '../../../app/router/routes'
 import { ComeBack } from '../../../features/comeBack'
-import { Helmet } from 'react-helmet-async'
 
 
 export default function PurchaseStep1() {

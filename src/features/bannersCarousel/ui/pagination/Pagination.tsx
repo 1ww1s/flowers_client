@@ -24,7 +24,7 @@ export const BannersPagination: FC<IProps> = ({length, current, setCurrent}) => 
             &&
         <ul className={classes.list}>
             {mas.map((d, i) => 
-                <li onClick={() => onClick(i)} className={classes.item + (current === i ? ' ' + classes.active : '')}></li>
+                <li key={i} onClick={() => onClick(i)} className={classes.item + (current === i ? ' ' + classes.active : '')}></li>
             )}
         </ul>
     )

@@ -28,7 +28,6 @@ export default function Shop(){
 
     useEffect(() => {
         getShop()
-        window.scrollTo({top: 0})
     }, [])
 
 
