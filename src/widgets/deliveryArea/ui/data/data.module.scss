@@ -1,16 +1,31 @@
 
 
 .data{
-    height: 50px;
     margin-bottom: 20px;
     display: flex;
     align-items: center;
-
+    min-height: 70px;
     .content{
         width: 60%;
-
     }
     .error{
         color: var(--red);   
+    }
+}
+
+@media (max-width: 650px) {
+    .data{
+        .content{
+            width: 100%;
+        }
+    }
+}
+
+@media (max-width: 450px) {
+    .data{
+        min-height: 130px;
+        .content{
+            width: 100%;
+        }
     }
 }
