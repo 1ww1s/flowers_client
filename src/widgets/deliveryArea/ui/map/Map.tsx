@@ -52,7 +52,6 @@ export const MapWrap: FC<IProps> = ({setSelectedZone, setError}) => {
     const getZones = async () => {
         try{
             setIsLoadingZones(true)
-            await new Promise(resolve => setTimeout(resolve, 4000))
             const zones = await orderService.getZones()
             setZones(zones)
         }   
