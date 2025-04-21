@@ -4,8 +4,8 @@ import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import classes from './my.module.scss'
 import { Nav } from "../../entities/user";
 import { LOGIN_ROUTE, MY_MAIN_ROUTE, MY_ROUTE } from "../../app/router/routes";
-import { Sign } from "./sign/Sign";
 import { Helmet } from "react-helmet-async";
+import { Sign } from "../../widgets/sign";
 
 
 export default function My(){

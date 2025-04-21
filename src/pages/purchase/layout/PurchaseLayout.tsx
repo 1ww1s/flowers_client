@@ -3,6 +3,7 @@ import classes from './purchaseLayout.module.scss'
 import { Outlet, useLocation } from 'react-router-dom';
 import { useOrderActions } from '../../../entities/order';
 import { Helmet } from 'react-helmet-async';
+import { Sign } from '../../../widgets/sign';
 
 export default function PurchaseLayout() {
     
@@ -19,6 +20,7 @@ export default function PurchaseLayout() {
 
     return (
         <section className={classes.purchaseLayout}>
+            <Sign />
             <Helmet>
                 <title>Оформление заказа</title>
                 <meta name="description" content="Оформление заказа" />

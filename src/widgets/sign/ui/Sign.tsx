@@ -17,7 +17,7 @@ export const Sign: FC = () => {
             if(idT){
                 clearTimeout(idT)
             }
-            const id = setTimeout(() => setMessage(''), 3000)
+            const id = setTimeout(() => setMessage(''), 4000)
             setIdT(id)
         }
     }, [sign])

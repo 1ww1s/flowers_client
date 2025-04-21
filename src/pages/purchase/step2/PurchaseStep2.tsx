@@ -13,6 +13,7 @@ import { OrderIData } from '../../../widgets/orderIDataCreate';
 import { basketService } from '../../../entities/basket';
 import { IUser, useUserAcions } from '../../../entities/user';
 import { PaymentMethods } from '../../../widgets/paymentMethods';
+import { useSignActions } from '../../../entities/sign';
 
 
 export default function PurchaseStep2() {
@@ -23,6 +24,8 @@ export default function PurchaseStep2() {
     const {setBasket} = useUserAcions()
     const [isLoading, setIsLoading] = useState<boolean>(false)
     const router = useNavigate()
+
+    const {setSign} = useSignActions()
 
     const checkStep2 = () => {
         if(orderCreate.methodOfReceipt === 'Доставка'){
@@ -84,7 +87,6 @@ export default function PurchaseStep2() {
     const create = async () => {
         try{
             setIsLoading(true)
-            await updateBasket()
             const paymentUrl = await orderService.create({
                 products: orderCreate.products.map(product => ({id: product.productId, count: product.count})),
                 methodOfReceipt: orderCreate.methodOfReceipt,
@@ -103,11 +105,16 @@ export default function PurchaseStep2() {
                     message: orderCreate.address.message,
                 }
             })
+            await updateBasket()
             window.location.href = paymentUrl; // Перенаправление на страницу оплаты
         }
         catch(e) {
-            console.log(e)
-            alert('Не удалось инициировать платёж');
+            if(e instanceof Error){
+                setSign({type: 'error', message: e.message})
+            }
+            else{
+                console.log(e)
+            }
             router(PURCHASE_STEP1_ROUTE.path, {
                 replace: true
             })
