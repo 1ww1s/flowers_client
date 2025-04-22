@@ -40,7 +40,7 @@ export const Card: FC<IProps & PropsWithChildren> = ({product, isLoading, childr
                             &&
                         <p>Нет данных</p>
                     }
-                    { product.composition.length ? <Description name="Состав" values={product.composition.map(c => `${c.name} - ${c.count}`)} /> : <></> }
+                    { product.composition.length ? <Description name="Состав" values={product.composition.map(c => `${c.name}-${c.count}`)} /> : <></> }
                     <CharacteristicCard characteristics={product.characteristics} />
                 </>
             }

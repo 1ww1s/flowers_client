@@ -41,6 +41,11 @@
             background-color: var(--light-gray);
             cursor: pointer;
             margin: 0 3px;
+
+            &.ellipsis{
+                cursor: auto;
+                pointer-events: none;
+            }
     
             transition: all var(--time) ease-in-out;
 

@@ -14,7 +14,7 @@ export const Description: FC<IProps> = ({name, values}) => {
        <section className={classes.desc}>
             <span className={classes.name}>{name}</span>
             <span className={classes.dashed}></span>
-            <span className={classes.values}>{values.map(v => v.toLocaleLowerCase()).join(', ')}</span>
+            <span className={classes.values}>{values.join(', ')}</span>
         </section>
     )
 }
