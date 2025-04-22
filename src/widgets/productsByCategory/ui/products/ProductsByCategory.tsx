@@ -49,7 +49,7 @@ export const ProductsByCategory: FC<IProps> = ({}) => {
     }
 
     useEffect(() => {
-        let f: IFilters = emptyFilters
+        let f: IFilters = JSON.parse(JSON.stringify(emptyFilters))
         for(let param of searchParams.entries()){
             if(param[0] === 'page'){
                 f = {...f, page: +param[1]}
