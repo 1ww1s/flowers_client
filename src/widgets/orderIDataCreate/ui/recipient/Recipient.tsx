@@ -43,29 +43,35 @@ export const Recipient: FC = () => {
         setData()
     }, [])
 
+    useEffect(() => {
+        if(selectedName === 'Я получатель'){
+            setRecipientName(orderCreate.senderName)
+            setRecipientPhone(orderCreate.senderPhone)
+        }
+        else{
+            emptyData()
+        }
+    }, [orderCreate.senderName, orderCreate.senderPhone, selectedName])
+
     return (
         <section className={classes.recipient + (user.isAuth ? (' ' + classes.margin) : '')}> 
             <h2>Получатель</h2>
-            {   
-                user.isAuth
-                    &&
-                <SelectingItem
-                    selectedName={selectedName}
-                    setSelectedName={onSelected}
-                    items={[
-                        {
-                            icon: User,
-                            name: 'Я получатель'
-                        },
-                        {
-                            icon: UserPlus,
-                            name: 'Получит другой человек'
-                        }
-                    ]}
-                />
-            }
+            <SelectingItem
+                selectedName={selectedName}
+                setSelectedName={onSelected}
+                items={[
+                    {
+                        icon: User,
+                        name: 'Я получатель'
+                    },
+                    {
+                        icon: UserPlus,
+                        name: 'Получит другой человек'
+                    }
+                ]}
+            />
             {
-                (!user.isAuth || selectedName === 'Получит другой человек')
+                (selectedName === 'Получит другой человек')
                     &&
                 <Form 
                     name={orderCreate.recipientName}

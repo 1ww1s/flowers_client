@@ -3,7 +3,7 @@ import { getPhoneFormat, ItemData } from "../../../../shared";
 import { useAppSelector } from "../../../../app/store/store";
 import { useOrderActions } from "../../../../entities/order";
 import { Form } from "../form/Form";
-
+import classes from './myData.module.scss'
 
 
 export const MyData: FC = () => {
@@ -21,19 +21,21 @@ export const MyData: FC = () => {
     }, [])
 
     return (
-        <section>
-            <ItemData
-                items={[
-                    {
-                        sign: 'Имя',
-                        data: orderCreate.senderName
-                    },
-                    {
-                        sign: 'Телефон',
-                        data: getPhoneFormat(orderCreate.senderPhone)
-                    }
-                ]}
-            />
+        <section className={classes.myData}>
+            <section className={classes.visible}>
+                <ItemData
+                    items={[
+                        {
+                            sign: 'Имя',
+                            data: orderCreate.senderName
+                        },
+                        {
+                            sign: 'Телефон',
+                            data: getPhoneFormat(orderCreate.senderPhone)
+                        }
+                    ]}
+                />
+            </section>
             {
                 !user.isAuth
                     &&

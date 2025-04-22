@@ -126,15 +126,15 @@ export default function PurchaseStep2() {
 
     const check = () => {
         if(orderCreate.senderName === ''){
-            setError('Не заполнено имя отпраителя')
+            setError('Не заполнено имя отправителя')
             return
         }
         if(orderCreate.senderPhone === ''){
-            setError('Не заполнен телефон отпраителя')
+            setError('Не заполнен телефон отправителя')
             return
         }
         else if(orderCreate.senderPhone.length !== 11){
-            setError('Неправильно заполнен телефон отпраителя')
+            setError('Неправильно заполнен телефон отправителя')
             return
         }
         if(orderCreate.recipientName === ''){

@@ -59,7 +59,7 @@ export const Pagination: FC<IProps> = ({ totalPages }) => {
 
     const getVisiblePages = () => {
         const visiblePages: (number | string)[] = [];
-        const maxVisiblePages = 5; // Максимальное количество видимых номеров страниц
+        const maxVisiblePages = 3; // Максимальное количество видимых номеров страниц
         
         if (totalPages <= maxVisiblePages + 2) {
             // Если страниц немного, показываем все

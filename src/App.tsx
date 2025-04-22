@@ -17,11 +17,11 @@ function App() {
   const {setIsAuth, setName, setPhone, setRoles, setBasket, setFavourites} = useUserAcions()
   const {setNames, setIsLoading: setIsLoadingCategories, setError} = useCategoriesActions()
 
-  const {pathname} = useLocation()
+  const {pathname, search} = useLocation()
 
   useEffect(() => {
     window.scrollTo({top: 0})
-  }, [pathname])
+  }, [pathname, search])
 
   const getBasket = async () => {
     const userBasket = await basketService.basketGet()
