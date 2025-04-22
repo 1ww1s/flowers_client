@@ -6,6 +6,7 @@
     top: 0;
     left: 0;
     width: 100%;
+    overflow: hidden;
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -13,13 +14,22 @@
     z-index: 99;
     background-color: rgba(0, 0, 0, 0.5);
 
+    .content{
+        width: 480px;
+        max-width: 90%;
 
-    .wrap{
-        display: flex;
-        gap: 16px;
-
-        .button{
-            width: 180px;
-        }
+            .wrap{
+                display: flex;
+                column-gap: 16px;
+                overflow: auto;
+                flex-wrap: wrap;
+                width: 100%;
+                justify-content: center;
+        
+                .button{
+                    width: 180px;
+                }
+            }
+        
     }
 }

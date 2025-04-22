@@ -20,23 +20,25 @@ export const ConfirmCustom: FC<IProps> = ({title, setIsOk}) => {
 
     return (
         <section className={classes.confirmCustom}>
-            <WrapItem>
-                <h3>{title}</h3>
-                <section className={classes.wrap}>
-                    <section className={classes.button}>
-                        <MyButton 
-                            sign="Ок"
-                            onClick={() => setIsOk(true)}
-                        />
+            <section className={classes.content}>
+                <WrapItem>
+                    <h3>{title}</h3>
+                    <section className={classes.wrap}>
+                        <section className={classes.button}>
+                            <MyButton 
+                                sign="Ок"
+                                onClick={() => setIsOk(true)}
+                            />
+                        </section>
+                        <section className={classes.button}>
+                            <MyButton 
+                                sign="Отмена"
+                                onClick={() => setIsOk(false)}
+                            />
+                        </section>
                     </section>
-                    <section className={classes.button}>
-                        <MyButton 
-                            sign="Отмена"
-                            onClick={() => setIsOk(false)}
-                        />
-                    </section>
-                </section>
-            </WrapItem>
+                </WrapItem>
+            </section>
         </section>
     )
 }

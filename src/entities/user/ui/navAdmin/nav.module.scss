@@ -60,6 +60,7 @@
         .burger{
             display: block;
             stroke: var(--black);
+            cursor: pointer;
             z-index: 99;
         }
     }
