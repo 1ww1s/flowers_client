@@ -22,7 +22,9 @@ export const Slider: FC<IProps> = ({min, max, valueMax, valueMin, setValueMax, s
     const refInactiveRight = useRef<HTMLDivElement>(null)
 
     const onmousedownMin = (e: MouseEvent) => {
+
         e.preventDefault()
+        document.body.style.touchAction = 'none'; // Блокируем скролл
                 
         if(refThumbMin.current){
             const shiftX = e.clientX - refThumbMin.current.getBoundingClientRect().left;
@@ -33,6 +35,9 @@ export const Slider: FC<IProps> = ({min, max, valueMax, valueMin, setValueMax, s
             document.addEventListener('pointerup', onMouseUp);
             
             function onMouseMove(event: MouseEvent){
+                
+                event.preventDefault()
+
                 if(slider.current && refThumbMin.current && refInactiveLeft.current && refThumbMax.current){
                     const leftSlider = slider.current.getBoundingClientRect().left
                     let newLeft = event.clientX - shiftX - leftSlider;
@@ -60,6 +65,7 @@ export const Slider: FC<IProps> = ({min, max, valueMax, valueMin, setValueMax, s
             }
 
             function onMouseUp() {
+                document.body.style.touchAction = ''; // Восстанавливаем скролл
                 document.removeEventListener('pointerup', onMouseUp);
                 document.removeEventListener('pointermove', onMouseMove);
                 onBlur(targetMin, valueMax)
@@ -68,8 +74,10 @@ export const Slider: FC<IProps> = ({min, max, valueMax, valueMin, setValueMax, s
     }
 
     const onmousedownMax = (e: MouseEvent) => {
+        
         e.preventDefault()
-                
+        document.body.style.touchAction = 'none';
+
         if(refThumbMax.current){
             const shiftX = e.clientX - refThumbMax.current.getBoundingClientRect().left;
             
@@ -79,6 +87,7 @@ export const Slider: FC<IProps> = ({min, max, valueMax, valueMin, setValueMax, s
             let targetMax = valueMax;
 
             function onMouseMove(event: MouseEvent){
+                event.preventDefault();
                 if(slider.current && refThumbMax.current && refInactiveRight.current && refThumbMin.current){
 
                     const leftSlider =  slider.current.getBoundingClientRect().left;
@@ -108,12 +117,14 @@ export const Slider: FC<IProps> = ({min, max, valueMax, valueMin, setValueMax, s
             }
 
             function onMouseUp() {
+                document.body.style.touchAction = '';
                 document.removeEventListener('pointerup', onMouseUp);
                 document.removeEventListener('pointermove', onMouseMove);
                 onBlur(valueMin, targetMax)
             }
         }
     }
+
 
     useEffect(() => {
         if(slider.current && refThumbMax.current && refInactiveRight.current){

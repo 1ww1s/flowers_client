@@ -10,6 +10,9 @@
     background-color: var(--blue);
     position: relative;
     z-index: 99;
+
+    touch-action: none; /* Блокируем браузерные жесты */
+    user-select: none; /* Запрещаем выделение текста */
     
 
     .inactiveLeft{
@@ -36,6 +39,9 @@
         height: 16px;
         border-radius: 50%;
         position: absolute;
+
+        touch-action: none;
+        user-select: none;
 
         &.min{
             left: 0;

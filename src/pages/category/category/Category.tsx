@@ -33,7 +33,6 @@ export default function Category() {
     }, [pathname])
     
     useEffect(() => {
-        window.scrollTo({top: 0})
         filterClose()
     }, [pathname, searchParams])
         
