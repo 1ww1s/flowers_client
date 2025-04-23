@@ -22,20 +22,24 @@ export const MyData: FC = () => {
 
     return (
         <section className={classes.myData}>
-            <section className={classes.visible}>
-                <ItemData
-                    items={[
-                        {
-                            sign: 'Имя',
-                            data: orderCreate.senderName
-                        },
-                        {
-                            sign: 'Телефон',
-                            data: getPhoneFormat(orderCreate.senderPhone)
-                        }
-                    ]}
-                />
-            </section>
+            {
+                user.isAuth
+                    &&
+                <section className={classes.visible}>
+                    <ItemData
+                        items={[
+                            {
+                                sign: 'Имя',
+                                data: orderCreate.senderName
+                            },
+                            {
+                                sign: 'Телефон',
+                                data: getPhoneFormat(orderCreate.senderPhone)
+                            }
+                        ]}
+                    />
+                </section>
+            }
             {
                 !user.isAuth
                     &&
