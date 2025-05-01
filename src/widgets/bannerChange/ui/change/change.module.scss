@@ -7,12 +7,18 @@
 
     .image{
         display: flex;
+        flex-direction: column;
         width: 100%;
         align-items: center;
         overflow: auto;
 
+        >p{
+            margin: 0;
+            margin-top: 20px;
+        }
+
         .add{
-            margin-left: 4px;
+            margin-top: 6px;
         }
     }
 }

@@ -1,6 +1,6 @@
 import { isRouteErrorResponse, useRouteError } from "react-router-dom"
 import classes from './notFound.module.scss'
-import { NotFountWidget } from "../../widgets/notFountWidget"
+import { NotFoundWidget } from "../../widgets/notFoundWidget"
 
 
 export default function NotFound() {
@@ -16,7 +16,7 @@ export default function NotFound() {
                 error.status === 404 
                     ? 
                 <section className={classes.notFound}>
-                    <NotFountWidget />
+                    <NotFoundWidget />
                 </section>
                     : 
                 <section>

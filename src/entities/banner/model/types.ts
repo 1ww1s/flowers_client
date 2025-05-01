@@ -3,7 +3,8 @@
 
 export interface IBanner {
     id?: number;
-    image: string;
+    imageDesctop: string;
+    imageMobile: string;
     title: string;
     sign: string;
     buttonLink: string;

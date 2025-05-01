@@ -45,7 +45,7 @@ export const BannersCarousel: FC<IProps> = ({banners}) => {
                 {
                     banners.length === 0
                         &&
-                    <img src={initBanner} />
+                    <img className={classes.imageDesctop} src={initBanner} />
                 }
                 {
                     banners.length > 1
@@ -60,7 +60,8 @@ export const BannersCarousel: FC<IProps> = ({banners}) => {
                     {banners.map((banner, ind) => 
                         <li key={ind} className={classes.item + (currentBanner === ind ? ' ' + classes.active : '')}>
                             <Link to={banner.buttonLink}>
-                                <img src={banner.image} />
+                                <img className={classes.imageDesctop} src={banner.imageDesctop} />
+                                <img className={classes.imageMobile} src={banner.imageMobile} />
                             </Link>
                         </li>
                     )}
@@ -83,6 +84,5 @@ export const BannersCarousel: FC<IProps> = ({banners}) => {
                 />
             </section>
         </>
-
     )
 }

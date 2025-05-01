@@ -15,7 +15,11 @@ export const CategoriesSlice = createSlice({
         },
         setError(state, action: PayloadAction<string>){
             state.error = action.payload;
+        },
+        setLoaded(state, action: PayloadAction<boolean>){
+            state.categories.loaded = action.payload;
         }
+
     }
 })
 

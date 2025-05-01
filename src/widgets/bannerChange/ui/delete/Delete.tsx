@@ -16,13 +16,19 @@ export const Delete: FC<IProps> = ({setOpen}) => {
         <section className={classes.delete}>
             <h3>Данные</h3>
             <section className={classes.image}>
-                <section>
-                    <ImageList
+                <section> { /* 16 / 5 */ }
+                    <ImageList  
                         heightImg={180}
                         widthImg={580}
-                        images={banner.image ? [banner.image] : []} 
+                        images={banner.imageDesctop ? [banner.imageDesctop] : []} 
                     />
-
+                </section>
+                <section>
+                    <ImageList
+                        heightImg={570}
+                        widthImg={320}
+                        images={banner.imageMobile ? [banner.imageMobile] : []} 
+                    />
                 </section>
             </section>
             <BannerDelete 

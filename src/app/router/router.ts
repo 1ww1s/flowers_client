@@ -6,7 +6,8 @@ import { ABOUT_ROUTE, ADMIN_CREATE_ROUTE, ADMIN_DELETE_ROUTE, ADMIN_ORDERLIST_AC
     DELIVERY_AND_PAYMENT_ROUTE, PURCHASE_ROUTE, ADMIN_ORDER_ROUTE, ORDER_ROUTE, MY_BASKET_ROUTE, MY_FAVOURITES_ROUTE, PAYMENT_SUCCESS_ROUTE, PAYMENT_FAILED_ROUTE,
     ADMIN_ORDERLIST_USER_ARCHIVE_ROUTE,
     ADMIN_ORDERLIST_USER_LAYOUT_ROUTE,
-    ADMIN_ORDERLIST_USER_ACTIVE_ROUTE, } from "./routes";
+    ADMIN_ORDERLIST_USER_ACTIVE_ROUTE,
+    VK_AUTH_ROUTE, } from "./routes";
 import {Admin, AuthPage, Home, My, MyMain, OrderlistLayout, OrderlistActive, OrderlistArchive, 
     AdminCreate, AdminDelete, AdminOther, Catalog, About, Category, Product, CategoryLayout, Basket, Shops, Shop, Purchase, DeliveryAndPayment, PurchaseStep1,
     PurchaseStep2, Order, NotFound, Favourites, AdminUpdate, 
@@ -15,7 +16,8 @@ import {Admin, AuthPage, Home, My, MyMain, OrderlistLayout, OrderlistActive, Ord
     AdminOrderlistShopArchive,
     AdminOrderlistUserLayout,
     AdminOrderlistUserActive,
-    AdminOrderlistUserArchive} from "../../pages";
+    AdminOrderlistUserArchive,
+    VkAuth} from "../../pages";
 
 
 export const router: RouteObject[] = [
@@ -24,6 +26,10 @@ export const router: RouteObject[] = [
         Component: App,
         ErrorBoundary:  NotFound,
         children: [
+            {
+                path: VK_AUTH_ROUTE.path,
+                Component: VkAuth
+            },
             {
                 path: HOME_ROUTE.path,
                 Component: Home,

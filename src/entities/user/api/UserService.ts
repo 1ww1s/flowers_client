@@ -29,6 +29,24 @@ class UserService {
         return data.user
     }   
 
+    async vk_login(code: string, code_verifier: string, device_id: string, state: string): Promise<IUser> {
+        const res = await fetch(`${process.env.REACT_APP_SERVER_URL_API}/user/vk/login`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8'
+            },
+            credentials: 'include',
+            body: JSON.stringify({ code, code_verifier, device_id, state }),
+        })
+        if(!res.ok) {
+            const {message}: {message: string} = await res.json()
+            throw new Error(message)
+        }
+        const data: {user: IUser, accessToken: string} = await res.json()
+        localStorage.setItem('token', data.accessToken)
+        return data.user
+    }
+
     async logout() {
         const res = await fetchAuth(`${process.env.REACT_APP_SERVER_URL_API}/user/logout`)
         const {message}: {message: string} = await res.json()

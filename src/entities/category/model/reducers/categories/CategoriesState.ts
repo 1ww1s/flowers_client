@@ -4,8 +4,9 @@ import { ICategoriesInitialState } from "../../types";
 
 export const CategoriesInitialState: ICategoriesInitialState = {
     categories: {
-        data: []
+        data: [],
+        loaded: false,
     },
-    isLoading: false,
+    isLoading: true,
     error: ''
 }

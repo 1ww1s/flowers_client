@@ -4,24 +4,41 @@ import { Outlet, useLocation } from 'react-router-dom';
 import { Header } from './widgets/header';
 import { userService, useUserAcions } from './entities/user';
 import { LoaderSpinner, SyncBasket, SyncFavourites } from './shared';
-import { useAppSelector } from './app/store/store';
 import { Bottom } from './widgets/bottom';
 import { basketService } from './entities/basket';
 import { categoryService, useCategoriesActions } from './entities/category';
 import { NavMainDesctop } from './features/nav';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
+import { VK_AUTH_ROUTE } from './app/router/routes';
 
 function App() {
 
-  const [isLoading, setIsLoading] = useState<boolean>(true)
   const {setIsAuth, setName, setPhone, setRoles, setBasket, setFavourites} = useUserAcions()
-  const {setNames, setIsLoading: setIsLoadingCategories, setError} = useCategoriesActions()
+  const {setNames, setIsLoading: setIsLoadingCategories, setLoaded} = useCategoriesActions()
 
   const {pathname, search} = useLocation()
+  
+  const isVkAuth = pathname === VK_AUTH_ROUTE.path
+  const [isLoading, setIsLoading] = useState<boolean>(!isVkAuth)
 
   useEffect(() => {
     window.scrollTo({top: 0})
   }, [pathname, search])
+
+  const getCategoriesNames = async () => {
+    try{
+      setIsLoadingCategories(true)
+      const data = await categoryService.getNames()
+      setNames(data)
+      setLoaded(true)
+    }
+    catch(e){
+      console.log(e)
+    }
+    finally{
+      setIsLoadingCategories(false)
+    }
+  }
 
   const getBasket = async () => {
     const userBasket = await basketService.basketGet()
@@ -48,26 +65,11 @@ function App() {
     }
   }
 
-  const getCategoriesNames = async () => {
-    try{
-      setIsLoadingCategories(true)
-      const data = await categoryService.getNames()
-      setNames(data)
-    }
-    catch(e){
-      if(e instanceof Error){
-        setError(e.message)
-      }
-      console.log(e)
-    }
-    finally{
-      setIsLoadingCategories(false)
-    }
-  }
-
   useEffect(() => {
+    if(!isVkAuth){
+      auth()
+    }
     getCategoriesNames()
-    auth()
   }, [])
 
   return (
@@ -83,21 +85,25 @@ function App() {
           <section className={"loaderMain"}><LoaderSpinner /></section>
             :
           <>
-            <header className="App-header">
-              <Header />
-            </header>
-
-            <NavMainDesctop />
-    
-            {/* <section className='mainWrap'> */}
-              <Outlet />
-            {/* </section> */}
-
-            <footer>  
-                <Bottom />
-            </footer>
+            {
+              !isVkAuth
+                &&
+              <>
+                <header className="App-header">
+                  <Header />
+                </header>
+                <NavMainDesctop />
+              </>
+            }
+            <Outlet />
+            {
+              !isVkAuth
+                &&
+              <footer>  
+                  <Bottom />
+              </footer>
+            }
           </>
-
         }
       </HelmetProvider>
     </section>

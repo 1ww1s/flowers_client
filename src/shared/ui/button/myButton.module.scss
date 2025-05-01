@@ -22,6 +22,7 @@
         letter-spacing: 0.2px;
         font-weight: 500;
         background-color: var(--light-blue);
+        transition: background-color .15s ease-in-out;
         
         &.loading{
             background-color: var(--blue);

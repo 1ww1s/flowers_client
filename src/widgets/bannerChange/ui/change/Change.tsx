@@ -15,29 +15,46 @@ interface IProps {
 export const Change: FC<IProps> = ({setOpen}) => {
 
     const {banner, isLoading} = useAppSelector(s => s.BannerReducer)
-    const {setImage, setError} = useBannerActions()
+    const {setImageDesctop, setImageMobile, setError} = useBannerActions()
 
     return (
         <section className={classes.change}>
             <BannerChange />
             <h3 className={classes.imgTitle}>Фотография</h3>
-            <section className={classes.image}>
+            <section className={classes.image}>  { /* отдельный FC */}
+                <p>Для пк версии</p>
                 <section className={classes.img}>
                     <ImageList 
                         heightImg={180}
                         widthImg={580}
-                        images={banner.image ? [banner.image] : []} 
+                        images={banner.imageDesctop ? [banner.imageDesctop] : []} 
                     />
                 </section>
                 <section className={classes.add}>
                     <AddImage
-                        addImage={setImage}
+                        addImage={setImageDesctop}
                         setGlobalError={setError}
                         disabled={isLoading}
                     />
                 </section>
             </section>
-
+            <section className={classes.image}>
+                <p>Для мобильной версии</p>
+                <section className={classes.img}>
+                    <ImageList 
+                        heightImg={570}
+                        widthImg={320}
+                        images={banner.imageMobile ? [banner.imageMobile] : []} 
+                    />
+                </section>
+                <section className={classes.add}>
+                    <AddImage
+                        addImage={setImageMobile}
+                        setGlobalError={setError}
+                        disabled={isLoading}
+                    />
+                </section>
+            </section>
             <BannerSend 
                 setOpen={setOpen}
             />

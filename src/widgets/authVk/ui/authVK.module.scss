@@ -1,0 +1,54 @@
+
+
+.authVK{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+
+    .loaderMain{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        .text{
+            display: flex;
+            justify-content: center;
+            width: 180px;
+        }
+    }
+
+    .error{
+        width: 600px;
+        max-width: 90%;
+        >h3{
+            color: var(--black);
+        }
+        color: var(--red)
+    }
+
+    .actions{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        max-width: 90%;
+        gap: 20px;
+        margin-top: 20px;
+
+        .action{
+            width: 260px;
+            max-width: 100%;
+        }
+    }
+}
+
+@media (max-width: 650px) {
+    .authVK{
+        .actions{
+            flex-direction: column;
+            gap: 0px;
+        }
+    }    
+}

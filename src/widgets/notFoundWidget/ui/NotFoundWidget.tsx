@@ -1,12 +1,12 @@
 import { FC } from "react";
-import classes from './notFountWidget.module.scss'
+import classes from './notFoundWidget.module.scss'
 import { MyButton } from "../../../shared";
 import { Link } from "react-router-dom";
 import { HOME_ROUTE } from "../../../app/router/routes";
 
 
 
-export const NotFountWidget: FC = () => {
+export const NotFoundWidget: FC = () => {
 
     return (
         <section className={classes.notFountWidget}>

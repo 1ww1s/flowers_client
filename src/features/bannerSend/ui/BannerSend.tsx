@@ -30,8 +30,12 @@ export const BannerSend: FC<IProps> = ({setOpen}) => {
             setError('Укажите наименование баннера')
             isOk = false
         }
-        if(!banner.image){
-            setError('Добавьте фотографию баннера')
+        if(!banner.imageDesctop){
+            setError('Добавьте фотографию баннера для пк версии')
+            isOk = false
+        }
+        if(!banner.imageMobile){
+            setError('Добавьте фотографию баннера для мобильной версии')
             isOk = false
         }
         if(!banner.buttonLink){

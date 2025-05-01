@@ -2,10 +2,6 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { BannerInitialState } from "./BannerState";
 import { IBanner } from "../types";
 
-
-
-
-
 export const BannerSlice = createSlice({
     name: 'banner',
     initialState: BannerInitialState,
@@ -16,8 +12,11 @@ export const BannerSlice = createSlice({
         setTitle(state, action: PayloadAction<string>){
             state.banner.title = action.payload;
         },
-        setImage(state, action: PayloadAction<string>){
-            state.banner.image = action.payload;
+        setImageDesctop(state, action: PayloadAction<string>){
+            state.banner.imageDesctop = action.payload;
+        },
+        setImageMobile(state, action: PayloadAction<string>){
+            state.banner.imageMobile = action.payload;
         },
         setSign(state, action: PayloadAction<string>){
             state.banner.sign = action.payload;

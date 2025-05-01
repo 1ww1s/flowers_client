@@ -6,28 +6,17 @@ import { IUser, userService, useUserAcions } from "../../../entities/user";
 import { Link } from "react-router-dom";
 import { useAppSelector } from "../../../app/store/store";
 import { MyButton, MyInput, SyncBasket } from "../../../shared";
-import { Helmet } from "react-helmet-async";
 
 interface IProps {
-
+    title: string;
+    isLogin: boolean;
 }
 
-export const Auth: FC<IProps> = () => {
+export const Auth: FC<IProps> = ({title, isLogin}) => {
     const router = useNavigate()
     const {user} = useAppSelector(s => s.UserReducer)
     const {setRoles, setIsAuth, setName, setPhone, setBasket} = useUserAcions()
-
-    useEffect(() => {
-        if(user.isAuth){
-            router(MY_MAIN_ROUTE.path, {
-                replace: true
-            })
-        }
-    }, [])
-
     const {pathname} = useLocation()
-    const isLogin = pathname === LOGIN_ROUTE.path
-    const title = isLogin ? "ВХОД В ЛИЧНЫЙ КАБИНЕТ" : "РЕГИСТРАЦИЯ"
 
     const [password, setPassword] = useState<string>('')
     const [isLoading, setIsLoading] = useState<boolean>(false)
@@ -52,7 +41,6 @@ export const Auth: FC<IProps> = () => {
         }
         return true
     }
-
 
     const onAuth = async () => {
         try{
@@ -87,68 +75,58 @@ export const Auth: FC<IProps> = () => {
         }
     }
 
-
     return (
-        <section className={classes.auth}>
-            <Helmet>
-                <title>{title[0] + title.toLocaleLowerCase().slice(1)}</title>
-                <meta name="description" content="Вход или регистрация" />
-                <meta property="og:title" content={title[0] + title.toLocaleLowerCase().slice(1)} />
-                <meta property="og:description" content='Зарегестрируйся на нашем сайте или скорее заходи на него. Ты сможешь просматривать текущий статус заказа и много чего еще' /> {/* Дописать преимущества */}
-            </Helmet>
-            {!user.isAuth
-                &&
-            <form autoComplete="off" onSubmit={(e) => {e.preventDefault(); onAuth()}} className={classes.wrapper}>
-                <span className={classes.title}>{title}</span>
-                {
-                    !isLogin
-                        &&
-                    <MyInput 
-                        name="name"
-                        typeInput="text"
-                        autoComplete='given-name'
-                        value={user.name}
-                        setValue={setName}
-                        placeholder="Имя"
-                        setGlobalError={setError}
-                        sign="*как в паспорте"
-                    />
-                }
+        <form autoComplete="off" onSubmit={(e) => {e.preventDefault(); onAuth()}} className={classes.auth}>
+            <span className={classes.title}>{title}</span>
+            {
+                !isLogin
+                    &&
                 <MyInput 
-                    typeInput="tel" 
-                    name="tel"
-                    autoComplete='tel'
-                    value={user.phone} 
-                    setValue={setPhone} 
-                    placeholder="Телефон" 
+                    name="name"
+                    typeInput="text"
+                    autoComplete='given-name'
+                    value={user.name}
+                    setValue={setName}
+                    placeholder="Имя"
                     setGlobalError={setError}
+                    sign="*как к вам обращаться"
+                    style={{height: 44}}
                 />
-                <MyInput 
-                    typeInput="password" 
-                    name="password"
-                    autoComplete='off'
-                    value={password} 
-                    setValue={setPassword} 
-                    placeholder="Пароль" 
-                    setGlobalError={setError}
-                />
-                <section className={classes.buttonWrapper}>
-                    <MyButton 
-                        error={error} 
-                        width={240} 
-                        isLoading={isLoading} 
-                        onClick={onAuth} 
-                        sign={isLogin ? "Войти" : "Зарегистрироваться"} 
-                    />
-                </section>
-                <section className={classes.change}>
-                    <Link to={`${process.env.REACT_APP_CLIENT_URL}${isLogin ? REGISTRATION_ROUTE.path : LOGIN_ROUTE.path }`}>
-                        {isLogin ? "У меня ещё нет аккаунта" : "Войти"}
-                    </Link>
-                </section>
-            </form>
             }
-
-        </section>
+            <MyInput 
+                typeInput="tel" 
+                name="tel"
+                autoComplete='tel'
+                value={user.phone} 
+                setValue={setPhone} 
+                placeholder="Телефон" 
+                setGlobalError={setError}
+                style={{height: 44}}
+            />
+            <MyInput 
+                typeInput="password" 
+                name="password"
+                autoComplete='off'
+                value={password} 
+                setValue={setPassword} 
+                placeholder="Пароль" 
+                setGlobalError={setError}
+                style={{height: 44}}
+            />
+            <section className={classes.buttonWrapper}>
+                <MyButton 
+                    error={error} 
+                    width={260} 
+                    isLoading={isLoading} 
+                    onClick={onAuth} 
+                    sign={isLogin ? "Войти" : "Зарегистрироваться"} 
+                />
+            </section>
+            <section className={classes.change}>
+                <Link to={`${process.env.REACT_APP_CLIENT_URL}${isLogin ? REGISTRATION_ROUTE.path : LOGIN_ROUTE.path }`}>
+                    {isLogin ? "У меня ещё нет аккаунта" : "Войти"}
+                </Link>
+            </section>
+        </form>
     )
 }

@@ -199,3 +199,9 @@ export const PAYMENT_ROUTE: IRoute = {
     name: 'Оплата заказа',
     path: '/payment/:orderId'
 }
+
+
+export const VK_AUTH_ROUTE: IRoute = {
+    name: 'Вход через вк',
+    path: '/auth/vk/callback'
+}

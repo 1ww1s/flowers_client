@@ -23,21 +23,24 @@
     
             &.simple{
                 padding: 10px var(--side);
+                
                 &.icon{
                     padding: 10px 36px 10px var(--side);
                 }
+                
+                &[type="password"], &[data-feature="true"]{
+                    padding-right: calc(var(--side) + 50px);
+                }
             }
-
+            
             &.icon{
                 padding: 20px 36px 8px var(--side);
             }
-
-            
             
             &[type="password"], &[data-feature="true"]{
                 padding-right: calc(var(--side) + 50px);
             }
-
+            
             &:focus{
                 box-shadow: 0 0 8px 1.5px var(--blue);
                 border: var(--border) solid var(--blue);

@@ -10,17 +10,18 @@ import { ProductPriceSlider } from '../../../widgets/slider'
 import { FilterByFlowers } from '../../../widgets/filterByFlowers'
 import { FilterByShops } from '../../../widgets/filterByShops'
 import { Helmet } from 'react-helmet-async'
+import { NotFoundWidget } from '../../../widgets/notFoundWidget'
 
 
 export default function Category() {
 
     const {category, error} = useAppSelector(s => s.CategoryReducer)
+    const {isLoading: isLoadingCategories} = useAppSelector(s => s.CategoriesReducer)
     const [searchParams, setSearchParams] = useSearchParams();
     const [urlSearchParams, setUrlSearchParams] = useState<URLSearchParams>(new URLSearchParams(searchParams))
     const {pathname} = useLocation()
 
     const ref = useRef<HTMLDivElement>(null)
-
     const isOne = useRef<boolean>(true)
     useEffect(() => {
         if(isOne.current){
@@ -51,14 +52,16 @@ export default function Category() {
     return (
         <section className={classes.wrap}>
         {
-            error
+            !isLoadingCategories && error
                 ?
-            <>404</>
+            <section className={classes.notFound}>
+                <NotFoundWidget />
+            </section>
                 :
             <>
             <section className={classes.title}>
             {
-                category.name
+                !isLoadingCategories
                     ?
                 <>
                     <Helmet>
@@ -74,25 +77,33 @@ export default function Category() {
             }
             </section>
             <section className={classes.content}>
-                <aside className={classes.sidebar}>
-                    <h3
-                        onClick={filterOpen} 
-                        className={classes.titleFilter}
-                    >
-                        Фильтры
-                    </h3>
-                    <section ref={ref} className={classes.filters}>
-                        <section className={classes.filterWrap}>
-                            <ProductPriceSlider />
-                            <FilterByShops />
-                            <FilterByFlowers />
-                            <Filters />
-                        </section>
-                    </section>
-                </aside>
-                <main className={classes.main}>
-                    <ProductsByCategory />
-                </main>
+                {
+                    isLoadingCategories || !category.name
+                        ?
+                    <section className={classes.loader}><LoaderDiv /></section>
+                        :
+                    <>
+                        <aside className={classes.sidebar}>
+                            <h3
+                                onClick={filterOpen} 
+                                className={classes.titleFilter}
+                            >
+                                Фильтры
+                            </h3>
+                            <section ref={ref} className={classes.filters}>
+                                <section className={classes.filterWrap}>
+                                    <ProductPriceSlider />
+                                    <FilterByShops />
+                                    <FilterByFlowers />
+                                    <Filters />
+                                </section>
+                            </section>
+                        </aside>
+                        <main className={classes.main}>
+                            <ProductsByCategory />
+                        </main>
+                    </>
+                }
             </section>
             </>
         }

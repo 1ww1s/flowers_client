@@ -1,38 +1,36 @@
-.auth {
+.auth{
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    min-height:  calc(100vh - var(--header-height));
+    width: 480px;
+    max-width: 90%;
 
-    .wrapper{
+    .title {
+        font-size: 2.4rem;
+        word-spacing: 3px;
+        letter-spacing: 1px;
+        line-height: 2.8rem;
+        text-align: center;
+        margin: 12px 0;
+    }
+
+    .buttonWrapper{
         display: flex;
-        flex-direction: column;
-        width: 480px;
-        max-width: 90%;
-        margin-bottom: var(--header-height);
-        .title {
-            font-size: 2.4rem;
-            word-spacing: 3px;
-            letter-spacing: 1px;
-            line-height: 2.8rem;
-            text-align: center;
-            margin: 12px 0;
-        }
+        justify-content: center;
+    }
 
-        .buttonWrapper{
-            display: flex;
-            justify-content: center;
-            width: 100%;
-        }
+    .change{
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin-top: 4px;
+        a{
+            color: var(--link-blue);
+            font-weight: 500;
+            transition: color .15s ease-in-out;
 
-        .change{
-            display: flex;
-            justify-content: center;
-            width: 100%;
-            margin-top: 4px;
-            a{
-                color: var(--link-blue);
-                font-weight: 500;
+            &:hover{
+                color: var(--hover-link-blue);
             }
         }
     }
@@ -40,17 +38,12 @@
 
 @media (max-width: 650px) {
     .auth {
-        .wrapper{
-
-            .title {
-                font-size: 2.2rem;
-                word-spacing: 2px;
-                line-height: 2.6rem;
-                text-align: center;
-                margin: 10px 0;
-            }
-    
-    
+        .title {
+            font-size: 2.2rem;
+            word-spacing: 2px;
+            line-height: 2.6rem;
+            text-align: center;
+            margin: 10px 0;
         }
     }
 }

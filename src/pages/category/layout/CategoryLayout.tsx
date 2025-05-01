@@ -5,8 +5,6 @@ import { Outlet } from "react-router-dom";
 
 export default function CategoryLayout() {
 
-    
-
     return (
         <section className={classes.category}>
             <section className={classes.wrapper}>

@@ -5,12 +5,17 @@
     --widthSidebar: 240px;
     height: 100%;
 
+    
+    .notFound{
+        margin-top: 40px;
+    }
+    
     .title{
         display: flex;
         align-items: center;
         height: 40px;
         width: 100%;
-
+        
         .loader{
             height: 90%;
             width: 20%;
@@ -26,6 +31,11 @@
         width: 100%;
         overflow: auto;
         gap: 30px;
+
+        .loader{
+            width: 100%;
+            height: 200px;
+        }
 
         .titleFilter{
             display: none;
@@ -51,9 +61,15 @@
 
 @media (max-width: 650px) {
     .wrap{    
+        .title{
+            .loader{
+                width: 60%;
+            }
+        }
         .content{
             flex-direction: column;
             gap: 0px;
+
 
             .titleFilter{
                 display: block;

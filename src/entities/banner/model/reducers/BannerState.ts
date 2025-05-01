@@ -5,7 +5,8 @@ export const BannerInitialState: IBannerInitialState = {
     banner: {
         title: '',
         sign: '',
-        image: '',
+        imageDesctop: '',
+        imageMobile: '',
         buttonLink: ''
     },
     isLoading: false,

@@ -8,7 +8,7 @@ import { OrderData } from '../../widgets/orderData'
 import { ShopData } from '../../entities/shop'
 import { ComeBack } from '../../features/comeBack'
 import { OrderStatusChange } from '../../features/orderStatusChange'
-import { NotFountWidget } from '../../widgets/notFountWidget'
+import { NotFoundWidget } from '../../widgets/notFoundWidget'
 import { Helmet } from 'react-helmet-async'
 
 
@@ -90,7 +90,7 @@ export default function Order() {
                         && 
                     <WrapItem>
                         <section className={classes.notFound}>
-                            <NotFountWidget /> 
+                            <NotFoundWidget /> 
                         </section>
                     </WrapItem>
                 }

@@ -1,11 +1,8 @@
-import { Auth } from "../../features/auth";
-
-
+import { AuthWidget } from "../../widgets/auth";
 
 export default function AuthPage(){
-
-
+    
     return (
-        <Auth />
+        <AuthWidget />
     )
 }

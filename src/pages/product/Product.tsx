@@ -18,7 +18,6 @@ export default function Product() {
 
     const param = useParams<{product: string}>()
 
-
     const [isLoadingShops, setIsLoadingShops] = useState<boolean>(true)
     const [countShops, setCountShops] = useState<number>(0)
     const {error} = useAppSelector(s => s.ProductReducer)

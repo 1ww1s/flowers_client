@@ -31,3 +31,4 @@ export {default as DeliveryAndPayment} from './deliveryAndPayment/DeliveryAndPay
 export {default as Order} from './order/Order'
 export {default as NotFound} from './notFound/NotFound'
 export {default as Favourites} from './favourites/ui/Favourites'
+export {default as VkAuth} from './auth/VkAuthPage'

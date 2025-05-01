@@ -26,7 +26,8 @@ export interface IFilterCharacteristic {
 
 
 export interface ICategories {
-    data: {id: number, name: string, slug: string}[]
+    data: {id: number, name: string, slug: string}[];
+    loaded: boolean;
 }
 export interface ICategoriesInitialState {
     categories: ICategories;
