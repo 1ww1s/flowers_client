@@ -1,4 +1,3 @@
-
 import { ProductsByCategory } from '../../../widgets/productsByCategory'
 import classes from './category.module.scss'
 import { useAppSelector } from '../../../app/store/store'

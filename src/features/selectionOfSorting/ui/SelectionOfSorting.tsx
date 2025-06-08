@@ -53,7 +53,7 @@ export const SelectionOfSorting: FC<IProps> = ({sort}) => {
 
     return (
         <section className={classes.selectionOfSorting}>
-            <section onClick={openToggle} className={classes.selectedSort}>
+            <section onMouseDown={e => e.preventDefault()} onClick={openToggle} className={classes.selectedSort}>
                 {sort.find(s => s.value === selectedSort)?.name}
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M10.5 16.5L7.5 19.5L4.5 16.5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -75,7 +75,6 @@ export const SelectionOfSorting: FC<IProps> = ({sort}) => {
                     </ul>
                 </section>
             }
-
         </section>
     )
 }

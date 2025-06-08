@@ -34,11 +34,9 @@ export const FilterByShops: FC = () => {
     }, [pathname])
 
     return (
-        <section>
-            <SelectionFilters
-                characteristics={characteristics}
-                isLoading={isLoading}
-            />
-        </section>
+        <SelectionFilters
+            characteristics={characteristics}
+            isLoading={isLoading}
+        />
     )
 }

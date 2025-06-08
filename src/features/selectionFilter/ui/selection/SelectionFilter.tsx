@@ -46,7 +46,7 @@ export const SelectionFilter: FC<IProps> = ({needSearch, values, characteristicN
             <ul>
                 {searchedValues.map((v, ind) => 
                     <li key={ind}>
-                        <label onClick={() => setCharacteristicValues(characteristicName, v.slug)} className={characteristicValues.find(cv => cv === v.slug) ? classes.selected : ""} >
+                        <label  onMouseDown={e => e.preventDefault()} onClick={() => setCharacteristicValues(characteristicName, v.slug)} className={characteristicValues.find(cv => cv === v.slug) ? classes.selected : ""} >
                             <section className={classes.checkbox}>
                                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M18 7L9.42857 17L6 13" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round"/>

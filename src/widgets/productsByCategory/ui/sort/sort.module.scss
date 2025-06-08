@@ -1,9 +1,8 @@
 
 
 .sort{
-
+    position: relative;
+    z-index: 1;
     width: 100%;
-
-
     border-bottom: 1px solid var(--light-gray);
 }
