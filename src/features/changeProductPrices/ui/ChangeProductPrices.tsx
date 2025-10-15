@@ -54,7 +54,6 @@ export const ChangeProductPrices: FC<IProps> = ({
                 />
             <section className={classes.dash}>
             </section>
-
             <MyInput 
                 typeInput="number"
                 value={`${targetMax}`}

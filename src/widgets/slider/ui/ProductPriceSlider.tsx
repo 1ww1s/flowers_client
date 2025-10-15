@@ -7,11 +7,7 @@ import { categoryService } from "../../../entities/category";
 import { LoaderDiv } from "../../../shared";
 
 
-interface IProps {
-
-}
-
-export const ProductPriceSlider: FC<IProps> = () => {
+export const ProductPriceSlider: FC = () => {
 
     const [searchParams, setSearchParams] = useSearchParams()
 
@@ -29,7 +25,6 @@ export const ProductPriceSlider: FC<IProps> = () => {
     const [isLoading, setIsLoading] = useState<boolean>(true) 
     const {pathname} = useLocation()
     const params = useParams<{category: string}>()
-
 
     useEffect(() => {
         setValueMin(currentMin)
@@ -130,32 +125,31 @@ export const ProductPriceSlider: FC<IProps> = () => {
             <h3>
                 Цена
             </h3>
-                {
-                    isLoading
-                        ?
-                    <section className={classes.loader}><LoaderDiv /></section>
-                        :
-                    <>
-                        <ChangeProductPrices 
-                            min={min}
-                            max={max}
-                            valueMax={valueMax}
-                            valueMin={valueMin}
-                            onBlur={onBlur}
-                        />
-                        <Slider 
-                            min={min}
-                            max={max}
-                            valueMax={valueMax}
-                            valueMin={valueMin}
-                            setValueMax={setValueMax}
-                            setValueMin={setValueMin}
-                            onBlur={onBlur}
-                        />
-                        {error && <p>{error}</p>}
-                    </>
-                }
-
+            {
+                isLoading
+                    ?
+                <section className={classes.loader}><LoaderDiv /></section>
+                    :
+                <>
+                    <ChangeProductPrices 
+                        min={min}
+                        max={max}
+                        valueMax={valueMax}
+                        valueMin={valueMin}
+                        onBlur={onBlur}
+                    />
+                    <Slider 
+                        min={min}
+                        max={max}
+                        valueMax={valueMax}
+                        valueMin={valueMin}
+                        setValueMax={setValueMax}
+                        setValueMin={setValueMin}
+                        onBlur={onBlur}
+                    />
+                    {error && <p>{error}</p>}
+                </>
+            }
         </section>
     )
 }

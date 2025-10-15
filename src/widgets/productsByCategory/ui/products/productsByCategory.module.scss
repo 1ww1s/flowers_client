@@ -7,13 +7,14 @@
     align-items: center;
     --time: .15s;
     width: 100%;
-
+    
     .list{
         display: grid;
         width: 100%;
         margin-top: 30px;
         grid-template-columns: repeat(4, 1fr);
         gap: 24px;
+        z-index: 1;
     
         .features{
             display: flex;

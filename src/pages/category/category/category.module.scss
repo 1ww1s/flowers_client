@@ -43,6 +43,7 @@
 
         .sidebar{
             margin-top: 0px;
+            z-index: 19;
             .filters{
                 width: var(--widthSidebar);
             }
@@ -90,15 +91,22 @@
                     z-index: -9;
                     overflow: auto;
                     opacity: 0;
+                    display: none;
                     
                     .filterWrap{
                         overflow: auto;
                         height: calc(55vh);
+                        display: none;
                     }
 
                     &.open{
                         opacity: 1;
                         z-index: 9;
+                        display: block;
+
+                        .filterWrap{
+                            display: block;
+                        }
                     }
                 }
             }

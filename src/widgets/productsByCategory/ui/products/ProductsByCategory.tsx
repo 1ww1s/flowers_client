@@ -32,7 +32,7 @@ export const ProductsByCategory: FC<IProps> = ({}) => {
         try{
             setIsLoading(true)
             const data = await productService.getByCategory(params.category || '', filters)
-            // await new Promise(resolve => setTimeout(resolve, 1000))
+            await new Promise(resolve => setTimeout(resolve, 11000))
             setTotalPages(data.totalPages)
             setProducts(data.products)
         }
