@@ -11,12 +11,12 @@ async function refreshToken(): Promise<string> {
         throw new AuthError(message)
     }
     try {
-        const newToken = await fetch(`${process.env.REACT_APP_SERVER_URL_API}/auth/refresh`, {
+        const newToken = await fetch(`${process.env.REACT_APP_SERVER_URL_API}/user/refresh`, {
             credentials: 'include'
         })
         if(!newToken.ok) await authError(newToken)
-        const {token}: {token: string} = await newToken.json()
-        return token
+        const res: {user: IUser, accessToken: string} = await newToken.json()
+        return res.accessToken;
     } 
     catch (error) {
         throw new Error('Failed to refresh token');
@@ -30,7 +30,7 @@ export async function handleUnauthorized(requestFn: () => Promise<Response>): Pr
         refreshPromise = refreshToken();
         try {
             const newToken = await refreshPromise;
-            localStorage.setItem('auth_token', newToken);
+            localStorage.setItem('token', newToken);
             
             // Выполняем все запросы из очереди
             requestQueue.forEach(cb => cb());
@@ -69,14 +69,14 @@ export const fetchAuth = async (url: string, init?: RequestInit, isRetry?: boole
     newInit.headers = {
         ...newInit.headers,
         'Content-Type': 'application/json;charset=utf-8',
-        'Authorization': `Bearer ${localStorage.getItem('auth_token')}`
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
     } 
     newInit.credentials = 'include'
     const res = await fetch(url, newInit)
     
     const authError = async (res: Response) => {
-        // const {message}: {message: string} = await res.json()
-        throw new AuthError('Ошибка авторизации')
+        const {message}: {message: string} = await res.json()
+        throw new AuthError(message)
     }
 
     if(!res.ok) {
