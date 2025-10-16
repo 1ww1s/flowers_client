@@ -48,7 +48,7 @@ body{
     margin: 0;
     --header-height: 70px;
     --mainWidth: 1280px;
-    --mainMaxWidth: 96%;
+    --mainMaxWidth: calc(100% - 30px);
 
     --bottom-button: 100px;
 }
